@@ -5,11 +5,15 @@ load "auxiliary.m";
 load "Chabauty_MWSieve_new.m";
 load "rank_calcs.m";
 
-ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
+
+//nonpullbacks must be the sequence of elements of the following shape
+// <K, P> where K is the field over which P is defined
+
+ProvablyComputeQuadPts_X0N := function(N : d := N, nonpullbacks := {}, badPrimes := {})
 	printf "Genus of X_0(%o) is: %o\n", N, Dimension(CuspForms(N));
-	printf "Considering the quotient X_0(%o)/w_%o.\n", N, d;
+	printf "Considering X_0(%o)/w_%o.\n", N, d;
 	//  Check rk J_0(N)(Q) = rk J_0(N)^+(Q)
-	time if d eq N then
+	if d eq N then
 		if not IsRankOfALQuotEqual(N) then
 			error "One needs rk J_0(N)(Q) = rk J_0(N)^+(Q) for our algorithm to work.";
 		else
@@ -19,28 +23,28 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
 		if rank_quo(N, [d]) ne rank_quo(N, []) then
 			error "One needs rk J_0(N)(Q) = rk J_0(N)(Q)/w_d for our algorithm to work.";
 		else
-			printf "rk J_0(%o)(Q) = rk J_0(%o)(Q)/w_%o.\n", N, N, d;
+			printf "rk J_0(%o)(Q) = rk J_0(%o)(Q)/w_%o \n", N, N, d;
 		end if;
 	end if;
 
-	printf "Computing equations for X_0(%o) ...\n", N;
-	time XN, ws, _, _, cuspInf := eqs_quos(N, []);
-	printf "Nice model for X_0(%o) is: %o\n", N, XN;
-	printf "Genus of X_0(%o) is %o.\n", N, Genus(XN);
+	XN, ws, _, _, cuspInf := eqs_quos(N, []);
 
-	printf "Computing cusps ...\n";
-	time if IsSquarefree(N) then
+	if IsSquarefree(N) then
 		XN_Cusps := compute_cusps(XN, N, ws, cuspInf, []);
 	else
 		jMap, numDenom := jmap(XN, N);
 		XN_Cusps := compute_cusps(XN, N, ws, cuspInf, numDenom);
 	end if;
-	printf "We have found these %o cusps on X_0(%o):\n%o\n", #XN_Cusps, N, XN_Cusps;
+
+	printf "Nice model for X_0(%o) is: %o\n\n", N, XN;
 
 	// note that ALs are returned in ascending index
 	ListOfDivs := [Q : Q in Divisors(N) | GCD(Q, ExactQuotient(N,Q)) eq 1 and Q ne 1];
 	wd := ws[Index(ListOfDivs, d)];
 	printf "w_%o on X_0(%o) is given by: %o\n", d, N, wd;
+
+	printf "Genus of X_0(%o) is %o\n", N, Genus(XN);
+	printf "We have found these %o cusps on X_0(%o):\n%o\n", #XN_Cusps, N, XN_Cusps;
 
 	//gens := [Divisor(c1) - Divisor(c2) : c1,c2 in XN_Cusps | c1 ne c2];
 
@@ -61,18 +65,26 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
 		end for;
 	end for;
 
+additional_points := [];
+
+for tup in nonpullbacks do
+	nonpb := XN(tup[1])!tup[2];
+	Append(~deg2, 1*Place(nonpb));
+	Append(~additional_points, nonpb);
+end for;
+
 	printf "We have found %o points on X_0(%o)^2(Q).\n", #deg2, N;
 
 	//Finally, we do the sieve.
 
 	printf "Computing torsion subgroup ...\n";
-	time A, divs := GetTorsion(N, XN, XN_Cusps);
+	A, divs := GetTorsion(N, XN, XN_Cusps);
 	genusC := genus_quo(N, [d]);
-	printf "Genus of the quotient X_0(%o)/w_%o is %o.\n", N, d, genusC;
+	printf "Genus of the quotient is %o.\n", genusC;
 	bp := deg2pb[1];
 	wdMatrix := Matrix(wd);
 
-	primes := []; // TODO: find suitable primes -- in practice, small primes yield good results
+	primes := []; // TODO: find suitable primes
 
 	for p in PrimesInInterval(3, 30) do
 		if p in badPrimes then
@@ -83,20 +95,20 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
 		end if;
 	end for;
 
-	printf "Performing Mordell--Weil Sieve ...\n";
+	printf "Performing Mordell-Weil sieve ...\n";
 	B0, iA0 := sub<A | Generators(A)>;
 	W0 := {0*A.1};
 
 	B, iA, W := MWSieve(XN, wdMatrix, genusC, primes, A, divs, bp, B0, iA0, W0, deg2);
 
-	printf "\nFor unknown Q in X_0(%o)^2(Q) we have (1 - w_%o)[Q - bp] is in a coset of %o represented by an element of %o.\n", N, N, B, W;
+	printf "\nFor unknown Q in X_0(%o)^2(\Q) we have (1 - w_%o)[Q - bp] is in a coset of %o represented by an element of %o.\n", N, N, B, W;
 
 	if #W eq 1 and IsIdentity(W[1]) then
-		printf "It follows that if there is an unknown Q in X_0(%o)^2(Q), then (1 - w_%o)[Q - bp] == 0.\n", N, N;
+		printf "It follows that if there is an unknown Q in X_0(%o)^2(\Q), then (1 - w_%o)[Q - bp] == 0.\n", N, d;
 		printf "This implies that [Q - bp] is fixed by w_%o\n", N;
-		printf "Then Q ~ w_%o(Q), which implies that Q = w_%o(Q) because X_0(%o) is not hyperelliptic.\n", N, N, N;
-		printf "Then either Q is a pullback, or it is fixed by w_%o pointwise.\n", N;
-		printf "If P = (X_i) is fixed by w_%o,\n", N;
+		printf "Then Q ~ w_%o(Q), which implies that Q = w_%o(Q) because X_0(%o) is not hyperelliptic.\n", d, d, N;
+		printf "Then either Q is a pullback, or it is fixed by w_%o pointwise.\n", d;
+		printf "If P = (X_i) is fixed by w_%o,\n", d;
 		printf "either the first %o coordinates are 0 or the last %o coordinates are 0\n\n", genusC, Dimension(CuspForms(N)) - genusC;
 
 		I := IdentityMatrix(Rationals(), Genus(XN));
@@ -120,13 +132,15 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
 		printf "The degrees of these points are %o (or > 2).\n", degrees;
 
 		if forall{deg: deg in degrees | deg ne 2} then
-			printf "Hence there are no quadratic points on X_0(%o) not coming from pullbacks of rationals.\n", N;
+			printf "Hence there are no quadratic points on X_0(%o) not coming from pullbacks of rationals, except the points you forwarded: %o.\n", N, additional_points;
 		else
-			error "TODO: Sieve worked, but we still need to analyze quadratic points (there are some).";
+			printf "Sieve worked, but we still need to analyze quadratic points (there are some).";
 		end if;
 	else 
-		error "TODO: Sieve did not prove what we wanted.";
+		error "Sieve did not prove what we wanted.";
 	end if;
 
 	return "done";
 end function;
+
+//ProvablyComputeQuadPts_X0N(97);

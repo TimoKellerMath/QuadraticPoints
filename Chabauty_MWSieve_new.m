@@ -93,7 +93,7 @@ ChabautyInfo := function(X, AtkinLehner, genusC, p, A, divs, Dpull, B, iA, W, de
 			Append(~jposP, x);
     	end if;*/
 
-		time for k in K do 
+		for k in K do 
 			/*if (z + k in Abstracts) and (not z + k in deg2p2 or not IsLonely(deg2[Index(deg2p2, z + k)], p, X, AtkinLehner, genusC)) then 
 				Append(~jposP, x);
 				break;
