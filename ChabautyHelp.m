@@ -46,21 +46,22 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 			F := Fs[1];
 			tf, ii := IsIsomorphic(F, K);
 			assert tf; //Sanity check
-			Q := [ii(F!x) : x in Eltseq(RepresentativePoint(Q))]; */
-			Q := [K | ];
-			for x in Eltseq(RepresentativePoint(Q)) do
-				F := Parent(x);
-				if IsIsomorphic(F, Rationals()) then
-					Append(~Q, K!x);
-				else
-					tf, ii := IsIsomorphic(F, K);
-					assert tf; //Sanity check
-					Append(~Q, ii(x));
-				end if;
-			end for;
-			conjQ := [Conjugate(x) : x in Q];
-			Append(~ptlist, Q);
-			Append(~ptlist, conjQ);
+Qx := [K | ];
+                        for x in Eltseq(RepresentativePoint(Q)) do
+                                F := Parent(x);
+                                if IsIsomorphic(F, Rationals()) then
+                                        Append(~Qx, K!x);
+                                else
+                                        tf, ii := IsIsomorphic(F, K);
+                                        assert tf; //Sanity check
+                                        Append(~Qx, ii(x));
+                                end if;
+                        end for; 
+			conjQx := [Conjugate(x) : x in Qx]; Append(~ptlist, Qx);
+                        Append(~ptlist, conjQx);
+			//conjQ := [Conjugate(x) : x in Q];
+			//Append(~ptlist, Q);
+			//Append(~ptlist, conjQ);
 		else
 			dd := [2]; //Double rational point case
 			K := RationalsAsNumberField();

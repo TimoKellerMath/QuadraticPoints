@@ -1,0 +1,117 @@
+Magma V2.26-12    Mon Feb 13 2023 23:05:24 on euler    [Seed = 749075292]
+Type ? for help.  Type <Ctrl>-D to quit.
+
+Loading startup file "85.m"
+
+Loading "main.m"
+Loading "new_models.m"
+Loading "auxiliary.m"
+Loading "Chabauty_MWSieve_new.m"
+Loading "ChabautyHelp.m"
+Loading "auxiliary.m"
+Loading "rank_calcs.m"
+Genus of X_0(85) is: 7
+Considering X_0(85)/w_85.
+rk J_0(N)(Q) = rk J_0(N)^+(Q).
+Nice model for X_0(85) is: Curve over Rational Field defined by
+x[1]^2 + 7*x[4]^2 - 2*x[5]^2 + 2*x[5]*x[6] + 4*x[6]^2 + x[7]^2,
+6*x[1]*x[2] + 11*x[4]^2 - x[5]^2 - 4*x[5]*x[6] - 8*x[6]^2 + x[7]^2,
+x[1]*x[3] - x[2]*x[3] + 2*x[2]*x[4] - x[5]*x[7],
+x[1]*x[4] - 2*x[2]*x[3] - x[2]*x[4] + x[6]*x[7],
+x[1]*x[5] - x[2]*x[5] + 2*x[2]*x[6] - x[3]*x[7],
+x[1]*x[6] - 2*x[2]*x[5] - x[2]*x[6] + x[4]*x[7],
+x[1]*x[7] + x[2]*x[7] - x[3]*x[5] - 4*x[3]*x[6] + 4*x[4]*x[5] - x[4]*x[6],
+3*x[2]^2 - 2*x[4]^2 + x[5]^2 - 2*x[5]*x[6] - 4*x[6]^2 - x[7]^2,
+x[3]^2 + x[4]^2 - x[5]^2 - x[6]^2,
+3*x[3]*x[4] - 5*x[4]^2 + x[5]^2 - 5*x[5]*x[6] - 4*x[6]^2 - x[7]^2
+
+w_85 on X_0(85) is given by: Mapping from: Crv: XN to Crv: XN
+with equations : 
+x[1]
+x[2]
+-x[3]
+-x[4]
+-x[5]
+-x[6]
+x[7]
+and inverse
+x[1]
+x[2]
+-x[3]
+-x[4]
+-x[5]
+-x[6]
+x[7]
+Genus of X_0(85) is 7
+We have found these 4 cusps on X_0(85):
+[
+Place at (-1 : 0 : 1 : 0 : -1 : 0 : 1),
+Place at (-1 : 0 : -1 : 0 : 1 : 0 : 1),
+Place at (1 : 0 : -1 : 0 : -1 : 0 : 1),
+Place at (1 : 0 : 1 : 0 : 1 : 0 : 1)
+]
+We have found 10 points on X_0(85)^2(Q).
+Computing torsion subgroup ...
+Genus of the quotient is 3.
+Performing Mordell-Weil sieve ...
+p = 3 (1/7): Getting deg 1 places on Xp ...
+Getting deg 2 places on Xp ...
+Combining them into divisors ...
+There are 22 of them!
+out of 12: The number of possible cosets unknown points can land in is 10.
+p = 7 (2/7): Getting deg 1 places on Xp ...
+Getting deg 2 places on Xp ...
+Combining them into divisors ...
+There are 78 of them!
+out of 10: ..............The number of possible cosets unknown points can land in is 1.
+
+For unknown Q in X_0(85)^2(Q) we have (1 - w_85)[Q - bp] is in a coset of 
+Abelian Group of order 1 represented by an element of [
+0
+].
+It follows that if there is an unknown Q in X_0(85)^2(Q), then (1 - w_85)[Q - 
+bp] == 0.
+This implies that [Q - bp] is fixed by w_85
+Then Q ~ w_85(Q), which implies that Q = w_85(Q) because X_0(85) is not 
+hyperelliptic.
+Then either Q is a pullback, or it is fixed by w_85 pointwise.
+If P = (X_i) is fixed by w_85,
+either the first 3 coordinates are 0 or the last 4 coordinates are 0
+
+We find all such P by imposing these conditions and finding points on the 
+scheme:
+Scheme over Rational Field defined by
+x[3]*x[6]^2 - 3/4*x[4]*x[5]*x[6] + 3/2*x[4]*x[6]^2,
+x[1]^2,
+x[1]*x[2],
+x[2]^2,
+x[1]*x[3],
+x[2]*x[3],
+x[3]^2 - 8/3*x[5]*x[6] - 19/3*x[6]^2,
+x[1]*x[4],
+x[2]*x[4],
+x[3]*x[4] - 5/3*x[5]*x[6] - 4/3*x[6]^2,
+x[4]^2 - 2/3*x[5]*x[6] - 4/3*x[6]^2,
+x[1]*x[5],
+x[2]*x[5],
+x[3]*x[5] + 4*x[3]*x[6] - 4*x[4]*x[5] + x[4]*x[6],
+x[5]^2 - 10/3*x[5]*x[6] - 20/3*x[6]^2,
+x[1]*x[6],
+x[2]*x[6],
+x[1]*x[7] + x[2]*x[7],
+x[3]*x[7],
+x[4]*x[7],
+x[5]*x[7],
+x[6]*x[7],
+x[7]^2
+
+All such P are:
+{@ (0 : 0 : 3/4*r3*r1 - 3/2*r3 : r3 : r1 : 1 : 0), (0 : 0 : 3/4*r4*r1 - 3/2*r4 :
+r4 : r1 : 1 : 0), (0 : 0 : 3/4*r5*r2 - 3/2*r5 : r5 : r2 : 1 : 0), (0 : 0 : 
+3/4*r6*r2 - 3/2*r6 : r6 : r2 : 1 : 0) @}
+The degrees of these points are [] (or > 2).
+Hence there are no quadratic points on X_0(85) not coming from pullbacks of 
+rationals, except the points you forwarded: [].
+done
+
+Total time: 1905.220 seconds, Total memory usage: 333.12MB
