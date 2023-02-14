@@ -45,7 +45,7 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 			assert forall{F : F in Fs | IsIsomorphic(F, Fs[1])};
 			F := Fs[1];
 			tf, ii := IsIsomorphic(F, K);
-			assert tf; //Sanity check
+			assert tf; //Sanity check*/
 Qx := [K | ];
                         for x in Eltseq(RepresentativePoint(Q)) do
                                 F := Parent(x);
