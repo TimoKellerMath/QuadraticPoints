@@ -65,7 +65,7 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
 
 	//Finally, we do the sieve.
 
-	printf "Computing torsion subgroup ...\n";
+	printf "\nComputing torsion subgroup ...\n";
 	time A, divs := GetTorsion(N, XN, XN_Cusps);
 	genusC := genus_quo(N, [d]);
 	printf "Genus of the quotient X_0(%o)/w_%o is %o.\n", N, d, genusC;
@@ -83,7 +83,7 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, badPrimes := {})
 		end if;
 	end for;
 
-	printf "Performing Mordell--Weil Sieve ...\n";
+	printf "\nPerforming Mordell--Weil Sieve ...\n";
 	B0, iA0 := sub<A | Generators(A)>;
 	W0 := {0*A.1};
 

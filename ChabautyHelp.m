@@ -40,10 +40,24 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 			dd := [1, 1]; //This encodes that QQ = Q_1 + Q_2 with Q_1 and Q_2 distinct
 			disc := discQuadPlace(Q);
 			K := QuadraticField(disc); //The quadratic field over which QQ is defined
-			F := ResidueClassField(Q);
+			//F := ResidueClassField(Q);
+			/*Fs := [Parent(x) : x in Eltseq(RepresentativePoint(Q)) | Degree(Parent(x)) gt 1];
+			assert forall{F : F in Fs | IsIsomorphic(F, Fs[1])};
+			F := Fs[1];
 			tf, ii := IsIsomorphic(F, K);
 			assert tf; //Sanity check
-			Q := [ii(x) : x in Eltseq(RepresentativePoint(Q))]; 
+			Q := [ii(F!x) : x in Eltseq(RepresentativePoint(Q))]; */
+			Q := [K | ];
+			for x in Eltseq(RepresentativePoint(Q)) do
+				F := Parent(x);
+				if IsIsomorphic(F, Rationals()) then
+					Append(~Q, K!x);
+				else
+					tf, ii := IsIsomorphic(F, K);
+					assert tf; //Sanity check
+					Append(~Q, ii(x));
+				end if;
+			end for;
 			conjQ := [Conjugate(x) : x in Q];
 			Append(~ptlist, Q);
 			Append(~ptlist, conjQ);
