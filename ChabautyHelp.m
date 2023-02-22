@@ -1,3 +1,4 @@
+
 //for a given divisor D in Jp = J(Xp) and Atkin-Lehner operator (w_N) matrix AL_mat, calculates (1 - w_N)(D), mod p
 
 OneMinusWmodp := function(Xp, D, AL_mat, p)
@@ -40,12 +41,9 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 			dd := [1, 1]; //This encodes that QQ = Q_1 + Q_2 with Q_1 and Q_2 distinct
 			disc := discQuadPlace(Q);
 			K := QuadraticField(disc); //The quadratic field over which QQ is defined
-			//F := ResidueClassField(Q);
-			/*Fs := [Parent(x) : x in Eltseq(RepresentativePoint(Q)) | Degree(Parent(x)) gt 1];
-			assert forall{F : F in Fs | IsIsomorphic(F, Fs[1])};
-			F := Fs[1];
+			F := ResidueClassField(Q);
 			tf, ii := IsIsomorphic(F, K);
-			assert tf; //Sanity check*/
+			assert tf; //Sanity check
 Qx := [K | ];
                         for x in Eltseq(RepresentativePoint(Q)) do
                                 F := Parent(x);
@@ -91,12 +89,14 @@ Qx := [K | ];
 	n := Dimension(AmbientSpace(X)); //Assuming X is given in projective space
 	
 	// mod p Atkin-Lehner involution
-    row := [&+[RowSequence(AtkinLehner)[i][j]*u[j] : j in [1..n+1]] : i in [1..n+1]];
-    wp := iso<Xp -> Xp | row, row>;
+    	row := [&+[RowSequence(AtkinLehner)[i][j]*u[j] : j in [1..n+1]] : i in [1..n+1]];
+    	wp := iso<Xp -> Xp | row, row>;
 
 	//We find the space of vanishing differentials (T)
 	V, phi := SpaceOfDifferentialsFirstKind(Xp);
-	tp := hom<V -> V | [ (Pullback(wp, phi(V.i)))@@phi - V.i : i in [1..Genus(X)] ]>;
+	aut_wp := AutomorphismGroup(Xp,[wp]).1;
+	tp := hom<V -> V | [(phi(V.i) @@ aut_wp)@@phi - V.i : i in [1..Genus(X)] ]>;
+	//tp := hom<V -> V | [ (Pullback(wp, phi(V.i)))@@phi - V.i : i in [1..Genus(X)] ]>;
 	T := Image(tp);
 
 	//check that dimesion of space of annihilating differentials is as expected
