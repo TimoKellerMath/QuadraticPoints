@@ -1,7 +1,7 @@
-Magma V2.26-12    Mon Feb 13 2023 23:03:15 on euler    [Seed = 732101597]
+Magma V2.26-12    Wed Feb 22 2023 16:06:46 on euler    [Seed = 1660366465]
 Type ? for help.  Type <Ctrl>-D to quit.
 
-Loading startup file "86.m"
+Loading startup file "X0_86.m"
 
 Loading "main.m"
 Loading "new_models.m"
@@ -116,8 +116,7 @@ Then Q ~ w_43(Q), which implies that Q = w_43(Q) because X_0(86) is not
 hyperelliptic.
 Then either Q is a pullback, or it is fixed by w_43 pointwise.
 If P = (X_i) is fixed by w_43,
-either the first 4 coordinates are 0 or the last 6 coordinates are 0
-
+then certain coordinates must be 0.
 We find all such P by imposing these conditions and finding points on the 
 scheme:
 Scheme over Rational Field defined by
@@ -186,4 +185,4 @@ rationals, except the points you forwarded: [ (-1 : r7 : 0 : -r7 : -r7 : -r7 :
 r7 : r7 : 1 : 1), (1 : -r7 : 0 : r7 : r7 : -r7 : r7 : r7 : 1 : 1) ].
 done
 
-Total time: 606.529 seconds, Total memory usage: 182.16MB
+Total time: 608.580 seconds, Total memory usage: 366.81MB

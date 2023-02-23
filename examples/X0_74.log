@@ -1,7 +1,7 @@
-Magma V2.26-12    Mon Feb 13 2023 23:13:32 on euler    [Seed = 1304729625]
+Magma V2.26-12    Wed Feb 22 2023 16:03:33 on euler    [Seed = 4001080140]
 Type ? for help.  Type <Ctrl>-D to quit.
 
-Loading startup file "74.m"
+Loading startup file "X0_74.m"
 
 Loading "main.m"
 Loading "new_models.m"
@@ -66,6 +66,13 @@ Place at (-1 : 1 : 0 : 0 : -1 : 0 : 0 : 1)
 ]
 We have found 12 points on X_0(74)^2(Q).
 Computing torsion subgroup ...
+The torsion is Abelian Group isomorphic to Z/3 + Z/171
+Defined on 2 generators in supergroup:
+A.1 = 7*$.1
+A.2 = 7*$.2
+Relations:
+3*A.1 = 0
+171*A.2 = 0
 Genus of the quotient is 4.
 Performing Mordell-Weil sieve ...
 p = 3 (1/9): Getting deg 1 places on Xp ...
@@ -90,8 +97,7 @@ Then Q ~ w_37(Q), which implies that Q = w_37(Q) because X_0(74) is not
 hyperelliptic.
 Then either Q is a pullback, or it is fixed by w_37 pointwise.
 If P = (X_i) is fixed by w_37,
-either the first 4 coordinates are 0 or the last 4 coordinates are 0
-
+then certain coordinates must be 0.
 We find all such P by imposing these conditions and finding points on the 
 scheme:
 Scheme over Rational Field defined by
@@ -135,4 +141,4 @@ All such P are:
 The degrees of these points are [ 2, 2 ] (or > 2).
 Sieve worked, but we still need to analyze quadratic points (there are some).done
 
-Total time: 24.440 seconds, Total memory usage: 64.12MB
+Total time: 22.149 seconds, Total memory usage: 216.75MB
