@@ -1,15 +1,30 @@
-//SetLogFile("main.log");
-//load "X0p_NiceModel.m";
 load "new_models.m";
 load "auxiliary.m";
 load "Chabauty_MWSieve_new.m";
 load "rank_calcs.m";
 
 
-//nonpullbacks must be the sequence of elements of the following shape
-// <K, P> where K is the field over which P is defined
+//ProvablyComputeQuadPts_X0N requires only level N as its input
+// but it also contains a number of optional parameters:
+// d: the code will use the quotient X0(N)/w_d (defaults to d:=N)
+// nonpullbacks: you can provide the list of quadratic points which are not pullbacks from X0(N)/w_d
+//	if you use it, nonpullbacks must be the sequence of elements of the following shape
+// 		<K, P> where K is the field over which P is defined
+//	for example, look at X0_74.m
+// badPrimes: list of primes you want to skip the sieving on
+// printTorsion: boolean parameter, if true, the code will output the torsion of J_0(N)(Q)
 
-ProvablyComputeQuadPts_X0N := function(N : d := N, nonpullbacks := {}, badPrimes := {})
+// The function does not return anything, but outputs a lot of information about modular curve X_0(N):
+//	first it checks if the ranks of the curve and its quotient are equal (and outputs confirmation),
+//	then it outputs a nice model of the curve (with Atkin-Lehner's diagonalized),
+//		the action of w_d on the curve,
+//	then on its Jacobian (cusps, and if printTorsion is set to true, the full torsion structure over Q),
+//	and finally on the sieving process.
+
+// In all cases where all the quadratic points are pullbacks from X_0+(N),
+// it is sufficient to simply run ProvablyComputeQuadPts_X0N(N).
+
+ProvablyComputeQuadPts_X0N := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsion := false)
 	printf "Genus of X_0(%o) is: %o\n", N, Dimension(CuspForms(N));
 	printf "Considering X_0(%o)/w_%o.\n", N, d;
 	//  Check rk J_0(N)(Q) = rk J_0(N)^+(Q)
@@ -65,20 +80,23 @@ ProvablyComputeQuadPts_X0N := function(N : d := N, nonpullbacks := {}, badPrimes
 		end for;
 	end for;
 
-additional_points := [];
+	additional_points := [];
 
-for tup in nonpullbacks do
-	nonpb := XN(tup[1])!tup[2];
-	Append(~deg2, 1*Place(nonpb));
-	Append(~additional_points, nonpb);
-end for;
+	for tup in nonpullbacks do
+		nonpb := XN(tup[1])!tup[2];
+		Append(~deg2, 1*Place(nonpb));
+		Append(~additional_points, nonpb);
+	end for;
 
 	printf "We have found %o points on X_0(%o)^2(Q).\n", #deg2, N;
 
 	//Finally, we do the sieve.
 
-	printf "\nComputing torsion subgroup ...\n";
-	time A, divs := GetTorsion(N, XN, XN_Cusps);
+	printf "Computing torsion subgroup ...\n";
+	A, divs := GetTorsion(N, XN, XN_Cusps);
+	if printTorsion then printf "The torsion is %o\n", A;
+	end if;
+
 	genusC := genus_quo(N, [d]);
 	printf "Genus of the quotient is %o.\n", genusC;
 	bp := deg2pb[1];
@@ -95,7 +113,7 @@ end for;
 		end if;
 	end for;
 
-	printf "\nPerforming Mordell--Weil Sieve ...\n";
+	printf "Performing Mordell-Weil sieve ...\n";
 	B0, iA0 := sub<A | Generators(A)>;
 	W0 := {0*A.1};
 
@@ -109,8 +127,8 @@ end for;
 		printf "Then Q ~ w_%o(Q), which implies that Q = w_%o(Q) because X_0(%o) is not hyperelliptic.\n", d, d, N;
 		printf "Then either Q is a pullback, or it is fixed by w_%o pointwise.\n", d;
 		printf "If P = (X_i) is fixed by w_%o,\n", d;
-		printf "either the first %o coordinates are 0 or the last %o coordinates are 0\n\n", genusC, Dimension(CuspForms(N)) - genusC;
-
+		//printf "either the first %o coordinates are 0 or the last %o coordinates are 0\n\n", genusC, Dimension(CuspForms(N)) - genusC;
+		print "then certain coordinates must be 0.";
 		I := IdentityMatrix(Rationals(), Genus(XN));
 		CR<[x]> := CoordinateRing(AmbientSpace(XN));
 

@@ -1,4 +1,4 @@
-Magma V2.26-12    Tue Feb 14 2023 09:43:27 on euler    [Seed = 1406892487]
+Magma V2.26-12    Wed Feb 22 2023 16:06:54 on euler    [Seed = 2129343125]
 Type ? for help.  Type <Ctrl>-D to quit.
 
 Loading startup file "X0_97.m"
@@ -81,8 +81,7 @@ Then Q ~ w_97(Q), which implies that Q = w_97(Q) because X_0(97) is not
 hyperelliptic.
 Then either Q is a pullback, or it is fixed by w_97 pointwise.
 If P = (X_i) is fixed by w_97,
-either the first 3 coordinates are 0 or the last 4 coordinates are 0
-
+then certain coordinates must be 0.
 We find all such P by imposing these conditions and finding points on the 
 scheme:
 Scheme over Rational Field defined by
@@ -124,4 +123,4 @@ Hence there are no quadratic points on X_0(97) not coming from pullbacks of
 rationals, except the points you forwarded: [].
 done
 
-Total time: 89.799 seconds, Total memory usage: 32.09MB
+Total time: 45.750 seconds, Total memory usage: 184.72MB
