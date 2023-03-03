@@ -55,7 +55,7 @@ time j := jmap(X, N); // 20 seconds
 
 // We apply the function
 
-time coords_jK(X,j,jinv,K); // 20 seconds
+time pts := coords_jK(X,j,jinv,K); // 20 seconds
 
 /* Output:
 
@@ -67,6 +67,11 @@ time coords_jK(X,j,jinv,K); // 20 seconds
 @}
 
 */
+
+// We verify that one of these points indeed has the correct j-invariant
+
+pt := X(K) ! Eltseq(pts[1]);
+j(pt); // (-32768 : 1), as expected
 
 /////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
