@@ -1,8 +1,10 @@
-X := X0NQuotient(74, [37]);
+N := 86;
+
+X := X0NQuotient(N, [N div 2]);
 pts := PointSearch(X, 10);
 r := 2;
 
-for p in [p : p in PrimesUpTo(100) | p notin {2,37}] do
+for p in [p : p in PrimesUpTo(100) | p notin PrimeDivisors(N)] do
     Xp := ChangeRing(X, GF(p));
     ptsp := [Xp!ChangeUniverse(Eltseq(pt), GF(p)) : pt in pts]; // reductions of Q-points
 
