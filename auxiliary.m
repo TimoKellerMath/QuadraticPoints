@@ -171,6 +171,8 @@ findGenerators := function(X, divs, P0, p);
 	return h, Ksub, bas, divsNew;
 end function;
 
+
+//unused at the moment
 function TorsionBound(X, BadPrimes : LowerBound := 0, PrimesBound := 20)
 	torsionBound := 0;
 	
@@ -182,11 +184,10 @@ function TorsionBound(X, BadPrimes : LowerBound := 0, PrimesBound := 20)
 		Fp := GF(p);
 		try
 			Xp := ChangeRing(X, Fp);
+			torsionBound := Gcd(torsionBound, #TorsionSubgroup(ClassGroup(Xp)));
 		catch e
 			continue; 
 		end try;
-    
-		torsionBound := Gcd(torsionBound, #TorsionSubgroup(ClassGroup(Xp)));
     
 		// TODO: one can optimize this exploiting the group structure
 		if torsionBound eq LowerBound then
@@ -195,6 +196,21 @@ function TorsionBound(X, BadPrimes : LowerBound := 0, PrimesBound := 20)
 	end for;
 	
 	return torsionBound;
+end function;
+
+
+//
+upper_bound_tors := function(N: largest_prime := 50, lower_bound := 1);
+    J := JZero(N);
+    ub := 0;    
+    for p in [p : p in PrimesInInterval(3,largest_prime) | IsZero(N mod p) eq false] do
+        Jp := ChangeRing(J,GF(p));
+        ub := GCD([ub,#Jp]); 
+        if ub eq lower_bound then 
+            break p;   
+        end if;   
+    end for;  
+    return ub, Factorisation(ub);    
 end function;
 
 function GetTorsion(N, XN, XN_Cusps)
@@ -215,7 +231,6 @@ function GetTorsion(N, XN, XN_Cusps)
 		end while;
 
 		// compute the cuspidal torsion subgroup (= J(Q)_tors assuming the generalized Ogg conjecture)
-		// TODO: combine with torsionBound to prove the torsion
 		XN_Cusps_rational := [c : c in XN_Cusps | Degree(c) eq 1];
 		assert #XN_Cusps_rational ge 1;
 		cusp := XN_Cusps_rational[1];
@@ -225,6 +240,10 @@ function GetTorsion(N, XN, XN_Cusps)
 		// "It also returns a subset divsNew such that [[D-deg(D) P_0] : D in divsNew] generates the same subgroup."
 
 		A := Ksub;
+
+		//prove that the cuspidal torsion   subgroup = J(Q)_tors   for our curve
+		torBound := upper_bound_tors(N);
+		assert torBound eq #Ksub;
 
 		D := [divisor - Degree(divisor) * Divisor(cusp) where divisor := Divisor(divsNew[i]) : i in [1..#divsNew]];
 		divs := [&+[coeffs[i] * D[i] : i in [1..#coeffs]] : coeffs in bas];
