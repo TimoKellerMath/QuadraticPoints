@@ -1,0 +1,18 @@
+Magma V2.27-8     Fri Mar  3 2023 22:19:30 on euler    [Seed = 3168451715]
+Type ? for help.  Type <Ctrl>-D to quit.
+
+Loading startup file "X0_86_by_w43_rational_pts_by_effective_chabauty.m"
+
+Loading "model_equation_finder.m"
+Loading "coleman.m"
+Loading "auxpolys.m"
+Loading "coho.m"
+Loading "froblift.m"
+Loading "reductions.m"
+Loading "singleintegrals.m"
+Loading "applications.m"
+y^5 + (-8*x + 3)*y^4 + (16*x^2 - 11*x + 3)*y^3 + (-14*x^3 + 5*x^2 - 2*x + 1)*y^2
+    + (15*x^4 - 9*x^3 + x^2 + x)*y - 10*x^5 + 4*x^4 - 2*x^3
+found all 7 Q-points!
+
+Total time: 148.879 seconds, Total memory usage: 73.81MB
