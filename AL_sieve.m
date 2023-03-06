@@ -24,6 +24,7 @@ for N in [74, 85, 86, 97, 103, 109, 121, 127] do
         P1 := <K7, [-1, (-1/7)*r7, 0, (1/7)*r7, (1/7)*r7, (1/7)*r7, (-1/7)*r7, (-1/7)*r7, 1, 1]>;
         P2 := <K7, [1, (1/7)*r7, 0, (-1/7)*r7, (-1/7)*r7, (1/7)*r7, (-1/7)*r7, (-1/7)*r7, 1, 1]>;
         nonpbs := [P1, P2];
+        // can also include 7 as a bad prime for N = 86 to speed up the sieving computation if desired.
     else 
         nonpbs := [];
     end if;
