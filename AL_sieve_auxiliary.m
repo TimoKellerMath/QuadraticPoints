@@ -266,11 +266,14 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsi
 	
 	XN, ws, _, _, cuspInf := eqs_quos(N, []);
 
-	if IsSquarefree(N) then
-		XN_Cusps := compute_cusps(XN, N, ws, cuspInf, []);
+	if IsSquarefree(N) and N ne 85 then
+	    XN_Cusps := compute_cusps(XN, N, ws, cuspInf, []);
+	elif N eq 85 then 
+	    jMap, numDenom := jmap(XN, N);
+	    XN_Cusps := compute_cusps(XN, N, [], [], numDenom: use_jmap := true);  // Faster for 85
 	else
-		jMap, numDenom := jmap(XN, N);
-		XN_Cusps := compute_cusps(XN, N, ws, cuspInf, numDenom);
+            jMap, numDenom := jmap(XN, N);
+	    XN_Cusps := compute_cusps(XN, N, ws, cuspInf, numDenom);
 	end if;
 
 	printf "Nice model for X_0(%o) is: %o\n\n", N, XN;
