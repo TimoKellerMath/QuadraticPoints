@@ -266,11 +266,11 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {})
 	
 	XN, ws, _, _, cuspInf := eqs_quos(N, []);
 
-	if IsSquarefree(N) and N notin [85,86] then
+	if IsSquarefree(N) and N notin [85] then
 	    XN_Cusps := compute_cusps(XN, N, ws, cuspInf, []);
-	elif N in [85,86] then 
+	elif N in [85] then 
 	    jMap, numDenom := jmap(XN, N);
-	    XN_Cusps := compute_cusps(XN, N, [], [], numDenom: use_jmap := true);  // Faster for 85 and works for 86
+	    XN_Cusps := compute_cusps(XN, N, [], [], numDenom: use_jmap := true);  // Faster for 85 
 	else
             jMap, numDenom := jmap(XN, N);
 	    XN_Cusps := compute_cusps(XN, N, ws, cuspInf, numDenom);
