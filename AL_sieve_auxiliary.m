@@ -265,6 +265,7 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {})
 	end if;
 	
 	XN, ws, _, _, cuspInf := eqs_quos(N, []);
+	printf "Nice model for X_0(%o) is: %o\n\n", N, XN;
 
 	if IsSquarefree(N) and N notin [85] then
 	    XN_Cusps := compute_cusps(XN, N, ws, cuspInf, []);
@@ -275,8 +276,6 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {})
             jMap, numDenom := jmap(XN, N);
 	    XN_Cusps := compute_cusps(XN, N, ws, cuspInf, numDenom);
 	end if;
-
-	printf "Nice model for X_0(%o) is: %o\n\n", N, XN;
 
 	// note that ALs are returned in ascending index
 	ListOfDivs := [Q : Q in Divisors(N) | GCD(Q, ExactQuotient(N,Q)) eq 1 and Q ne 1];
