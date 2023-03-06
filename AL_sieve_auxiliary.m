@@ -52,7 +52,7 @@ function GetTorsion(N, XN, XN_Cusps)
 		XN_Cusps_rational := [c : c in XN_Cusps | Degree(c) eq 1];
 		assert #XN_Cusps_rational ge 1;
 		cusp := XN_Cusps_rational[1];
-		h, Ksub, bas, divsNew := findGenerators(XN, XN_Cusps, cusp, p);
+		h, Ksub, bas, divsNew := findGenerators(XN, N, XN_Cusps, cusp, p);
 
 		// Ksub == abstract group isomorphic to cuspidal
 		// "It also returns a subset divsNew such that [[D-deg(D) P_0] : D in divsNew] generates the same subgroup."
