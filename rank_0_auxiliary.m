@@ -1,3 +1,5 @@
+load "models_and_maps.m";
+
 // X is a projective curve over rationals,
 // p prime of good reduction,
 // D divisor on X,
