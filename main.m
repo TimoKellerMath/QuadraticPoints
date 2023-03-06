@@ -27,21 +27,15 @@ load "rank_calcs.m";
 ProvablyComputeQuadPts_X0N := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsion := false)
 	printf "Genus of X_0(%o) is: %o\n", N, Dimension(CuspForms(N));
 	printf "Considering X_0(%o)/w_%o.\n", N, d;
+	
 	//  Check rk J_0(N)(Q) = rk J_0(N)^+(Q)
-	if d eq N then
-		if not IsRankOfALQuotEqual(N) then
-			error "One needs rk J_0(N)(Q) = rk J_0(N)^+(Q) for our algorithm to work.";
-		else
-			printf "rk J_0(N)(Q) = rk J_0(N)^+(Q).\n";
-		end if;
-	else
-		if rank_quo(N, [d]) ne rank_quo(N, []) then
-			error "One needs rk J_0(N)(Q) = rk J_0(N)(Q)/w_d for our algorithm to work.";
-		else
-			printf "rk J_0(%o)(Q) = rk J_0(%o)(Q)/w_%o \n", N, N, d;
-		end if;
+	tf1, tf2 := equal_rank(N, [d]);
+	if tf1 and tf2 then 
+	    printf "rk J_0(%o)(Q) = rk J_0(%o)(Q)/w_%o \n", N, N, d;
+        else 
+	    error "One needs rk J_0(N)(Q) = rk J_0(N)^+(Q) for our algorithm to work.";
 	end if;
-
+	
 	XN, ws, _, _, cuspInf := eqs_quos(N, []);
 
 	if IsSquarefree(N) then
