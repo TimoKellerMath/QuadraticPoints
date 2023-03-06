@@ -1,0 +1,51 @@
+Genus of X_0(80) is: 7
+The Mordell--Weil sieve found 0 new effective degree 2 divisors.
+This quadratic point is cuspidal
+Coordinates (t : 1/2 : 0 : -1/4 : 0 : 1/2*t : 1)
+This quadratic point is cuspidal
+Coordinates (t : -1/2 : 0 : 1/4 : 0 : -1/2*t : 1)
+done
+Time: 208.600
+Genus of X_0(98) is: 7
+The Mordell--Weil sieve found 2 new effective degree 2 divisors.
+The place P is defined over Quadratic Field with defining polynomial $.1^2 + 3 
+over the Rational Field
+The j-invariant is 0
+Complex multiplication?
+true -3
+Coordinates (t : -1 : 0 : 1/2 : 0 : 1/2*t : 1)
+++++++++++++++++++++++++++
+The place P is defined over Quadratic Field with defining polynomial $.1^2 + 3 
+over the Rational Field
+The j-invariant is 54000
+Complex multiplication?
+true -12
+Coordinates (t : 1 : 0 : -1/2 : 0 : -1/2*t : 1)
+++++++++++++++++++++++++++
+done
+Time: 851.500
+Genus of X_0(100) is: 7
+The Mordell--Weil sieve found 3 new effective degree 2 divisors.
+The place P is defined over Quadratic Field with defining polynomial $.1^2 + 1 
+over the Rational Field
+The j-invariant is 287496
+Complex multiplication?
+true -16
+Coordinates (0 : 0 : 0 : 1/4*t : -1/4*t : 1 : 0)
+++++++++++++++++++++++++++
+The place P is defined over Quadratic Field with defining polynomial $.1^2 + 1 
+over the Rational Field
+The j-invariant is 287496
+Complex multiplication?
+true -16
+Coordinates (-t : -1 : 0 : -1/2*t : -1/2*t : 2 : 1)
+++++++++++++++++++++++++++
+The place P is defined over Quadratic Field with defining polynomial $.1^2 + 1 
+over the Rational Field
+The j-invariant is 1728
+Complex multiplication?
+true -4
+Coordinates (t : 1 : 0 : -1/2*t : -1/2*t : 2 : 1)
+++++++++++++++++++++++++++
+done
+Time: 479.480
