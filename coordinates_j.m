@@ -38,6 +38,8 @@ end function;
 /// Examples ///
 ////////////////
 
+/*
+
 // Example 1:
 
 // By Najman-Vukorepa (Theorem 3.2 (b)), on X_0(69), non-cuspidal quadratic points are defined over Q(sqrt(-11)) and have j-invariant -2^(15)
@@ -57,6 +59,8 @@ time j := jmap(X, N); // 20 seconds
 
 time pts := coords_jK(X,j,jinv,K); // 20 seconds
 
+*/
+
 /* Output:
 
 {@
@@ -69,10 +73,10 @@ time pts := coords_jK(X,j,jinv,K); // 20 seconds
 */
 
 // We verify that one of these points indeed has the correct j-invariant
-
+/*
 pt := X(K) ! Eltseq(pts[1]);
 j(pt); // (-32768 : 1), as expected
-
+*/
 /////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
 
@@ -83,7 +87,7 @@ j(pt); // (-32768 : 1), as expected
 // This curve has genus 10, so the computations take a little longer
 
 // data from paper:
-
+/*
 N := 92;
 jinv1 := -3375;
 jinv2 := 16581375;
@@ -98,7 +102,7 @@ time j := jmap(X, N); // 111 seconds
 
 time coords_jK(X,j,jinv1,K); // 270 seconds
 time coords_jK(X,j,jinv2,K); // 313 seconds
-
+*/
 /* Output:
 
 // jinv1 = -3375
@@ -133,7 +137,7 @@ time coords_jK(X,j,jinv2,K); // 313 seconds
 // By Najman-Vukorepa (Theorem 3.2 (a)), on X_0(62), non-cuspidal quadratic points are defined over Q(sqrt(-3)) and have j-invariant 54000 or 0
 
 // data from paper:
-
+/*
 N := 62;
 jinv1 := 54000;
 jinv2 := 0;
@@ -148,7 +152,7 @@ time j := jmap(X, N); // 15 seconds
 
 time coords_jK(X,j,jinv1,K); // 19 seconds
 time coords_jK(X,j,jinv2,K); // 16 seconds
-
+*/
 /* Output:
 
 // jinv1 = 54000
