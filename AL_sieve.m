@@ -1,5 +1,4 @@
-// This will be the main file for the Atkin-Lehner sieve method
-// Here is a rough start, probably does not run yet, will work on it.
+// Main file for the Atkin-Lehner sieve method
 
 load "AL_sieve_auxiliary.m";
 
