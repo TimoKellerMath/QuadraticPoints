@@ -330,7 +330,7 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsi
 	primes := []; // TODO: find suitable primes
 
 	for p in PrimesInInterval(3, 30) do
-		if p in badPrimes or is_nonsing_p(XN,N,p,cuspInf) then
+		if p in badPrimes or is_nonsing_p(XN,N,p,cuspInf) eq false then
 			continue;
 		end if;
 		if N mod p ne 0 then
