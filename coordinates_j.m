@@ -5,7 +5,7 @@
 // Function for computing points with a given j-invariant
 // Please see the examples at the end of the file to see how to use the function
 
-load new_models.m;
+load "models_and_maps.m";
 
 // Input: X, j, jinv, K
 
