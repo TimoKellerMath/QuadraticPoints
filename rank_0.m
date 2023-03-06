@@ -89,6 +89,7 @@ rank_0_quad_pts :=function(N)
 			D:=D div 4;
 		end if;	
 		L<t>:=QuadraticField(D);
+		assert IsIsomorphic(K,L);
 		PP:=RepresentativePoint(P);
 		if jinvN(PP)[2] eq 0 then 
 		    print "This quadratic point is cuspidal";
