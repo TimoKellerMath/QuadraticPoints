@@ -1,5 +1,6 @@
 load "rank_0_auxiliary.m";
 load "rel_symm_chab.m";
+load "rank_calcs.m";
 load "models_and_maps.m";
 
 //This function computes J_X(F_p) for curve X
