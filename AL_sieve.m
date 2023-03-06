@@ -29,5 +29,5 @@ for N in [74, 85, 86, 97, 103, 109, 121, 127] do
         nonpbs := [];
     end if;
         
-     ProvablyComputeQuadPts_X0N(N : d:=dd, nonpullbacks := nonpbs);
+     AL_sieve(N : d:=dd, nonpullbacks := nonpbs);
 end for;
