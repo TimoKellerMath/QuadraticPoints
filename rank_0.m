@@ -5,32 +5,7 @@
 load "new_models.m";
 load "quadPts_short.m";
 load "rank_calcs.m";
-
-
-// Input: X, j, jinv, K
-
-// X is a model for X_0(N) (obtained from eqs_quos) (non-hyperelliptic genus > 2)
-// j is the j map on this model to P^1 (obtained from jmap)
-// jinv is the j-invariant of the point of interest
-// K is the quadratic field over which the point is defined
-
-// Output: Points with j-invariant jinv defined over K on X
-
-// The points are output as an ordered set.
-// The list includes quadratic points AND their conjugate points
-
-coords_jK := function(X,j,jinv,K);
-    PP := Codomain(j);
-    pt := PP ! [jinv];
-    base_scheme := BaseScheme(j);
-    pullback_scheme := Pullback(j,pt);
-    difference := Difference(pullback_scheme, base_scheme);
-    differenceK := BaseChange(difference,K);
-    points := Points(differenceK);
-    return points;
-end function;
-
-
+load "coordinates_j.m";
 
 QuadPntsRank0:=function(N)
 
