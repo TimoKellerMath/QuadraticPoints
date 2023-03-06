@@ -1,9 +1,16 @@
 # QuadraticPoints
 Magma code to compute quadratic points on X_0(N)
 
-The repository consists of the following files (please add files and update the brief descriptions appropriately):
+The repository consists of the following files and folders (please add files and update the brief descriptions appropriately):
 
-- coordinates_j.m.   This file contains a function to compute the coordinates of points on a model of X_0(N) with a given j-invariant and over a given quadratic field. It is mainly used for producing the data for the "going down" method.
+- Classical_Chabauty (folder). This folder contains code for perfoming classical Chabauty computations.
+- Output_files (folder). Contains all output files for tha 'rank 0' and 'Atkin-Lehner sieve' levels.
+- AL_sieve.m. Main file for the 'Atkin-Lehner sieve' method. Performs the computations.
+- AL_sieve_auxiliary.m.  Contains functions for the 'Atkin-Lehner sieve' method.
+- going_down.m. Main file for the 'going-down' method. Performs the computations.
 - models_and_maps.m.  This file contains code to compute models for X_0(N), quotient curves, quotient maps, j-maps and more.
 - pullbacks.m.   This file contains a function to search for quadratic points on a model of X_0(N) which arise as pullbacks of rational points on AL quotients.
+- rank_0.m. Main file for the 'rank 0' method. Performs the computations.
+- rank_0_auxiliary.m. Contains functions for the 'rank 0' method. This code is taken from the paper: Ozman-Siksek, Quadratic Points on Modular curves.
 - rank_calcs.m.  This file contains functions for computing the ranks over Q of J_0(N) and its quotients.
+- rel_symm_chab.m. This file contains functions for verifying the relative symmetric Chabauty criterion we use in the Atkin-Lehner sieve.
