@@ -7,7 +7,7 @@ load "rank_0_auxiliary.m";
 load "rank_calcs.m";
 load "coordinates_j.m";
 
-QuadPntsRank0:=function(N)
+rank_0_quad_pts :=function(N)
 
 	printf "Genus of X_0(%o) is: %o\n", N, Dimension(CuspForms(N));
 	//check the rank is 0
@@ -105,7 +105,8 @@ QuadPntsRank0:=function(N)
 	return "done";
 end function;
 
-
+// for N in [80,98,100] do rank_0_quad_pts(N); end for;
+    
 
 
 
