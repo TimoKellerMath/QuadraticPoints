@@ -252,7 +252,7 @@ end function;
 // In all cases where all the quadratic points are pullbacks from X_0+(N),
 // it is sufficient to simply run ProvablyComputeQuadPts_X0N(N).
 
-AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsion := false)
+AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {})
 	printf "Genus of X_0(%o) is: %o\n", N, Dimension(CuspForms(N));
 	printf "Considering X_0(%o)/w_%o.\n", N, d;
 	
@@ -319,8 +319,7 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsi
 
 	printf "Computing torsion subgroup ...\n";
 	A, divs := GetTorsion(N, XN, XN_Cusps);
-	if printTorsion then printf "The torsion is %o\n", A;
-	end if;
+	printf "The torsion is %o\n", A;
 
 	genusC := genus_quo(N, [d]);
 	printf "Genus of the quotient is %o.\n", genusC;
