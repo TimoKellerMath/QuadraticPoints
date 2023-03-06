@@ -108,7 +108,7 @@ canonic := function(B);
 			if IsIrreducible(X) then
 			        eqns := [LCM([Denominator(c) : c in Coefficients(eqn)])*eqn : eqn in eqns]; // scale equations
 				X:=Curve(ProjectiveSpace(R),eqns); // same curve with scaled equations
-				if Genus(X) eq dim then  
+				if (N eq 86 and ArithmeticGenus(X) eq dim) or Genus(X) eq dim then // use ArithmeticGenus for 86 as Genus can stall for some reason, curve smooth so okay
 					tf:=true;
 				end if;
 			end if;
