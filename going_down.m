@@ -1,20 +1,6 @@
 // This file contains all computations used in the 'going-down method'
 load  "new_models.m";
-
-
-// We will need this function
-
-coords_jK := function(X,j,jinv,K);
-    PP := Codomain(j);
-    pt := PP ! [jinv];
-    base_scheme := BaseScheme(j);
-    pullback_scheme := Pullback(j,pt);
-    difference := Difference(pullback_scheme, base_scheme);
-    differenceK := BaseChange(difference,K);
-    points := Points(differenceK);
-    return points;
-end function;
-
+load  "coordinates_j.m";
 
 %%%%%%%%%%%%%%%%%%%%%%%% N=58 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // We first deal with the case N=58. The first thing we do is that the exceptional quadratic points on $X_0(29)$ do not pull back to quadratic points on X_0(58). We do this by checking that none of them have a 2-isogeny, which is quivalent to having a 2-torsion points.  
