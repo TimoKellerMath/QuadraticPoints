@@ -1,4 +1,4 @@
-load "new_models.m";
+load "models_and_maps.m";
 
 //////////////
 // Philippe // // get in touch with me if (when) you find problems with the code!
