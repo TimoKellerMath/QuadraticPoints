@@ -2,7 +2,7 @@
 //main function is QuadPntsRank0: accepts N and gives quadratic points on X0(N) for rank 0 cases.
 //auxilary func is MWSieve. This is on quadPts.m. This may be different than the one that is used in other files I am not sure.
 
-load "new_models.m";
+load "models_and_maps.m";
 load "rank_0_auxiliary.m";
 load "rank_calcs.m";
 load "coordinates_j.m";
