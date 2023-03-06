@@ -1,17 +1,3 @@
-//the following function checks if rank J0(N)(Q) = rank J0(N)+(Q) as suggested by Philippe
-
-IsRankOfALQuotEqual := function(N)
-  J := JZero(N);
-  w := AtkinLehnerOperator(J,N);
-  if(Nrows(Matrix(w)) eq 0) then
-    printf "non-existent Atkin-Lehner operator";
-    return false;
-  end if;
-  Jmin := ConnectedKernel(1+w);
-  return not IsZeroAt(LSeries(Jmin),1);
-end function;
-
-
 //This function computes J_X(F_p) for curve X
 
 JacobianFp := function(X)
