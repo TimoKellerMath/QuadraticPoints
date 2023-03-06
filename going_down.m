@@ -1,5 +1,5 @@
 // This file contains all computations used in the 'going-down method'
-load  "new_models.m";
+load  "models_and_maps.m";
 load  "coordinates_j.m";
 
 %%%%%%%%%%%%%%%%%%%%%%%% N=58 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
