@@ -59,7 +59,7 @@ if N eq 98 or N eq 100 then I:=1; end if;
 UB:=23; 
 additionalBadPrimes:=[];
 prs:=[p : p in PrimesInInterval(3,UB) | IsDivisibleBy(N,p) eq false and p notin additionalBadPrimes];
-deg2New:=MWSieve(X,deg2,divs,P0,h,Ksub,bas,[p0],1);
+deg2New:=rank_0_sieve(X,deg2,divs,P0,h,Ksub,bas,[p0],1);
 // Trying to find additional degree 2 divisors by sieve modulo p0.
 deg2New:=[D : D in deg2New | D in deg2 eq false];
 print "The Mordell--Weil sieve found", #deg2New, "new effective degree 2 divisors.";
