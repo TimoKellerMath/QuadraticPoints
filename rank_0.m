@@ -5,7 +5,6 @@
 load "models_and_maps.m";
 load "rank_0_auxiliary.m";
 load "rank_calcs.m";
-load "coordinates_j.m";
 
 rank_0_quad_pts :=function(N)
 
