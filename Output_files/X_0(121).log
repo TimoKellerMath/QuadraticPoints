@@ -1,0 +1,119 @@
+Genus of X_0(121) is: 6
+Considering X_0(121)/w_121.
+rk J_0(121)(Q) = rk J_0(121)(Q)/w_121 
+Nice model for X_0(121) is: Curve over Rational Field defined by
+x[1]^2 - x[3]^2 + 22*x[3]*x[6] + 2*x[4]^2 + 6*x[4]*x[5] + 13*x[5]^2 + 
+12*x[5]*x[6] - 22*x[6]^2,
+x[1]*x[2] - x[3]*x[4] + 19*x[3]*x[6] + 3*x[4]*x[5] + 4*x[4]*x[6] + 8*x[5]^2 + 
+11*x[5]*x[6] - 16*x[6]^2,
+x[1]*x[4] + x[1]*x[6] - x[2]*x[3] - x[2]*x[5],
+x[1]*x[5] + x[1]*x[6] - x[2]*x[4] + x[2]*x[5] + x[2]*x[6],
+x[2]^2 + 12*x[3]*x[6] - x[4]^2 + 6*x[4]*x[6] + 4*x[5]^2 + 8*x[5]*x[6] - x[6]^2,
+x[3]*x[5] + x[3]*x[6] - x[4]^2 + x[4]*x[5] + x[5]^2 + 2*x[5]*x[6] + x[6]^2
+
+w_121 on X_0(121) is given by: Mapping from: Crv: XN to Crv: XN
+with equations : 
+x[1]
+x[2]
+-x[3]
+-x[4]
+-x[5]
+-x[6]
+and inverse
+x[1]
+x[2]
+-x[3]
+-x[4]
+-x[5]
+-x[6]
+Genus of X_0(121) is 6
+We have found these 3 cusps on X_0(121):
+[
+Place at (1/17413*(-402*$.1^4 + 482*$.1^3 - 460*$.1^2 + 1682*$.1 - 455)*$.1 : 
+1/17413*(455*$.1^4 + 53*$.1^3 - 1338*$.1^2 - 1825*$.1 + 3047)*$.1 : -$.1^4 - 
+$.1^3 + 4*$.1^2 + 3*$.1 - 2 : -$.1^2 + 2 : $.1^4 - 4*$.1^2 + 2 : 1),
+Place at (-1 : 0 : 1 : 0 : 0 : 0),
+Place at (1 : 0 : 1 : 0 : 0 : 0)
+]
+We have found 3 points on X_0(121)^2(Q).
+Computing torsion subgroup ...
+The torsion is Abelian Group isomorphic to Z/5 + Z/5
+Defined on 2 generators in supergroup:
+A.1 = $.2
+A.2 = $.1 + 4*$.3
+Relations:
+5*A.1 = 0
+5*A.2 = 0
+Genus of the quotient is 2.
+Performing Mordell-Weil sieve ...
+p = 3 (1/8): Getting deg 1 places on Xp ...
+Getting deg 2 places on Xp ...
+Combining them into divisors ...
+There are 25 of them!
+out of 5: The number of possible cosets unknown points can land in is 3.
+p = 5 (2/8): Getting deg 1 places on Xp ...
+Getting deg 2 places on Xp ...
+Combining them into divisors ...
+There are 44 of them!
+out of 3: ....The number of possible cosets unknown points can land in is 1.
+
+For unknown Q in X_0(121)^2(Q) we have (1 - w_121)[Q - bp] is in a coset of 
+Abelian Group of order 1 represented by an element of [
+0
+].
+It follows that if there is an unknown Q in X_0(121)^2(Q), then (1 - w_121)[Q - 
+bp] == 0.
+This implies that [Q - bp] is fixed by w_121
+Then Q ~ w_121(Q), which implies that Q = w_121(Q) because X_0(121) is not 
+hyperelliptic.
+Then either Q is a pullback, or it is fixed by w_121 pointwise.
+If P = (X_i) is fixed by w_121,
+then certain coordinates must be 0.
+We find all such P by imposing these conditions and finding points on the 
+scheme:
+Scheme over Rational Field defined by
+x[3]*x[6]^2 - 1/36*x[4]*x[5]^2 + 1/36*x[4]*x[5]*x[6] + 5/12*x[4]*x[6]^2 + 
+5/12*x[5]^2*x[6] + 7/12*x[5]*x[6]^2 - 1/4*x[6]^3,
+x[3]*x[6]^2 - x[4]*x[5]*x[6] + 9/5*x[4]*x[6]^2 + 1/5*x[5]^3 + 2*x[6]^3,
+x[1]^2,
+x[1]*x[2],
+x[2]^2,
+x[1]*x[3],
+x[2]*x[3],
+x[3]^2 - 46*x[3]*x[6] - 6*x[4]*x[5] - 12*x[4]*x[6] - 21*x[5]^2 - 28*x[5]*x[6] + 
+24*x[6]^2,
+x[1]*x[4],
+x[2]*x[4],
+x[3]*x[4] - 19*x[3]*x[6] - 3*x[4]*x[5] - 4*x[4]*x[6] - 8*x[5]^2 - 11*x[5]*x[6] +
+16*x[6]^2,
+x[3]*x[6] - 1/12*x[4]^2 + 1/2*x[4]*x[6] + 1/3*x[5]^2 + 2/3*x[5]*x[6] - 
+1/12*x[6]^2,
+x[1]*x[5],
+x[2]*x[5],
+x[3]*x[5] - 11*x[3]*x[6] + x[4]*x[5] - 6*x[4]*x[6] - 3*x[5]^2 - 6*x[5]*x[6] + 
+2*x[6]^2,
+x[1]*x[6],
+x[2]*x[6]
+
+All such P are:
+{@ (0 : 0 : -13/4482*r1^5 + 173/4482*r1^4 + 10/83*r1^3 - 4465/4482*r1^2 - 
+559/1494*r1 + 16/249 : 35/4482*r1^5 - 185/2241*r1^4 - 491/1494*r1^3 + 
+6275/4482*r1^2 - 95/249*r1 + 265/498 : r1 : 1), (0 : 0 : -13/4482*r2^5 + 
+173/4482*r2^4 + 10/83*r2^3 - 4465/4482*r2^2 - 559/1494*r2 + 16/249 : 
+35/4482*r2^5 - 185/2241*r2^4 - 491/1494*r2^3 + 6275/4482*r2^2 - 95/249*r2 + 
+265/498 : r2 : 1), (0 : 0 : -13/4482*r3^5 + 173/4482*r3^4 + 10/83*r3^3 - 
+4465/4482*r3^2 - 559/1494*r3 + 16/249 : 35/4482*r3^5 - 185/2241*r3^4 - 
+491/1494*r3^3 + 6275/4482*r3^2 - 95/249*r3 + 265/498 : r3 : 1), (0 : 0 : 
+-13/4482*r4^5 + 173/4482*r4^4 + 10/83*r4^3 - 4465/4482*r4^2 - 559/1494*r4 + 
+16/249 : 35/4482*r4^5 - 185/2241*r4^4 - 491/1494*r4^3 + 6275/4482*r4^2 - 
+95/249*r4 + 265/498 : r4 : 1), (0 : 0 : -13/4482*r5^5 + 173/4482*r5^4 + 
+10/83*r5^3 - 4465/4482*r5^2 - 559/1494*r5 + 16/249 : 35/4482*r5^5 - 
+185/2241*r5^4 - 491/1494*r5^3 + 6275/4482*r5^2 - 95/249*r5 + 265/498 : r5 : 1), 
+(0 : 0 : -13/4482*r6^5 + 173/4482*r6^4 + 10/83*r6^3 - 4465/4482*r6^2 - 
+559/1494*r6 + 16/249 : 35/4482*r6^5 - 185/2241*r6^4 - 491/1494*r6^3 + 
+6275/4482*r6^2 - 95/249*r6 + 265/498 : r6 : 1) @}
+The degrees of these points are [] (or > 2).
+Hence there are no quadratic points on X_0(121) not coming from pullbacks of 
+rationals, except the points you forwarded: [].
+done
+Time: 478.770
