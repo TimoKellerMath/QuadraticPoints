@@ -90,6 +90,11 @@ rank_0_quad_pts :=function(N)
 		end if;	
 		L<t>:=QuadraticField(D);
 		PP:=RepresentativePoint(P);
+		if jinvN(PP)[2] eq 0 then 
+		    print "This quadratic point is cuspidal";
+		    print "coordinates", X(L) ! PP;
+		    continue;
+		end if;
 		j:=jinvN(PP)[1];
 		M:=MinimalPolynomial(j);
 		rts:=Roots(M,L);
@@ -99,7 +104,7 @@ rank_0_quad_pts :=function(N)
 		print "The place P is defined over", L;
 		print "The j-invariant is", j;
 		print HasComplexMultiplication(E);
-		print "coordinates", coords_jK(X,jinvN,j,L);
+		print "coordinates", X(L) ! PP;
 		print "++++++++++++++++++++++++++";
 	end for;
 	return "done";
