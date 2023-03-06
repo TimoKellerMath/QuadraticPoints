@@ -82,13 +82,13 @@ end function;
 // a_1 (D_1-deg(D_1) P_0)+\cdots + a_r (D_r-deg(D_r) P_0)
 // in Ksub.
 
-findGenerators:=function(X,divs,P0,p);
+findGenerators:=function(X,N,divs,P0,p);
 	fn:=func<A,B| Degree(A)-Degree(B)>;
 	Sort(~divs,fn); // Sort the divisors by degree.
 	assert IsPrime(p);
 	assert p ge 3;
 	Xp:=ChangeRing(X,GF(p));
-	// assert IsSingular(Xp) eq false; // Now we know that
+	assert is_nonsing_p(X,N,p,[]); // Now we know that
 	// J_X(Q)-->J_X(\F_p) is injective (we're assuming rank 0).
 	C,phi,psi:=ClassGroup(Xp);
 	Z:=FreeAbelianGroup(1);
@@ -210,13 +210,13 @@ end function;
 // belonging to deg2 (i.e. an unknown degree 2 divisor)
 // then I*D is linearly equivalent to one of these divisors.
 
-rank_0_sieve:=function(X,deg2,divs,P0,h,Ksub,bas,prms,I);
+rank_0_sieve:=function(X,N,deg2,divs,P0,h,Ksub,bas,prms,I);
 	miss:={k : k in Ksub};
 	for p in prms do
 		assert IsPrime(p);
 		assert p ge 3;
 		Xp:=ChangeRing(X,GF(p));
-		assert IsSingular(Xp) eq false; // Now we know that
+		assert is_nonsing_p(X,N,p,[]); // Now we know that
 		// J_X(Q)-->J_X(\F_p) is injective (we're assuming rank 0).
 		missp:=missingImage(X,deg2,Xp);
 		pip,_,psip:=reduceHom(X,divs,P0,Xp,Ksub,bas);
