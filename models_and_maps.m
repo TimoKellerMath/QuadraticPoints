@@ -106,8 +106,9 @@ canonic := function(B);
 		X:=Scheme(ProjectiveSpace(R),I);
 		if Dimension(X) eq 1 then
 			if IsIrreducible(X) then
-				X:=Curve(ProjectiveSpace(R),eqns);
-				if Genus(X) eq dim then
+			        eqns := [LCM([Denominator(c) : c in Coefficients(eqn)])*eqn : eqn in eqns]; // scale equations
+				X:=Curve(ProjectiveSpace(R),eqns); // same curve with scaled equations
+				if Genus(X) eq dim then  
 					tf:=true;
 				end if;
 			end if;
@@ -115,10 +116,7 @@ canonic := function(B);
 	end while;
 
     indexGam:=N*&*[Rationals() | 1+1/p : p in PrimeDivisors(N)];
-	indexGam:=Integers()!indexGam; // Index of Gamma_0(N) in SL_2(Z)
-
-    eqns := [LCM([Denominator(c) : c in Coefficients(eqn)])*eqn : eqn in eqns]; // scale equations
-    X := Curve(ProjectiveSpace(R),eqns); // same curve with scaled equations
+    indexGam:=Integers()!indexGam; // Index of Gamma_0(N) in SL_2(Z)
 
 	for eqn in eqns do
 		wt:=2*Degree(eqn); // Weight of eqn as a cuspform.
