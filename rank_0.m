@@ -65,7 +65,7 @@ deg2New:=[D : D in deg2New | D in deg2 eq false];
 print "The Mordell--Weil sieve found", #deg2New, "new effective degree 2 divisors.";
 
 deg2:=deg2 cat deg2New;
-degtwoI:=MWSieve(X,deg2,divs,P0,h,Ksub,bas,prs,I);
+degtwoI:=rank_0_sieve(X,deg2,divs,P0,h,Ksub,bas,prs,I);
 // This uses the Mordell--Weil sieve (with primes in prs) 
 	// to return a set of effective divisors of degree 2*I 
 	// such that if D is an effective degree 2 divisor not
