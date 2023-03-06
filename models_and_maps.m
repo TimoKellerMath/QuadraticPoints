@@ -1098,16 +1098,17 @@ end function;
 //- (OPTION A) ws, the Atkin--Lehner involutions on X (obtained from eqs_quos for example)
 //- (OPTION A) cusp, the infinty cusp on X (obtained from eqs_quos for example)
 //- (OPTION B) num_denom (obtained as the second output of the jmap function)
+// Optional argument: use_jmap. Default = false. Set to true to work with jmap even in squarefree case.
 
 // Output: Sequence of places corresponding to the cusps of X_0(N)
 
 // If N is squarefree, then AL involutions act transitively on the cusps
-// In this case it is much faster to provide a cusp and the AL involutions
+// In this case it is usually faster to provide a cusp and the AL involutions
 // otherwise the code works with the j-map
 // X should be non-hyperelliptic of genus > 2.
 
-compute_cusps := function(X, N, ws, cusp, num_denom);
-    if IsSquarefree(N) then
+compute_cusps := function(X, N, ws, cusp, num_denom: use_jmap := false);
+    if IsSquarefree(N) and use_jmap eq false then
        cusps := SetToSequence({Place(cusp)} join {Place(w(cusp)) : w in ws});
        return cusps;
     end if;
