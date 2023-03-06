@@ -36,37 +36,55 @@ end function;
 ////////////////////////////////////////////////////////////////
 
 
-%%%%%%%%%%%%%%%%%%%%%%%% N=58 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// %%%%%%%%%%%%%%%%%%%%%%%% N=58 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // We first deal with the case N=58. The first thing we do is that the exceptional quadratic points on $X_0(29)$ do not pull back to quadratic points on X_0(58). We do this by checking that none of them have a 2-isogeny, which is quivalent to having a 2-torsion points.  
 
+// ********************************************************* Explain what the code below is doing a little more
+
 C:=SmallModularCurve(29);
+
 d:=-1;
 K<w>:=QuadraticField(d);
 C1:=ChangeRing(C,K);
 P:=C1![w-1,2*w+4];
 j:=jInvariant(P,29);
+j; // 59*w - 12
 E:=EllipticCurveFromjInvariant(j);
-TwoTorsionSubgroup(E);
+TwoTorsionSubgroup(E); // Abelian Group of order 1
+
+/////
+
 P:=C1![w-1,-1];
 j:=jInvariant(P,29);
+j; // 278824619*w - 321016092
 E:=EllipticCurveFromjInvariant(j);
-TwoTorsionSubgroup(E);
+TwoTorsionSubgroup(E); // Abelian Group of order 1
+
+/////
+
 d:=-7;
 K<w>:=QuadraticField(d);
 C1:=ChangeRing(C,K);
 P:=C1![(w+1)/4,(-11*w-7)/16];
-j:=jInvariant(P,29);
+j:=jInvariant(P,29); 
+j;//  1/4*(697*w - 4915)
 E:=EllipticCurveFromjInvariant(j);
-TwoTorsionSubgroup(E);
+TwoTorsionSubgroup(E); // Abelian Group of order 1
+
+/////
+
 P:=C1![(w+1)/4,(5*w+9)/8];
-j:=jInvariant(P,29);
+j:=jInvariant(P,29); 
+j; // 1/1073741824*(2243516025815593*w - 3839648355219715)
 E:=EllipticCurveFromjInvariant(j);
-TwoTorsionSubgroup(E);
+TwoTorsionSubgroup(E); // Abelian Group of order 1
 
-//checked, none of them, moving on. 
+// all checked
 
 
 
+///////////////////////////////////////////////
+///////////////////////////////////////////////
 
 
 X,w,quot:= eqs_quos(58,[[29]]);
@@ -76,7 +94,7 @@ Xw:=quot[1,1];
 quotMap:=quot[1,2];
 
 
-RankBounds(Jacobian(Xw));
+RankBounds(Jacobian(Xw)); // 1 1
 
 //The rank is 1, so we can use classical Chabauty over Q. 
 J:=Jacobian(Xw);
@@ -85,9 +103,14 @@ P:=pts[1]-pts[2];
 P:=J!P;
 assert Order(P) eq 0;
 pts2:=Chabauty(P);
-f3:=Inverse(f2);
+f3:=Inverse(f2); // ********************************************************* What is this?
 assert #pts2 eq #pts;
-// so we have found all the points. It remains to find the j-invariants. 
+// so we have found all the points. It remains to find the j-invariants.
+
+//////////////////////////////////////
+
+// *********************************************************  Output needs to be formatted for this loop and then displayed as a comment after
+
 j:=jmap(X,58);
 deg2pb:=[Pullback(quotMap,Place(Xw!p)):p in pts];
 g:=Genus(X);
@@ -103,15 +126,17 @@ for i in [1..#deg2pb] do
 	end if;
 end for;
 
-/* This completes the case N=58 */
+// This completes the case N=58 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* The list of CM points below has been provided by P. L. Clark, T. Genao, P. Pollack, and F. Saia 
+// ********************************************************* What does provided mean? Are they in a table somewhere?  
 
 The N'th element in this list has the form [* N, d_{CM}(X_0(N)), [ orders ] *], where [ orders ] is the complete sequence of imaginary quadratic orders O such that O minimizes d_{CM}(X_0(N)), i.e., d_{O,CM}(X_0(N)) = d_{CM}(X_0(N)). 
 
 The orders O are given in the form [f, d_K, h(O)] := [conductor, fundamental discriminant, class number of O] -- the class number is only included for convenience. */
-
-
 
 
 t68:=[* 68, 2,
@@ -139,20 +164,20 @@ t108:=[* 108, 4,
 // there are no degree 2 CM points on X0(108)
 
 ComputejInvs:= function(A);
-n:=#A[3];
-ret:=[];
-for i:=1 to n do 
-	B:=A[3,i];
-	D:=B[2]*B[1]^2;
-	j:=Round(jInvariant(BinaryQuadraticForms(D)!1));
-	ret:= Append(ret, [j, D]);
-end for;
-return ret;
+    n:=#A[3];
+    ret:=[];
+    for i:=1 to n do 
+	    B:=A[3,i];
+	    D:=B[2]*B[1]^2;
+	    j:=Round(jInvariant(BinaryQuadraticForms(D)!1));
+	    ret:= Append(ret, [j, D]);
+    end for;
+    return ret;
 end function;
 
-//this gives us the CM j-invariants such that correspond to quadratic points on X_0(68)
+//this gives us the CM j-invariants which correspond to quadratic points on X_0(68)
 j68:=ComputejInvs(t68); 
-*/ returns
+/* returns
 [
     [ 1728, -4 ],
     [ 287496, -16 ]
@@ -163,21 +188,25 @@ X:=eqs_quos(68,[]);
 "Nice model for X0(68) is:";
 X;
 j:=jmap(X,68);
-for i:= 1 to #j68 do
-d:=SquareFreeFactorization(Integers()!j68[i,2]);
-K<w>:=QuadraticField(d);
-K, coords_jK(X,j,K!(j68[i,1]),K);
+time for i:= 1 to #j68 do
+    d:=SquareFreeFactorization(Integers()!j68[i,2]);
+    K<w>:=QuadraticField(d);
+    K, coords_jK(X,j,K!(j68[i,1]),K);
 end for;
-*/ this takes a while and returns:
+
+/* Output:
 Quadratic Field with defining polynomial $.1^2 + 1 over the Rational Field
 {@ (-w : -1 : 0 : 0 : 0 : -1/2*w : 1), (w : -1 : 0 : 0 : 0 : 1/2*w : 1) @}
 Quadratic Field with defining polynomial $.1^2 + 1 over the Rational Field
 {@ (0 : 0 : 0 : 0 : -1/2*w : -1/4*w : 1), (0 : 0 : 0 : 0 : 1/2*w : 1/4*w : 1),
 (-w : 1 : 0 : 0 : 0 : 1/2*w : 1), (w : 1 : 0 : 0 : 0 : -1/2*w : 1) @}
-
+Time: 173.390
 */
 
-*/ The case N=76 remains. We now deal with it */
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// The case N=76 remains. We now deal with it 
 
 X:=eqs_quos(76,[]);
 "Nice model for X0(76) is:";
@@ -191,23 +220,19 @@ j76:=ComputejInvs(t76);
 ]
 
 */
-for i:= 1 to #j76 do
-d:=SquareFreeFactorization(Integers()!j76[i,2]);
-K<w>:=QuadraticField(d);
-K, coords_jK(X,j,K!j76[i,1],K);
+time for i:= 1 to #j76 do
+    d:=SquareFreeFactorization(Integers()!j76[i,2]);
+    K<w>:=QuadraticField(d);
+    K, coords_jK(X,j,K!j76[i,1],K);
 end for;
 
-*/
-
-/* this returns
-
-
+/* Output
 Quadratic Field with defining polynomial $.1^2 + 3 over the Rational Field
 {@ (-1 : 0 : 0 : -1/3*w : 0 : 1/3*w : 2 : 1), (-1 : 0 : 0 : 1/3*w : 0 : -1/3*w :
-2 : 1), (1 : 0 : 0 : -1/3*w : 0 : -1/3*w : 2 : 1), (1 : 0 : 0 : 1/3*w : 0 :
+2 : 1), (1 : 0 : 0 : -1/3*w : 0 : -1/3*w : 2 : 1), (1 : 0 : 0 : 1/3*w : 0 : 
     1/3*w : 2 : 1) @}
+Time: 18.070
 */
-
 
 
 ////////////////////////////////////////////////////////////////
@@ -218,7 +243,7 @@ Quadratic Field with defining polynomial $.1^2 + 3 over the Rational Field
 /// Further Examples ///
 ////////////////////////
 
-// More examples of using the function coords_jK for curves in Najman--Vukorepa
+// (More) examples of using the function coords_jK for curves in Najman--Vukorepa
 
 /*
 // Example 1:
