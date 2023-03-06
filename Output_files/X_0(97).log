@@ -1,0 +1,117 @@
+Genus of X_0(97) is: 7
+Considering X_0(97)/w_97.
+rk J_0(97)(Q) = rk J_0(97)(Q)/w_97 
+Nice model for X_0(97) is: Curve over Rational Field defined by
+x[1]^2 - x[4]^2 - 8*x[4]*x[6] + 14*x[4]*x[7] + 8*x[5]^2 + 8*x[5]*x[7] - 4*x[6]^2
++ 15*x[7]^2,
+x[1]*x[2] - x[4]*x[5] - 4*x[4]*x[6] + 8*x[4]*x[7] + 4*x[5]^2 + x[5]*x[7] - 
+4*x[6]^2 + 4*x[6]*x[7] + 12*x[7]^2,
+x[1]*x[3] - x[4]*x[6] + 9*x[4]*x[7] + 8*x[5]*x[7] + 2*x[6]^2 + x[6]*x[7] + 
+5*x[7]^2,
+x[1]*x[5] - x[2]*x[4] - 3*x[2]*x[7] - 4*x[3]*x[5] + 4*x[3]*x[7],
+2*x[1]*x[6] + x[2]*x[6] - 3*x[2]*x[7] - 2*x[3]*x[4] - x[3]*x[5] - 4*x[3]*x[6] + 
+6*x[3]*x[7],
+2*x[1]*x[7] + x[2]*x[6] - 3*x[2]*x[7] - x[3]*x[5],
+x[2]^2 - 4*x[4]*x[6] + 4*x[4]*x[7] + 3*x[5]^2 - 4*x[5]*x[6] - 4*x[5]*x[7] - 
+4*x[6]^2 + 8*x[6]*x[7] + 12*x[7]^2,
+x[2]*x[3] + 6*x[4]*x[7] - x[5]*x[6] + 3*x[5]*x[7] + 4*x[6]*x[7] + 6*x[7]^2,
+x[2]*x[5] + x[2]*x[6] - 2*x[2]*x[7] - x[3]*x[4] - 2*x[3]*x[5] - x[3]*x[6] + 
+3*x[3]*x[7],
+x[3]^2 + 2*x[4]*x[6] + 6*x[4]*x[7] - 2*x[5]^2 + 2*x[5]*x[6] + 8*x[5]*x[7] + 
+5*x[6]^2 + 2*x[6]*x[7] + x[7]^2
+
+w_97 on X_0(97) is given by: Mapping from: Crv: XN to Crv: XN
+with equations : 
+x[1]
+x[2]
+x[3]
+-x[4]
+-x[5]
+-x[6]
+-x[7]
+and inverse
+x[1]
+x[2]
+x[3]
+-x[4]
+-x[5]
+-x[6]
+-x[7]
+Genus of X_0(97) is 7
+We have found these 2 cusps on X_0(97):
+[
+Place at (-1 : 0 : 0 : 1 : 0 : 0 : 0),
+Place at (1 : 0 : 0 : 1 : 0 : 0 : 0)
+]
+We have found 3 points on X_0(97)^2(Q).
+Computing torsion subgroup ...
+The torsion is Abelian Group isomorphic to Z/8
+Defined on 1 generator
+Relations:
+8*A.1 = 0
+Genus of the quotient is 3.
+Performing Mordell-Weil sieve ...
+p = 3 (1/9): Getting deg 1 places on Xp ...
+Getting deg 2 places on Xp ...
+Combining them into divisors ...
+There are 48 of them!
+out of 8: The number of possible cosets unknown points can land in is 5.
+p = 5 (2/9): Getting deg 1 places on Xp ...
+Getting deg 2 places on Xp ...
+Combining them into divisors ...
+There are 67 of them!
+out of 3: ....The number of possible cosets unknown points can land in is 1.
+
+For unknown Q in X_0(97)^2(Q) we have (1 - w_97)[Q - bp] is in a coset of 
+Abelian Group of order 1 represented by an element of [
+0
+].
+It follows that if there is an unknown Q in X_0(97)^2(Q), then (1 - w_97)[Q - 
+bp] == 0.
+This implies that [Q - bp] is fixed by w_97
+Then Q ~ w_97(Q), which implies that Q = w_97(Q) because X_0(97) is not 
+hyperelliptic.
+Then either Q is a pullback, or it is fixed by w_97 pointwise.
+If P = (X_i) is fixed by w_97,
+then certain coordinates must be 0.
+We find all such P by imposing these conditions and finding points on the 
+scheme:
+Scheme over Rational Field defined by
+x[1]^2,
+x[1]*x[2],
+x[2]^2,
+x[1]*x[3],
+x[2]*x[3],
+x[3]^2,
+x[1]*x[4],
+x[2]*x[4],
+x[3]*x[4],
+x[4]^2 - 322/3*x[4]*x[7] - 96*x[5]*x[7] + 24*x[6]*x[7] - 121/3*x[7]^2,
+x[1]*x[5],
+x[2]*x[5],
+x[3]*x[5],
+x[4]*x[5] - 52*x[4]*x[7] - 41*x[5]*x[7] - 28*x[7]^2,
+x[4]*x[7] - 1/24*x[5]^2 + x[5]*x[7] - 1/2*x[6]*x[7] + 1/6*x[7]^2,
+x[1]*x[6],
+x[2]*x[6],
+x[3]*x[6],
+x[4]*x[6] - 35/3*x[4]*x[7] - 12*x[5]*x[7] + 7*x[6]*x[7] - 5/3*x[7]^2,
+x[4]*x[7] - 1/6*x[5]*x[6] + 1/2*x[5]*x[7] + 2/3*x[6]*x[7] + x[7]^2,
+x[4]*x[7] + 3/2*x[5]*x[7] - 3/4*x[6]^2 - 3*x[6]*x[7] - 5/4*x[7]^2,
+x[1]*x[7],
+x[2]*x[7],
+x[3]*x[7]
+
+All such P are:
+{@ (0 : 0 : 0 : 9/116*r1^3 - 63/116*r1^2 - 369/116*r1 - 293/116 : -3/58*r1^3 + 
+25/29*r1^2 + 239/58*r1 + 73/29 : r1 : 1), (0 : 0 : 0 : 9/116*r2^3 - 63/116*r2^2 
+- 369/116*r2 - 293/116 : -3/58*r2^3 + 25/29*r2^2 + 239/58*r2 + 73/29 : r2 : 1), 
+(0 : 0 : 0 : 9/116*r3^3 - 63/116*r3^2 - 369/116*r3 - 293/116 : -3/58*r3^3 + 
+25/29*r3^2 + 239/58*r3 + 73/29 : r3 : 1), (0 : 0 : 0 : 9/116*r4^3 - 63/116*r4^2 
+- 369/116*r4 - 293/116 : -3/58*r4^3 + 25/29*r4^2 + 239/58*r4 + 73/29 : r4 : 1) 
+@}
+The degrees of these points are [] (or > 2).
+Hence there are no quadratic points on X_0(97) not coming from pullbacks of 
+rationals, except the points you forwarded: [].
+done
+Time: 101.290
