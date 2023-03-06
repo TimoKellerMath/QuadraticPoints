@@ -13,19 +13,6 @@ JacobianFp := function(X)
 	return JFp, phi, psi;
 end function;
 
-//This function computes the discriminant of the field a place is defined over.
-
-discQuadPlace := function(P);
-        assert Degree(P) eq 2;
-        K := ResidueClassField(P);
-    	D := Discriminant(MaximalOrder(K));
-
-    	if IsDivisibleBy(D, 4) then
-           D := D div 4;
-    	end if;
-
-        return D;
-end function;
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
