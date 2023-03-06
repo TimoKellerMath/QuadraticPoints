@@ -3,7 +3,7 @@
 //auxilary func is MWSieve. This is on quadPts.m. This may be different than the one that is used in other files I am not sure.
 
 load "new_models.m";
-load "quadPts_short.m";
+load "rank_0_auxiliary.m";
 load "rank_calcs.m";
 load "coordinates_j.m";
 
