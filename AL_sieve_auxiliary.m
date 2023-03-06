@@ -44,7 +44,7 @@ function GetTorsion(N, XN, XN_Cusps)
 		divs := [Dtor];
 	else
 		p := 3;
-		while IsDivisibleBy(N, p) do
+		while IsDivisibleBy(N, p) or is_nonsing_p(XN, N, p, []) eq false do
 			p := NextPrime(p);
 		end while;
 
@@ -330,7 +330,7 @@ AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {}, printTorsi
 	primes := []; // TODO: find suitable primes
 
 	for p in PrimesInInterval(3, 30) do
-		if p in badPrimes then
+		if p in badPrimes or is_nonsing_p(XN,N,p,cuspInf) then
 			continue;
 		end if;
 		if N mod p ne 0 then
