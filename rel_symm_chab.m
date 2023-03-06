@@ -1,3 +1,16 @@
+//This function computes the discriminant of the field a place is defined over.
+
+discQuadPlace := function(P);
+        assert Degree(P) eq 2;
+        K := ResidueClassField(P);
+    	D := Discriminant(MaximalOrder(K));
+
+    	if IsDivisibleBy(D, 4) then
+           D := D div 4;
+    	end if;
+
+        return D;
+end function;
 
 //for a given divisor D in Jp = J(Xp) and Atkin-Lehner operator (w_N) matrix AL_mat, calculates (1 - w_N)(D), mod p
 
