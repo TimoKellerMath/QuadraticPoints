@@ -92,7 +92,7 @@ rank_0_quad_pts :=function(N)
 		PP:=RepresentativePoint(P);
 		if jinvN(PP)[2] eq 0 then 
 		    print "This quadratic point is cuspidal";
-		    print "coordinates", X(L) ! PP;
+		    print "Coordinates", X(L) ! PP;
 		    continue;
 		end if;
 		j:=jinvN(PP)[1];
@@ -103,8 +103,9 @@ rank_0_quad_pts :=function(N)
 		E:=EllipticCurveWithjInvariant(jinv);
 		print "The place P is defined over", L;
 		print "The j-invariant is", j;
+		print "Complex multiplication?";
 		print HasComplexMultiplication(E);
-		print "coordinates", X(L) ! PP;
+		print "Coordinates", X(L) ! PP;
 		print "++++++++++++++++++++++++++";
 	end for;
 	return "done";
