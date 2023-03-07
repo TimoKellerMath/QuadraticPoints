@@ -1,9 +1,23 @@
+// This file contains functions for performing the Atkin-Lehner sieving process
+// The code is also designed to be adapted to work with other variants of Mordell-Weil sieves
+// This is why we work in more generality than necessary (e.g. using cosets rather than simply points)
+
+// The file contains the following functions (further description before each function):
+
+// JacobianFp: Computes J_X(F_p) for a curve X
+// upper_bound_tors: Computes an upper bound on #J_0(N)(Q)_tors
+// GetTorsion: attempts to show that the rational cuspidal subgroup is the full torsion subgroup
+// BetterPhi: function that allows us to map divisors more quickly
+// ChabautyInfo: performs elimination step in sieving process
+// MWsieve: performs the sieve
+// AL_sieve: Main function, carries out all checks and performs the sieve
+
 load "rank_0_auxiliary.m";
 load "rel_symm_chab.m";
 load "rank_calcs.m";
 load "models_and_maps.m";
 
-//This function computes J_X(F_p) for curve X
+// This function computes J_X(F_p) for a curve X
 
 JacobianFp := function(X)
 	CC, phi, psi := ClassGroup(X); //Algorithm of Hess
@@ -14,9 +28,19 @@ JacobianFp := function(X)
 	return JFp, phi, psi;
 end function;
 
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////
+// This function computes an upper bound on #J_0(N)(Q)_tors
+// It works by computing #J_0(N)(F_p) for many primes p and taking the gcd of these
+
+// Input: N, the level
+// Optional inputs: largest_prime (default = 50) and lower_bound (default = 1)
+// largest_prime is the largest prime p that #J_0(N)(F_p) will be computed for
+// lower_bound can be entered if a known lower bound is known for the torsion.
+// if the upper bound matches the known lower bound then the function terminates
+
+// Output: an upper bound on #J_0(N)(Q)_tors and the prime factorisation of this number
 
 upper_bound_tors := function(N: largest_prime := 50, lower_bound := 1);
     J := JZero(N);
@@ -30,6 +54,17 @@ upper_bound_tors := function(N: largest_prime := 50, lower_bound := 1);
     end for;  
     return ub, Factorisation(ub);    
 end function;
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+// This function attempts to verify that J_0(N)(Q)_tors matches the rational cuspidal subgroup
+
+// Input: N, XN, XN_Cusps
+// N is the level, XN is the curve X_0(N), and XN_Cusps is a sequence of cusp places 
+
+// Output: Abelian group isomorphic to torsion and cuspidal generators for this group
+// If the code fails to prove the desired outcome, an assertion error is thrown
 
 function GetTorsion(N, XN, XN_Cusps)
 
@@ -71,20 +106,18 @@ function GetTorsion(N, XN, XN_Cusps)
 
 end function;
 
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+// This function provides a faster option for mapping divisors
 
 //D is an element of an abstract group iso. to JFp which we want to map to divisor class
 //JFpGenerators are generators of JFp - Jacobian modulo p
 //PhiActionTable is the value of phi() on generators
 
-//example how I checked that this works as intended:
+//example: how we check that this works as intended:
 //table := [Decomposition(phi(g)) : g in OrderedGenerators(JFp)];
 //assert BetterPhi(z + k, OrderedGenerators(JFp), table, JFp) eq phi(z + k);
-
-//not used in code yet because we might want to discuss it first
-//testing showed significant speed gains for X0(137)
 
 BetterPhi := function(D, JFpGenerators, PhiActionTable, JFp)
 	rep := Representation(JFpGenerators, D);
@@ -100,7 +133,22 @@ BetterPhi := function(D, JFpGenerators, PhiActionTable, JFp)
 	return divNew;
 end function;
 
-// Called by MWSieve, performs step for p_i described in the article
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+// This function carries out the elimination step in the Atkin-Lehner sieve
+
+// Input: X, AtkinLehner, genusC, p, A, divs, Dpull, B, iA, W, deg2
+// model 'X' for projective curve X/\Q
+// matrix 'AtkinLehner' defining Atkin-Lehner operator on X such that C = X/<AtkinLehner>, rk(J(C)(\Q))=rk(J(X)(\Q))
+// number 'genusC' that is the genus of C = X / <AtkinLehner>
+// p is the prime we are working with 
+// set 'divs' of degree 0 divisors that generate a subgroup G \subset J(X)(\Q), such that (1-w)(J(X)(\Q)) <= G (we use generators for J_0(N)(Q)_tors
+// a degree 2 divisor 'Dpull' on X that is the pullback of a rational point on C, to be used to embed X^{(2)} in J
+// B, iA, and W are groups and cosets used for the sieving process
+// set 'deg2' of degree 2 divisors on X (known points on X^(2)(\Q))
+
+// Output: W, B, iA are new groups and cosets to be used in the sieving process. 
 
 ChabautyInfo := function(X, AtkinLehner, genusC, p, A, divs, Dpull, B, iA, W, deg2)
 	//first get J(X_p)
@@ -186,6 +234,8 @@ ChabautyInfo := function(X, AtkinLehner, genusC, p, A, divs, Dpull, B, iA, W, de
 	return W, B, iA; 
 end function;
 
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 // INPUT:
 // model 'X' for projective curve X/\Q;
@@ -193,9 +243,11 @@ end function;
 // matrix 'AtkinLehner' defining Atkin-Lehner operator on X such that C = X/<AtkinLehner>, rk(J(C)(\Q))=rk(J(X)(\Q));
 // set 'divs' of degree 0 divisors that generate a subgroup G \subset J(X)(\Q), such that (1-w)(J(X)(\Q)) <= G;
 // abstract abelian group 'A' isomorphic to G such that A.i corresponds to divs[i];
-// number 'genusC' that is the genus of C;
+// number 'genusC' that is the genus of C = X / <AtkinLehner>;
 // a degree 2 divisor 'Dpull' on X that is the pullback of a rational point on C, to be used to embed X^{(2)} in J;
 // subgroup 'B0' <= A, inclusion 'iA0': A -> B0, set 'W0' of B0-coset representatives such that B0 + W0 = A.
+
+// Output: W, B, iA are the final groups and cosets output by the sieving process. 
 
 MWSieve := function(X, AtkinLehner, genusC, primes, A, divs, Dpull, B0, iA0, W0, deg2)
 	B := B0;
@@ -227,30 +279,31 @@ MWSieve := function(X, AtkinLehner, genusC, primes, A, divs, Dpull, B0, iA0, W0,
 	return B, iA, W;
 end function;
 
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
+// The function AL_sieve is the main function for performing the Atkin-Lehner sieving process
 
-
-//ProvablyComputeQuadPts_X0N requires only level N as its input
-// but it also contains a number of optional parameters:
-// d: the code will use the quotient X0(N)/w_d (defaults to d:=N)
-// nonpullbacks: you can provide the list of quadratic points which are not pullbacks from X0(N)/w_d
+// Input: N (the level)
+// Optional inputs
+// d:
+// the code will use the quotient X0(N)/w_d (defaults to d:=N)
+// nonpullbacks:
+// you can provide the list of quadratic points which are not pullbacks from X0(N)/w_d
 //	if you use it, nonpullbacks must be the sequence of elements of the following shape
 // 		<K, P> where K is the field over which P is defined
-//	for example, look at X0_74.m
+//	for example, look at the file AL_sieve.m
 // badPrimes: list of primes you want to skip the sieving on
-// printTorsion: boolean parameter, if true, the code will output the torsion of J_0(N)(Q)
 
 // The function does not return anything, but outputs a lot of information about modular curve X_0(N):
 //	first it checks if the ranks of the curve and its quotient are equal (and outputs confirmation),
 //	then it outputs a nice model of the curve (with Atkin-Lehner's diagonalized),
-//		the action of w_d on the curve,
+//	the action of w_d on the curve,
 //	then on its Jacobian (cusps, and if printTorsion is set to true, the full torsion structure over Q),
 //	and finally on the sieving process.
 
 // In all cases where all the quadratic points are pullbacks from X_0+(N),
-// it is sufficient to simply run ProvablyComputeQuadPts_X0N(N).
+// it is sufficient to simply run AL_sieve(N).
 
 AL_sieve := function(N : d := N, nonpullbacks := {}, badPrimes := {})
 	printf "Genus of X_0(%o) is: %o\n", N, Dimension(CuspForms(N));
