@@ -1,5 +1,8 @@
-// This file contains all computations used in the 'going-down method'
+// This file contains all computations used in the going-down method
+
 load  "models_and_maps.m";
+
+// We will make use of the following function
 
 /////////////////
 /// coords_jk ///
@@ -388,7 +391,3 @@ time coords_jK(X,j,jinv2,K); // 16 seconds
 (1/2 : -1/2 : -1/2 : -1/2 : 1/2*a : 2 : 1)
 @}
 */
-
-
-
-
