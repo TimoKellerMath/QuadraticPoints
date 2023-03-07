@@ -1,8 +1,11 @@
-load "models_and_maps.m";
+// The code in this file is used to compute pullbacks of rational points on Atkin-Lehner quotients
+// The functions are not called by any other file in the repository
+// but the output of these functions can serve as input for the AL_sieve.m file
 
-//////////////
-// Philippe // // get in touch with me if (when) you find problems with the code!
-//////////////
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+load "models_and_maps.m";
 
 // This code searches for rational points on AL quotients of X_0(N) 
 // and pulls them back to quadratic points on X_0(N).
@@ -32,7 +35,8 @@ equal_quad_points := function(tup1, tup2);
     end for;
     return true;
 end function;
-    
+
+////////////////////////////////
 
 // We now look at the main function, "pullback_points"
 
