@@ -1,6 +1,9 @@
-//code for finding quadratic points on X0(N) for N=80, 98 and 100. For these levels the Mordell Weil group of the Jacobian is torsion. 
-//main function is QuadPntsRank0: accepts N and gives quadratic points on X0(N) for rank 0 cases.
-//auxilary func is rank_0_sieve.
+// This file contains the main function for the rank 0 method
+
+// The output of this function for N = 80, 98, and 100 is included in the rank_0.log file in the Output_files folder
+
+// Input: N
+// No output, but function computes and returns information about the quadratic points found
 
 load "models_and_maps.m";
 load "rank_0_auxiliary.m";
@@ -111,7 +114,7 @@ rank_0_quad_pts :=function(N)
 	return "done";
 end function;
 
-// for N in [80,98,100] do rank_0_quad_pts(N); end for;
+// for N in [80,98,100] do rank_0_quad_pts(N); end for; // See rank_0.log in the Output_files folder
     
 
 
