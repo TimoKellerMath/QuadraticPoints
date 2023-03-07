@@ -36,4 +36,4 @@ end for;
 
 
 // Timing for X_0(53): 
-// time AL_sieve(53: badPrimes := {5,7,11}); // 4.9 seconds
+// time AL_sieve(53: badPrimes := {3,5,7,11}); // 3.8 seconds
