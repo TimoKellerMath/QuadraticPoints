@@ -1,3 +1,4 @@
+// The code in this file computes all the rational points on X_0(86) / w_43
 
 load "model_equation_finder.m";
 load "coleman.m";
