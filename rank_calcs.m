@@ -1,6 +1,4 @@
 // This file contains functions for computing the ranks (over Q) of J_0(N) and its factors
-// For the purposes of the paper, we need only check whether certain factors have rank 0
-// The code contains additional functionality to try and compute ranks which are non-zero too
 
 // The code contains the following functions (further descriptions before each function)
 
@@ -9,7 +7,6 @@
 // equal_rank: Attempts to check whether the rank of J_0(N) and a given quotient are equal 
 
 // There are examples at the end of the file
-
 
 ///////////////////
 /// simple_rank ///
