@@ -37,9 +37,10 @@ end function;
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%% N=58 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-// We first deal with the case N=58. The first thing we do is that the exceptional quadratic points on $X_0(29)$ do not pull back to quadratic points on X_0(58). We do this by checking that none of them have a 2-isogeny, which is quivalent to having a 2-torsion points.  
-
-// ********************************************************* Explain what the code below is doing a little more
+// We first deal with the case N=58. The first thing we do is that the exceptional quadratic points on $X_0(29)$ do not pull back to quadratic points on X_0(58). 
+// We do this by checking that none of them have a 2-isogeny, which is quivalent to having a 2-torsion points.
+// We take the exceptional j-invarinants from the Bruin-Najman paper and check whether a curvee with that j-invariant has any 2-torsion. 
+// This is a quadratic-twist invaraiant property, so the choice of the twist does not matter. 
 
 C:=SmallModularCurve(29);
 
@@ -79,7 +80,7 @@ j; // 1/1073741824*(2243516025815593*w - 3839648355219715)
 E:=EllipticCurveFromjInvariant(j);
 TwoTorsionSubgroup(E); // Abelian Group of order 1
 
-// all checked
+// all checked, hence none of the exceptional quadratic points on X_0(29) lift to quadratic points on X_0(58)
 
 
 
@@ -103,13 +104,11 @@ P:=pts[1]-pts[2];
 P:=J!P;
 assert Order(P) eq 0;
 pts2:=Chabauty(P);
-f3:=Inverse(f2); // ********************************************************* What is this?
 assert #pts2 eq #pts;
 // so we have found all the points. It remains to find the j-invariants.
 
 //////////////////////////////////////
 
-// *********************************************************  Output needs to be formatted for this loop and then displayed as a comment after
 
 j:=jmap(X,58);
 deg2pb:=[Pullback(quotMap,Place(Xw!p)):p in pts];
@@ -122,17 +121,58 @@ for i in [1..#deg2pb] do
 		tr,f:=IsIsomorphic(K1,K);
 		assert tr;
 		P:=RepresentativePoint(Decomposition(deg2pb[i])[1,1]);
-		w^2,P,j(P)[1],HasComplexMultiplication(EllipticCurveFromjInvariant(j(P)[1]));
+		Pw:=[f(P[i]): i in [1..#Coordinates(P)]];
+		tr, CM:=HasComplexMultiplication(EllipticCurveFromjInvariant(j(P)[1]));
+		print "We have found a point over Q(w), where w^2=", w^2;
+		print "The coordinates of the point are:", Pw;
+		print "The j-invariant of the point is:", f(j(P)[1]);
+		print "The corresponding elliptic curve has CM by an order of discriminant:", CM;
+		print " ";
+		//w^2,Pw,f(j(P)[1]),HasComplexMultiplication(EllipticCurveFromjInvariant(j(P)[1]));
 	end if;
 end for;
+
+/* Output:
+
+We have found a point over Q(w), where w^2= -7
+The coordinates of the point are: [ 1/3*w, 0, 1/3, 1/3*w, 4/3, 1 ]
+The j-invariant of the point is: -3375
+The corresponding elliptic curve has CM by an order of discriminant: -7
+
+We have found a point over Q(w), where w^2= -1
+The coordinates of the point are: [ 2*w, -1, 1, 0, 3, 1 ]
+The j-invariant of the point is: 287496
+The corresponding elliptic curve has CM by an order of discriminant: -16
+
+We have found a point over Q(w), where w^2= -1
+The coordinates of the point are: [ -2*w, 1, -1, 0, 3, 1 ]
+The j-invariant of the point is: 1728
+The corresponding elliptic curve has CM by an order of discriminant: -4
+
+We have found a point over Q(w), where w^2= -7
+The coordinates of the point are: [ 1/3*w, 0, -1/3, -1/3*w, 4/3, 1 ]
+The j-invariant of the point is: 16581375
+The corresponding elliptic curve has CM by an order of discriminant: -28
+
+We have found a point over Q(w), where w^2= 29
+The coordinates of the point are: [ 0, -5/29*w, -1/29*w, 1, 0, 0 ]
+The j-invariant of the point is: -56147767009798464000*w + 302364978924945672000
+The corresponding elliptic curve has CM by an order of discriminant: -232
+
+We have found a point over Q(w), where w^2= -1
+The coordinates of the point are: [ 0, 0, 0, w, 1, 1 ]
+The j-invariant of the point is: 1728
+The corresponding elliptic curve has CM by an order of discriminant: -4
+
+*/
 
 // This completes the case N=58 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* The list of CM points below has been provided by P. L. Clark, T. Genao, P. Pollack, and F. Saia 
-// ********************************************************* What does provided mean? Are they in a table somewhere?  
+/* The list of CM points below has been sent to us by P. L. Clark, T. Genao, P. Pollack, and F. Saia, and can be obtained from their paper. 
+See also: https://github.com/tgenao/least-cm-degree
 
 The N'th element in this list has the form [* N, d_{CM}(X_0(N)), [ orders ] *], where [ orders ] is the complete sequence of imaginary quadratic orders O such that O minimizes d_{CM}(X_0(N)), i.e., d_{O,CM}(X_0(N)) = d_{CM}(X_0(N)). 
 
