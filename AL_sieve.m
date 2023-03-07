@@ -33,3 +33,7 @@ for N in [74, 85, 86, 97, 103, 109, 121, 127] do
     end if;       
      AL_sieve(N : d:=dd, nonpullbacks := nonpbs); // This carries out the Atkin-Lehner sieve
 end for;
+
+
+// Timing for X_0(53): 
+// time AL_sieve(53: badPrimes := {5,7,11}); // 4.9 seconds
