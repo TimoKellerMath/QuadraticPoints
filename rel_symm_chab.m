@@ -1,4 +1,17 @@
+// This file contains functions auxiliary functions for applying the relative symmetric Chabauty criterion
+
+// The file contains the following functions (further description before each function):
+
+// discQuadPlace: computes the discriminant of the quadratic field a place is defined over.
+// OneMinusWmodp: computes the image of 1-w mod p on a divisor for an AL involution w
+// IsLonely: verifies the relative symmetric Chabauty criterion
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 //This function computes the discriminant of the field a place is defined over.
+// Input: a place P of degree 2
+// Output: the discriminant of the quadratic field the place is defined over
 
 discQuadPlace := function(P);
         assert Degree(P) eq 2;
@@ -12,7 +25,16 @@ discQuadPlace := function(P);
         return D;
 end function;
 
-//for a given divisor D in Jp = J(Xp) and Atkin-Lehner operator (w_N) matrix AL_mat, calculates (1 - w_N)(D), mod p
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+// Input:
+// Curve Xp (model for X_0(N) base changed to Xp)
+// Divisor D in J(Xp)
+// AL_mat, matrix of Atkin-Lehner operator w
+// prime p we are working with 
+
+// Output: (1 - w_N)(D), mod p
 
 OneMinusWmodp := function(Xp, D, AL_mat, p)
 	RRp<[up]> := CoordinateRing(AmbientSpace(Xp));
@@ -33,10 +55,17 @@ OneMinusWmodp := function(Xp, D, AL_mat, p)
 	return retD;
 end function;
 
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 //This function verifies the conditions of Theorem 2.1 from Box - quadratic points on modular curves
-//Input: degree 2 divisor QQ, prime p of good reduction for X,
-//AtkinLehner matrix on X, genus of X/<AtkinLehner>
+// Input: 
+// degree 2 divisor QQ
+// prime p of good reduction for X,
+// AtkinLehner matrix on X
+// genus of X/<AtkinLehner>
+
+// Output: true or false according to whether the Chabauty criterion succeeds or fails
 
 IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 	// Condition in Theorem is p > 2
