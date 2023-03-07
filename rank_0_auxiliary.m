@@ -1,3 +1,15 @@
+// The functions in this file are auxiliary files used for the rank 0 method
+// some functions are also used for the AL sieve method.
+
+// The functions in this file are copied from the accompanying files of the paper
+// Ozman--Siksek, Quadratic Points on Modular Curves
+// The original files are available here: https://arxiv.org/abs/1806.08192
+// We have adapted the code in one or two places to make use of the is_nonsing_p function from models_and_maps.m
+// which verifies nonsingularity mod p much more quickly than the inbuilt Magma function
+
+//////////////////////////////////////////
+//////////////////////////////////////////
+
 load "models_and_maps.m";
 
 // X is a projective curve over rationals,
@@ -52,6 +64,9 @@ reduce:=function(X,Xp,D);
 	return Dp;
 end function;
 
+//////////////////////////////////////////
+//////////////////////////////////////////
+
 // Determine the homomorphism from Ksub-->J(F_p)
 reduceHom:=function(X,divs,P0,Xp,Ksub,bas);
 	C,phi,psi:=ClassGroup(Xp);
@@ -67,7 +82,8 @@ reduceHom:=function(X,divs,P0,Xp,Ksub,bas);
 	return pi,phi,psi;
 end function;
 
-
+//////////////////////////////////////////
+//////////////////////////////////////////
 
 // divs are a bunch of known effective divisors,
 // P0 is a base point of degree 1,
@@ -126,6 +142,8 @@ findGenerators:=function(X,N,divs,P0,p);
 	return h,Ksub,bas,divsNew;
 end function;
 
+//////////////////////////////////////////
+//////////////////////////////////////////
 
 // Xp is a projective curve over finite field F_p
 // D an degree 2 divisor of Xp
@@ -181,7 +199,8 @@ matrixDerickx:=function(Xp,D);
 	return Matrix(M);
 end function;
 
-
+//////////////////////////////////////////
+//////////////////////////////////////////
 
 // deg2 are the known elements of X^{(2)}(\Q) 
 // This function determines a subset of X^{(2)}(\F_p) 
