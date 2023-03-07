@@ -1,7 +1,7 @@
 # QuadraticPoints
 Magma code to compute quadratic points on X_0(N)
 
-The repository consists of the following files and folders (please add files and update the brief descriptions appropriately):
+The repository consists of the following files and folders:
 
 - Classical_Chabauty (folder). This folder contains code for perfoming classical Chabauty computations.
 - Output_files (folder). Contains all output files for tha 'rank 0' and 'Atkin-Lehner sieve' levels.
