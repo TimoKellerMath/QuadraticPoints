@@ -1,15 +1,4 @@
-//////////////
-// Philippe // // get in touch with me if (when) you find problems with the code!
-//////////////
-
-// (there a couple functions written by Filip and Shiva too, I have put these names in parentheses next to the corresponding functions to help with fixing errors if they occur).
-// the find_rels function is based off code sent to me by Jeremy Rouse.
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-
-// Code to compute models for X_0(N), Atkin-Lehner group quotients, maps to the quotients, maps to different levels, jmap
-// Models for canaonically embedded curves X_0(N) come with all AL-involutions diagonalised
+// Code to compute models for X_0(N), Atkin-Lehner group quotients, maps to the quotients, maps to different levels, jmap and more
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
