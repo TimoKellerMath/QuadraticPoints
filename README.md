@@ -1,5 +1,7 @@
 # QuadraticPoints
-Magma code to compute quadratic points on X_0(N)
+Magma code to compute quadratic points on X_0(N). 
+
+The code is associated to the following paper: (fill in with arXiv link).
 
 The repository consists of the following files and folders:
 
