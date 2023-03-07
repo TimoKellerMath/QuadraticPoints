@@ -19,7 +19,7 @@ data := coleman_data(Q,p,N);
 Qpoints := Q_points(data,1000);
 //Assuming that the Q-rational points found generate a finite index subgroup of the Jacobian of X_0(74)/w37,
 // the following code proves that these are all Q-points.
-// This assumption is checked in file independence.m
+// This assumption is checked at the end of this file.
 
 L, v := effective_chabauty(data : Qpoints := Qpoints, e := 40);
 
@@ -35,3 +35,16 @@ else
 end if;
 
 //found all 9 Q-points!
+
+// We check that the differences of the rational points found generate a finite index (rank 2) subgroup.
+
+pts := PointSearch(X74_w37, 10);
+assert #pts eq 9;
+p := 3;
+Xp := ChangeRing(X74_w37, GF(p));
+assert IsNonsingular(Xp);
+ptsp := [Xp!ChangeUniverse(Eltseq(pt), GF(p)) : pt in pts]; // reductions of Q-points
+PicXp, phi, psi := ClassGroup(Xp);
+JFp := TorsionSubgroup(PicXp);
+divsp := [psi(Place(ptsp[i]) - Place(ptsp[1])) : i in [2..#ptsp]];
+A := sub<JFp | divsp>; // Abelian Group isomorphic to Z/7 + Z/133, so rank is 2
