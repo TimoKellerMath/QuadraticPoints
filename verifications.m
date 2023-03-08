@@ -1,5 +1,6 @@
-// In this file we verify all the data contained in the Tables of the paper
-// We also print the models, and the output can be found in the file verifications.out in the Output_files folder
+// In this file we verify all the data contained in the tables of the paper.
+// We also print the models and AL involutions.
+// The output can be found in the file verifications.out in the Output_files folder.
 
 load "models_and_maps.m";
 
