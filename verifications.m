@@ -274,6 +274,100 @@ assert w4(P1c) eq P2c;
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////
+//// N = 85 ////
+////////////////
+
+N := 85;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w5 := ws[1];
+w17 := ws[2];
+w85 := ws[3];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-19);
+
+P1seq := [-1,0, T/19,2*T/19, -T/19,2*T/19, 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq -884736;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -19;
+
+P2seq := [1,0, T/19,2*T/19, T/19,-2*T/19, 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq -884736;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -19;
+
+assert w85(P1) eq P1c;
+assert w5(P1) eq P2c;
+assert w17(P1) eq P2;
+assert w5(P2) eq P1c;
+assert w85(P2) eq P2c;
+assert w17(P1c) eq P2c;
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P3seq := [1/2, 1/2, T/4, -T/2, -T/2, T/4, 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 1728;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP3));
+assert tf and D eq -4;
+
+P4seq := [-1/2, -1/2, T/4, -T/2, T/2, -T/4, 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq 1728;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP4));
+assert tf and D eq -4;
+
+assert w85(P3) eq P3c;
+assert w5(P3) eq P4c;
+assert w17(P3) eq P4;
+assert w5(P4) eq P3c;
+assert w85(P4) eq P4c;
+assert w17(P3c) eq P4c;
+
+///////////
+
+P5seq := [1/2, 1/2, 0, T/2, T/2, 0, 1];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq 287496;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP5));
+assert tf and D eq -16;
+
+P6seq := [-1/2, -1/2, 0, T/2, -T/2, 0, 1];
+P6 := X(K) ! P6seq;
+P6c := X(K) ! conj(P6seq);
+jP6 := j(P6)[1];
+assert jP6 eq 287496;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP6));
+assert tf and D eq -16;
+
+assert w85(P5) eq P5c;
+assert w5(P5) eq P6c;
+assert w17(P5) eq P6;
+assert w5(P6) eq P5c;
+assert w85(P6) eq P6c;
+assert w17(P5c) eq P6c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////
 //// N = 86 ////
 ////////////////
 
