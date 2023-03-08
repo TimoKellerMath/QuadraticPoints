@@ -169,6 +169,57 @@ assert w74(P10) eq P10c;
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////
+//// N = 76 ////
+////////////////
+
+N := 76;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w4 := ws[1];
+w19 := ws[2];
+w76 := ws[3];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P1seq := [-1 , 0 , 0 , T/3, 0 , -T/3 , 2 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq 54000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -12;
+
+P2seq := [1 , 0 , 0 , -T/3 , 0 , -T/3 , 2 , 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 54000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -12;
+
+assert w76(P1) eq P1c;
+assert w4(P1) eq P2;
+assert w19(P1) eq P2c;
+assert w76(P2) eq P2c;
+assert w19(P2) eq P1c;
+assert w4(P1c) eq P2c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////
+//// N = 80 ////
+////////////////
+
+// No noncuspidal quadratic points
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////
 //// N = 86 ////
 ////////////////
 
