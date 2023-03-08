@@ -16,3 +16,4 @@ The repository consists of the following files and folders:
 - rank_0_auxiliary.m. Contains functions for the 'rank 0' method. This code is taken from the paper: Ozman-Siksek, Quadratic Points on Modular curves.
 - rank_calcs.m.  This file contains functions for computing the ranks over Q of J_0(N) and its quotients.
 - rel_symm_chab.m. This file contains functions for verifying the relative symmetric Chabauty criterion we use in the Atkin-Lehner sieve.
+- verifications.m. This file checks all the data presented in the tables of the paper.
