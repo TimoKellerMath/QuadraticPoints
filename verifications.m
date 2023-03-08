@@ -1,6 +1,5 @@
-// In this file we verify all the data contained in the tables of the paper.
-// We also print the models and AL involutions.
-// The output can be found in the file verifications.out in the Output_files folder.
+// In this file we verify all the data contained in the Tables of the paper
+// We also print the models, and the output can be found in the file verifications.out in the Output_files folder
 
 load "models_and_maps.m";
 
@@ -493,6 +492,102 @@ tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP9));
 assert tf and D eq -27;
 
 assert w97(P9) eq P9c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////
+//// N = 98 ////
+////////////////
+
+N := 98;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w2 := ws[1];
+w49 := ws[2];
+w98 := ws[3];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P1seq := [-T , 1 , 0 , -1/2 , 0 , T/2 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq 54000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -12;
+
+P2seq := [T , -1 , 0 , 1/2 , 0 , T/2 , 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 0;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -3;
+
+assert w98(P1) eq P2c;
+assert w2(P1) eq P2;
+assert w49(P1) eq P1c;
+assert w98(P2) eq P1c;
+assert w49(P2) eq P2c;
+assert w2(P1c) eq P2c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////
+//// N = 100 ////
+////////////////
+
+N := 100;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w4 := ws[1];
+w25 := ws[2];
+w100 := ws[3];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P1seq := [-T , 1 , 0 , T/2 , T/2 , 2 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq 1728;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -4;
+
+P2seq := [-T , -1 , 0 , -T/2 , -T/2 , 2,1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 287496;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -16;
+
+assert w25(P1) eq P1c;
+assert w100(P1) eq P2;
+assert w4(P1) eq P2c;
+assert w25(P2) eq P2c;
+assert w4(P2) eq P1c;
+assert w100(P1c) eq P2c;
+
+P3seq := [0 , 0 , 0 , T/4 , -T/4 , 1 , 0];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 287496;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP3));
+assert tf and D eq -16;
+
+assert w100(P3) eq P3c;
+assert w25(P3) eq P3c;
+assert w4(P3) eq P3;
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
