@@ -358,6 +358,145 @@ assert w43(P8c) eq P9c;
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////
+//// N = 97 ////
+/////////////////
+
+N := 97;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w97 := ws[1];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P1seq := [T , 0 , T , -1 , 0 , 1 , 0];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq 54000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -12;
+
+assert w97(P1) eq P1c;
+
+///////////
+
+K<T> := QuadraticField(-163);
+
+P2seq := [12*T/5 , T , 2*T/5 , 37/5 , 11 , 13/5 , 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq -262537412640768000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -163;
+
+assert w97(P2) eq P2c;
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P3seq := [4*T , 4*T , 4*T , 1 , 0 , 1 , 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 1728;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP3));
+assert tf and D eq -4;
+
+assert w97(P3) eq P3c;
+
+///////////
+
+K<T> := QuadraticField(-2);
+
+P4seq := [4*T , 2*T , 2*T , 1 , 0 , -1 , 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq 8000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP4));
+assert tf and D eq -8;
+
+assert w97(P4) eq P4c;
+
+///////////
+
+K<T> := QuadraticField(-43);
+
+P5seq := [0 , T , 0 , -3 , -1 , 3 , 1];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq -884736000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP5));
+assert tf and D eq -43;
+
+assert w97(P5) eq P5c;
+
+///////////
+
+K<T> := QuadraticField(-11);
+
+P6seq := [T , T , 0 , -2 , 1 , 1 , 1];
+P6 := X(K) ! P6seq;
+P6c := X(K) ! conj(P6seq);
+jP6 := j(P6)[1];
+assert jP6 eq -32768;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP6));
+assert tf and D eq -11;
+
+assert w97(P6) eq P6c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P7seq := [3*T/2 , 3*T , 3*T/2 , 1/2 , -1 , 3/2 , 1];
+P7 := X(K) ! P7seq;
+P7c := X(K) ! conj(P7seq);
+jP7 := j(P7)[1];
+assert jP7 eq 0;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP7));
+assert tf and D eq -3;
+
+assert w97(P7) eq P7c;
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P8seq := [6*T , 2*T , 2*T , -1 , 2 , -1 , 1];
+P8 := X(K) ! P8seq;
+P8c := X(K) ! conj(P8seq);
+jP8 := j(P8)[1];
+assert jP8 eq 287496;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP8));
+assert tf and D eq -16;
+
+assert w97(P8) eq P8c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P9seq := [4*T , 2*T , T , -1 , 2 , 0 , 1];
+P9 := X(K) ! P9seq;
+P9c := X(K) ! conj(P9seq);
+jP9 := j(P9)[1];
+assert jP9 eq -12288000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP9));
+assert tf and D eq -27;
+
+assert w97(P9) eq P9c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////
 //// N = 103 ////
 /////////////////
 
@@ -440,3 +579,299 @@ tf := HasComplexMultiplication(EllipticCurveWithjInvariant(jP6));
 assert tf eq false;
 
 assert w103(P6) eq P6c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////
+//// N = 109 ////
+/////////////////
+
+N := 109;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w109 := ws[1];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-43);
+
+P1seq := [-T , -1/2*T , -1/2*T , -1 , 3/2 , -1 , 1/2 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq -884736000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -43;
+
+assert w109(P1) eq P1c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P2seq := [-T , -T , 0 , -1 , 0 , 1 , 0 , 0];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 54000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -12;
+
+assert w109(P2) eq P2c;
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P3seq := [0 , 0 , -4*T , 2 , -1 , -2 , 2 , 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 1728;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP3));
+assert tf and D eq -4;
+
+assert w109(P3) eq P3c;
+
+///////////
+
+K<T> := QuadraticField(-7);
+
+P4seq := [-1/2*T , -3/2*T , -1/2*T , -1/2 , -1/2 , 1 , -1/2 , 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq 16581375;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP4));
+assert tf and D eq -28;
+
+assert w109(P4) eq P4c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P5seq := [0 , -T , -T , 0 , -1 , 0 , 1 , 0];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq -12288000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP5));
+assert tf and D eq -27;
+
+assert w109(P5) eq P5c;
+
+///////////
+
+K<T> := QuadraticField(-7);
+
+P6seq := [-T , -T , -T , 1 , -1 , 0 , 1 , 0];
+P6 := X(K) ! P6seq;
+P6c := X(K) ! conj(P6seq);
+jP6 := j(P6)[1];
+assert jP6 eq -3375;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP6));
+assert tf and D eq -7;
+
+assert w109(P6) eq P6c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P7seq := [-3/2*T , -5/2*T , -T , -3/2 , 1/3 , 1/2 , -1/3 , 1];
+P7 := X(K) ! P7seq;
+P7c := X(K) ! conj(P7seq);
+jP7 := j(P7)[1];
+assert jP7 eq 0;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP7));
+assert tf and D eq -3;
+
+assert w109(P7) eq P7c;
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P8seq := [-4*T , -4*T , -2*T , -2 , 1 , 0 , 0 , 1];
+P8 := X(K) ! P8seq;
+P8c := X(K) ! conj(P8seq);
+jP8 := j(P8)[1];
+assert jP8 eq 287496;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP8));
+assert tf and D eq -16;
+
+assert w109(P8) eq P8c;
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////
+//// N = 121 ////
+/////////////////
+
+N := 121;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w121 := ws[1];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-19);
+
+P1seq := [T, T, 2, 0, -1, 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq -884736;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -19;
+
+assert w121(P1) eq P1c;
+
+///////////
+
+K<T> := QuadraticField(-43);
+
+P2seq := [T, T, 3, 2, 0, 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq -884736000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -43;
+
+assert w121(P2) eq P2c;
+
+///////////
+
+K<T> := QuadraticField(-2);
+
+P3seq := [2*T, 0, 1, -1, -1, 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 8000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP3));
+assert tf and D eq -8;
+
+assert w121(P3) eq P3c;
+
+///////////
+
+K<T> := QuadraticField(-7);
+
+P4seq := [0, T, 1, 0, -1, 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq -3375;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP4));
+assert tf and D eq -7;
+
+assert w121(P4) eq P4c;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////
+//// N = 127 ////
+/////////////////
+
+N := 127;
+X, ws := eqs_quos(N,[]);
+X, ws;
+w127 := ws[1];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-67);
+
+P1seq := [-4*T , -2*T , -T , -11 , 4 , 10 , 8 , 8 , 4 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq -147197952000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP1));
+assert tf and D eq -67;
+
+assert w127(P1) eq P1c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P2seq := [-T , -T , 0 , -2 , 0 , 1 , 1 , 1 , 1 , 0];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 54000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP2));
+assert tf and D eq -12;
+
+P3seq := [-T , 0 , -T , -3 , 1 , 1 , 1 , 1 , 1 , 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq -12288000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP3));
+assert tf and D eq -27;
+
+assert w127(P2) eq P2c;
+assert w127(P3) eq P3c;
+
+///////////
+
+K<T> := QuadraticField(-7);
+
+P4seq := [0 , -T/2 , -T/2 , -3 , 2 , 1/2 , -1/2 , 3/2 , 0 , 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq 16581375;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP4));
+assert tf and D eq -28;
+
+P5seq := [-2*T , -T , -T , -2 , 0 , 1 , 1 , 1 , 0 , 0];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq -3375;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP5));
+assert tf and D eq -7;
+
+assert w127(P4) eq P4c;
+assert w127(P5) eq P5c;
+
+///////////
+
+K<T> := QuadraticField(-3);
+
+P6seq := [-15*T/2 , -9*T/2 , -3*T , -3 , -2 , -1/2 , -1/2, 5/2 , 5/2 , 1];
+P6 := X(K) ! P6seq;
+P6c := X(K) ! conj(P6seq);
+jP6 := j(P6)[1];
+assert jP6 eq 0;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP6));
+assert tf and D eq -3;
+
+assert w127(P6) eq P6c;
+
+///////////
+
+K<T> := QuadraticField(-43);
+
+P7seq := [0 , -T , 0 , 3 , 1 , -2 , -1 , 0 , -2 , 1];
+P7 := X(K) ! P7seq;
+P7c := X(K) ! conj(P7seq);
+jP7 := j(P7)[1];
+assert jP7 eq -884736000;
+tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP7));
+assert tf and D eq -43;
+
+assert w127(P7) eq P7c;
