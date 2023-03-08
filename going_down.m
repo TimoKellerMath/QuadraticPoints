@@ -103,6 +103,7 @@ RankBounds(Jacobian(Xw)); // 1 1
 //The rank is 1, so we can use classical Chabauty over Q. 
 J:=Jacobian(Xw);
 pts:=RationalPoints(Xw:Bound:=200);
+// {@ (1 : -1 : 0), (1 : 1 : 0), (-1 : -2 : 1), (-1 : 2 : 1), (0 : -1 : 1), (0 : 1 : 1), (1 : -8 : 1), (1 : 8 : 1) @}
 P:=pts[1]-pts[2];
 P:=J!P;
 assert Order(P) eq 0;
