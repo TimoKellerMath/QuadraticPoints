@@ -196,15 +196,6 @@ t76:=[* 76, 2,
     ]
 *];
 
-
-
-t108:=[* 108, 4,
-    [
-        [ 1, -8, 1 ],
-        [ 2, -8, 2 ]
-    ]
-*];
-
 // there are no degree 2 CM points on X0(108)
 
 ComputejInvs:= function(A);
