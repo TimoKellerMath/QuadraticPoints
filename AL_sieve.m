@@ -3,7 +3,7 @@
 
 load "AL_sieve_auxiliary.m";
 
-for N in [74, 85, 86, 97, 103, 109, 121, 127] do
+for N in [74, 85, 97, 103, 109, 121, 127] do
     // Choose appropriate AL index, d. 
     // The main function will verify the equal rank criterion.
     if N eq 74 then 
