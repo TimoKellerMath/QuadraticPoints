@@ -4,5 +4,5 @@ The files 74_37.m, 86_43.m, and the .out files contain the computations of ratio
 
 The file model model_equation_finder is from https://github.com/AWS2020QC/ModularCurvesX0plusG4-6, and associated to the paper https://arxiv.org/abs/2105.04811
 
-The remaining files are taken from https://github.com/jtuitman/Cartan13/tree/master/Coleman-1.3.
+The remaining files are taken from https://github.com/jtuitman/Coleman.
 This is the Magma code of Balakrishnan and Tuitman to perform Chabauty computations for rational points.
