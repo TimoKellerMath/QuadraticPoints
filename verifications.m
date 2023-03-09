@@ -1113,6 +1113,98 @@ print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////
+//// N = 107 ////
+/////////////////
+
+N := 107;
+print "N =", N;
+X, ws := eqs_quos(N,[]);
+al_inds := [m : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1];
+print "Model:";
+X;
+for i in [1..#al_inds] do
+    m := al_inds[i];
+    print "w_",m, "is given by", DefiningEquations(ws[i]);
+end for;
+w107 := ws[1];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-7);
+
+P1seq := [0 , -T , 0 , 0 , 0 , 0 , 0 , 0 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq -3375;
+D :=  CMdisc(jP1);
+assert D eq -7;
+
+P2seq := [-2*T , -T , -4 , 2 , 4 , 4 , 2 , 2, 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 16581375;
+D :=  CMdisc(jP2);
+assert D eq -28;
+
+assert w107(P1) eq P1c;
+assert w107(P2) eq P2c;
+
+///////////
+
+K<T> := QuadraticField(-2);
+
+P3seq := [-2*T , 0 , -2 , 1 , 1 , 1 , 1 , 1 , 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 8000;
+D :=  CMdisc(jP3);
+assert D eq -8;
+
+assert w107(P3) eq P3c;
+
+///////////
+
+K<T> := QuadraticField(-43);
+
+P4seq := [0 , -T , 3 , -2 , 1 , -2 , 0 , -1 , 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq -884736000;
+D :=  CMdisc(jP4);
+assert D eq -43;
+
+assert w107(P4) eq P4c;
+
+///////////
+
+K<T> := QuadraticField(-67);
+
+P5seq := [-2*T , -T , -5 , 6 , 9 , 8 , 4 , 3 , 1];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq -147197952000;
+D :=  CMdisc(jP5);
+assert D eq -67;
+
+assert w107(P5) eq P5c;
+
+print "P1 coordinates:", P1, "where T^2 =", dd(P1), "and j-invariant =", jP1, "and CM by", CMdisc(jP1);
+print "P2 coordinates:", P2, "where T^2 =", dd(P2), "and j-invariant =", jP2, "and CM by", CMdisc(jP2);
+print "P3 coordinates:", P3, "where T^2 =", dd(P3), "and j-invariant =", jP3, "and CM by", CMdisc(jP3);
+print "P4 coordinates:", P4, "where T^2 =", dd(P4), "and j-invariant =", jP4, "and CM by", CMdisc(jP4);
+print "P5 coordinates:", P5, "where T^2 =", dd(P5), "and j-invariant =", jP5, "and CM by", CMdisc(jP5);
+print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////
 //// N = 109 ////
 /////////////////
 
@@ -1249,6 +1341,123 @@ print "P5 coordinates:", P5, "where T^2 =", dd(P5), "and j-invariant =", jP5, "a
 print "P6 coordinates:", P6, "where T^2 =", dd(P6), "and j-invariant =", jP6, "and CM by", CMdisc(jP6);
 print "P7 coordinates:", P7, "where T^2 =", dd(P7), "and j-invariant =", jP7, "and CM by", CMdisc(jP7);
 print "P8 coordinates:", P8, "where T^2 =", dd(P8), "and j-invariant =", jP8, "and CM by", CMdisc(jP8);
+print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////
+//// N = 113 ////
+/////////////////
+
+N := 113;
+print "N =", N;
+X, ws := eqs_quos(N,[]);
+al_inds := [m : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1];
+print "Model:";
+X;
+for i in [1..#al_inds] do
+    m := al_inds[i];
+    print "w_",m, "is given by", DefiningEquations(ws[i]);
+end for;
+w113 := ws[1];
+j := jmap(X,N);
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P1seq := [-2*T , 0 , -2*T , -3 , 1 , 1 , 0 , 0 , 1];
+P1 := X(K) ! P1seq;
+P1c := X(K) ! conj(P1seq);
+jP1 := j(P1)[1];
+assert jP1 eq 287496;
+D :=  CMdisc(jP1);
+assert D eq -16;
+
+P2seq := [-12*T , -8*T , -4*T , -7 , 1 , 3 , 4 , 2 , 1];
+P2 := X(K) ! P2seq;
+P2c := X(K) ! conj(P2seq);
+jP2 := j(P2)[1];
+assert jP2 eq 1728;
+D :=  CMdisc(jP2);
+assert D eq -4;
+
+assert w113(P1) eq P1c;
+assert w113(P2) eq P2c;
+
+///////////
+
+K<T> := QuadraticField(-7);
+
+P3seq := [-2*T , -T , -2*T , -2 , 2 , 0 , -1 , 0 , 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq 16581375;
+D :=  CMdisc(jP3);
+assert D eq -28;
+
+P4seq := [0 , -T , 0 , -2 , 0 , 0 , 1 , 0 , 1];
+P4 := X(K) ! P4seq;
+P4c := X(K) ! conj(P4seq);
+jP4 := j(P4)[1];
+assert jP4 eq -3375;
+D :=  CMdisc(jP4);
+assert D eq -7;
+
+assert w113(P3) eq P3c;
+assert w113(P4) eq P4c;
+
+///////////
+
+K<T> := QuadraticField(-11);
+
+P5seq := [-T , -T , 0 , -1 , 1 , 1 , 1 , 1 , 0];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq -32768;
+D :=  CMdisc(jP5);
+assert D eq -11;
+
+assert w113(P5) eq P5c;
+
+///////////
+
+K<T> := QuadraticField(-163);
+
+P6seq := [-6*T , -3*T , -T , 21/2 , 22 , 35/2 , 23/2 , 5 , 1];
+P6 := X(K) ! P6seq;
+P6c := X(K) ! conj(P6seq);
+jP6 := j(P6)[1];
+assert jP6 eq -262537412640768000;
+D :=  CMdisc(jP6);
+assert D eq -163;
+
+assert w113(P6) eq P6c;
+
+///////////
+
+K<T> := QuadraticField(-2);
+
+P7seq := [-4*T , -2*T , -2*T , -1 , 0 , 1 , 1 , 0 , 0];
+P7 := X(K) ! P7seq;
+P7c := X(K) ! conj(P7seq);
+jP7 := j(P7)[1];
+assert jP7 eq 8000;
+D :=  CMdisc(jP7);
+assert D eq -8;
+
+assert w113(P7) eq P7c;
+
+print "P1 coordinates:", P1, "where T^2 =", dd(P1), "and j-invariant =", jP1, "and CM by", CMdisc(jP1);
+print "P2 coordinates:", P2, "where T^2 =", dd(P2), "and j-invariant =", jP2, "and CM by", CMdisc(jP2);
+print "P3 coordinates:", P3, "where T^2 =", dd(P3), "and j-invariant =", jP3, "and CM by", CMdisc(jP3);
+print "P4 coordinates:", P4, "where T^2 =", dd(P4), "and j-invariant =", jP4, "and CM by", CMdisc(jP4);
+print "P5 coordinates:", P5, "where T^2 =", dd(P5), "and j-invariant =", jP5, "and CM by", CMdisc(jP5);
+print "P6 coordinates:", P6, "where T^2 =", dd(P6), "and j-invariant =", jP6, "and CM by", CMdisc(jP6);
+print "P7 coordinates:", P7, "where T^2 =", dd(P7), "and j-invariant =", jP7, "and CM by", CMdisc(jP7);
 print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
 
 ////////////////////////////////////////////////////////////////////////////////
