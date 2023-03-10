@@ -86,45 +86,49 @@ assert w29(P2) eq P2c;
 assert w58(P2) eq P1c;
 assert w2(P1c) eq P2c;
 
-P3seq := [0, 0, 0, T, 1, 1];
-P3 := X(K) ! P3seq;
-P3c := X(K) ! conj(P3seq);
-jP3 := j(P3)[1];
-assert jP3 eq 1728;
-D :=  CMdisc(jP3);
-assert D eq -4;
-
-assert w29(P3) eq P3c;
-assert w58(P3) eq P3c;
-assert w2(P3) eq P3;
-assert w2(P3c) eq P3c;
-
 ///////////
 
 K<T> := QuadraticField(-7);
 
-P4seq := [1/3*T, 0, 1/3, 1/3*T, 4/3, 1];
+P3seq := [1/3*T, 0, 1/3, 1/3*T, 4/3, 1];
+P3 := X(K) ! P3seq;
+P3c := X(K) ! conj(P3seq);
+jP3 := j(P3)[1];
+assert jP3 eq -3375;
+D :=  CMdisc(jP3);
+assert D eq -7;
+
+P4seq := [1/3*T, 0, -1/3, -1/3*T, 4/3, 1];
 P4 := X(K) ! P4seq;
 P4c := X(K) ! conj(P4seq);
 jP4 := j(P4)[1];
-assert jP4 eq -3375;
+assert jP4 eq 16581375;
 D :=  CMdisc(jP4);
-assert D eq -7;
+assert D eq -28;
 
-P5seq := [1/3*T, 0, -1/3, -1/3*T, 4/3, 1];
+assert w29(P3) eq P3c;
+assert w2(P3) eq P4c;
+assert w58(P3) eq P4;
+assert w29(P4) eq P4c;
+assert w2(P4) eq P3c;
+assert w58(P3c) eq P4c;
+
+///////////
+
+K<T> := QuadraticField(-1);
+
+P5seq := [0, 0, 0, T, 1, 1];
 P5 := X(K) ! P5seq;
 P5c := X(K) ! conj(P5seq);
 jP5 := j(P5)[1];
-assert jP5 eq 16581375;
+assert jP5 eq 1728;
 D :=  CMdisc(jP5);
-assert D eq -28;
+assert D eq -4;
 
-assert w29(P4) eq P4c;
-assert w2(P4) eq P5c;
-assert w58(P4) eq P5;
 assert w29(P5) eq P5c;
-assert w2(P5) eq P4c;
-assert w58(P4c) eq P5c;
+assert w58(P5) eq P5c;
+assert w2(P5) eq P5;
+assert w2(P5c) eq P5c;
 
 ///////////
 
