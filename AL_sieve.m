@@ -3,13 +3,11 @@
 
 load "AL_sieve_auxiliary.m";
 
-for N in [74, 85, 97, 103, 109, 121, 127] do
+for N in [74, 85, 97, 103, 107, 109, 113, 121, 127] do
     // Choose appropriate AL index, d. 
     // The main function will verify the equal rank criterion.
     if N eq 74 then 
         dd := 37;
-    elif N eq 86 then 
-        dd := 43;
     else 
         dd := N;
     end if;
@@ -22,12 +20,6 @@ for N in [74, 85, 97, 103, 109, 121, 127] do
         P1 := <K7, [-1, 0, 0, 1/r7, 2/r7, -2/r7, 1/r7, 1]>;
         P2 := <K7, [-1, 0, 0, -1/r7, 2/r7, -2/r7, 1/r7, -1]>;
         nonpbs := [P1, P2];
-    elif N eq 86 then    
-        K7<r7> := QuadraticField(-7);
-        P1 := <K7, [-1, (-1/7)*r7, 0, (1/7)*r7, (1/7)*r7, (1/7)*r7, (-1/7)*r7, (-1/7)*r7, 1, 1]>;
-        P2 := <K7, [1, (1/7)*r7, 0, (-1/7)*r7, (-1/7)*r7, (1/7)*r7, (-1/7)*r7, (-1/7)*r7, 1, 1]>;
-        nonpbs := [P1, P2];
-        // can also include 7 as a 'bad prime' for N = 86 to speed up the sieving computation if desired.
     else 
         nonpbs := [];
     end if;       
