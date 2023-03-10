@@ -15,7 +15,7 @@ load  "models_and_maps.m";
 
 // X is a model for X_0(N) (obtained from eqs_quos) (non-hyperelliptic genus > 2)
 // j is the j map on this model to P^1 (obtained from jmap)
-// jinv is the j-invariant of the point of interest
+// jinv is the j-invariant of the point of interest. This must be a rational j-invariant.
 // K is the quadratic field over which the point is defined
 
 // Output: Points with j-invariant jinv defined over K on X
@@ -148,7 +148,17 @@ The coordinates of the point are: [ 2*w, -1, 1, 0, 3, 1 ]
 The j-invariant of the point is: 287496
 The corresponding elliptic curve has CM by an order of discriminant: -16
 
-We have found a point over Q(w), where w^2= -1
+We have found a potime for i:= 1 to #j68 do
+192
+    d:=SquareFreeFactorization(Integers()!j68[i,2]);
+193
+    K<w>:=QuadraticField(d);
+194
+    K, coords_jK(X,j,K!(j68[i,1]),K);
+195
+end for;
+196
+int over Q(w), where w^2= -1
 The coordinates of the point are: [ -2*w, 1, -1, 0, 3, 1 ]
 The j-invariant of the point is: 1728
 The corresponding elliptic curve has CM by an order of discriminant: -4
@@ -175,100 +185,96 @@ The corresponding elliptic curve has CM by an order of discriminant: -4
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* The list of CM points below has been sent to us by P. L. Clark, T. Genao, P. Pollack, and F. Saia, and can be obtained from their paper. 
-See also: https://github.com/tgenao/least-cm-degree
+// We now consider the cases 68 and 76.
 
-The N'th element in this list has the form [* N, d_{CM}(X_0(N)), [ orders ] *], where [ orders ] is the complete sequence of imaginary quadratic orders O such that O minimizes d_{CM}(X_0(N)), i.e., d_{O,CM}(X_0(N)) = d_{CM}(X_0(N)). 
+// 68 //
 
-The orders O are given in the form [f, d_K, h(O)] := [conductor, fundamental discriminant, class number of O] -- the class number is only included for convenience. */
-
-
-t68:=[* 68, 2,
-    [   [ 1, -4, 1 ],
-        [ 2, -4, 1 ]
-    ]
-*];
-
-
-t76:=[* 76, 2,
-    [
-        [ 2, -3, 1 ]
-    ]
-*];
-
-// there are no degree 2 CM points on X0(108)
-
-ComputejInvs:= function(A);
-    n:=#A[3];
-    ret:=[];
-    for i:=1 to n do 
-	    B:=A[3,i];
-	    D:=B[2]*B[1]^2;
-	    j:=Round(jInvariant(BinaryQuadraticForms(D)!1));
-	    ret:= Append(ret, [j, D]);
-    end for;
-    return ret;
-end function;
-
-//this gives us the CM j-invariants which correspond to quadratic points on X_0(68)
-j68:=ComputejInvs(t68); 
-/* returns
-[
-    [ 1728, -4 ],
-    [ 287496, -16 ]
-]
-*/
-// now we want to determine a model for X_0(68) and the coordinates of corresponding points
 X:=eqs_quos(68,[]);
-"Nice model for X0(68) is:";
-X;
 j:=jmap(X,68);
-time for i:= 1 to #j68 do
-    d:=SquareFreeFactorization(Integers()!j68[i,2]);
-    K<w>:=QuadraticField(d);
-    K, coords_jK(X,j,K!(j68[i,1]),K);
-end for;
 
+// We have the following pairs of rational j-invariants and quadratic fields (represented by an integer d) from Ozman-Siksek's classification of quadratic points on X_0(34).
+
+pairs := [<287496, -1>, 
+	  <1728, -1>,
+	  <8000, -8>];
+
+for pair in pairs do
+    jinv := pair[1];
+    d := pair[2];
+    K<T> := QuadraticField(d);
+    pts := coords_jK(X, j, jinv, K);
+    if pts eq {@ @} then 
+        print "No quadratic points with j-invariant", jinv, "defined over", K;
+    else 
+	print "Quadratic points with j-invariant", jinv, "defined over", K, "have coordinates", pts, "where T^2 = ", d;
+        _, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jinv));
+        print "These quadratic points have CM by", D;
+    end if;
+    print "+++";
+end for;
+    
 /* Output:
-Quadratic Field with defining polynomial $.1^2 + 1 over the Rational Field
-{@ (-w : -1 : 0 : 0 : 0 : -1/2*w : 1), (w : -1 : 0 : 0 : 0 : 1/2*w : 1) @}
-Quadratic Field with defining polynomial $.1^2 + 1 over the Rational Field
-{@ (0 : 0 : 0 : 0 : -1/2*w : -1/4*w : 1), (0 : 0 : 0 : 0 : 1/2*w : 1/4*w : 1),
-(-w : 1 : 0 : 0 : 0 : 1/2*w : 1), (w : 1 : 0 : 0 : 0 : -1/2*w : 1) @}
-Time: 173.390
+Quadratic points with j-invariant 287496 defined over Quadratic Field with 
+defining polynomial $.1^2 + 1 over the Rational Field
+have coordinates {@ (0 : 0 : 0 : 0 : -1/2*T : -1/4*T : 1), (0 : 0 : 0 : 0 : 
+    1/2*T : 1/4*T : 1), (-T : 1 : 0 : 0 : 0 : 1/2*T : 1), (T : 1 : 0 : 0 : 0 : 
+-1/2*T : 1) @}
+where T^2 =  -1
+These quadratic points have CM by -16
++++
+Quadratic points with j-invariant 1728 defined over Quadratic Field with 
+defining polynomial $.1^2 + 1 over the Rational Field
+have coordinates {@ (-T : -1 : 0 : 0 : 0 : -1/2*T : 1), (T : -1 : 0 : 0 : 0 : 
+    1/2*T : 1) @}
+where T^2 =  -1
+These quadratic points have CM by -4
++++
+No quadratic points with j-invariant 8000 defined over Quadratic Field with 
+defining polynomial $.1^2 + 2 over the Rational Field
++++
 */
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// The case N=76 remains. We now deal with it 
+// 76 //
 
 X:=eqs_quos(76,[]);
-"Nice model for X0(76) is:";
-X;
 j:=jmap(X,76);
-j76:=ComputejInvs(t76); 
-/* returns:
 
-[
-    [ 54000, -12 ]
-]
+// We have the following pairs of j-invariants and quadratic fields (represented by an integer d) from Ozman-Siksek's classification of quadratic points on X_0(34).
 
-*/
-time for i:= 1 to #j76 do
-    d:=SquareFreeFactorization(Integers()!j76[i,2]);
-    K<w>:=QuadraticField(d);
-    K, coords_jK(X,j,K!j76[i,1],K);
+pairs := [<0, -3>, 
+	  <54000, -3>,
+	  <8000, -2>];
+
+for pair in pairs do
+    jinv := pair[1];
+    d := pair[2];
+    K<T> := QuadraticField(d);
+    pts := coords_jK(X, j, jinv, K);
+    if pts eq {@ @} then 
+        print "No quadratic points with j-invariant", jinv, "defined over", K;
+    else 
+	print "Quadratic points with j-invariant", jinv, "defined over", K, "have coordinates", pts, "where T^2 = ", d;
+        _, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jinv));
+        print "These quadratic points have CM by", D;
+    end if;
+    print "+++";
 end for;
-
-/* Output
-Quadratic Field with defining polynomial $.1^2 + 3 over the Rational Field
-{@ (-1 : 0 : 0 : -1/3*w : 0 : 1/3*w : 2 : 1), (-1 : 0 : 0 : 1/3*w : 0 : -1/3*w :
-2 : 1), (1 : 0 : 0 : -1/3*w : 0 : -1/3*w : 2 : 1), (1 : 0 : 0 : 1/3*w : 0 : 
-    1/3*w : 2 : 1) @}
-Time: 18.070
+    	
+/* Output:
+No quadratic points with j-invariant 0 defined over Quadratic Field with 
+defining polynomial $.1^2 + 3 over the Rational Field
++++
+Quadratic points with j-invariant 54000 defined over Quadratic Field with 
+defining polynomial $.1^2 + 3 over the Rational Field
+have coordinates {@ (-1 : 0 : 0 : -1/3*T : 0 : 1/3*T : 2 : 1), (-1 : 0 : 0 : 
+    1/3*T : 0 : -1/3*T : 2 : 1), (1 : 0 : 0 : -1/3*T : 0 : -1/3*T : 2 : 1), (1 :
+0 : 0 : 1/3*T : 0 : 1/3*T : 2 : 1) @}
+where T^2 =  -3
+These quadratic points have CM by -12
++++
+No quadratic points with j-invariant 8000 defined over Quadratic Field with 
+defining polynomial $.1^2 + 2 over the Rational Field
 */
-
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
