@@ -239,7 +239,7 @@ defining polynomial $.1^2 + 2 over the Rational Field
 X:=eqs_quos(76,[]);
 j:=jmap(X,76);
 
-// We have the following pairs of j-invariants and quadratic fields (represented by an integer d) from Ozman-Siksek's classification of quadratic points on X_0(34).
+// We have the following pairs of j-invariants and quadratic fields (represented by an integer d) from Ozman-Siksek's classification of quadratic points on X_0(38).
 
 pairs := [<0, -3>, 
 	  <54000, -3>,
