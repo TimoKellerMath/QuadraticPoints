@@ -1,16 +1,22 @@
 // The code in this file is used to compute pullbacks of rational points on Atkin-Lehner quotients
 // The functions are not called by any other file in the repository
 // but the output of these functions can serve as input for the AL_sieve.m file
+// as well as to simply provide the quadratic point data for our curves
+
+// We compute all pullbacks for the levels N in L3 (levels for which we apply the AL sieve)
+// We list all the pullback points together with their j-invariants and CM discriminants (when applicable)
+// The output of this file is available in the file "pullbacks.out" available in the output_files folder
+// The data obtained in this file is then reverified (together with further checks) using the file "verifications.m".
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
 load "models_and_maps.m";
 
-// This code searches for rational points on AL quotients of X_0(N) 
+// This code searches for rational points on AL quotients of X_0(N)
 // and pulls them back to quadratic points on X_0(N).
 
-// See EXAMPLES at end of file.
+// See loop below and the further examples at end of file.
 
 // When we discuss quadratic points here we mean true quadratic points (i.e. not sums of rational points)
 // We ouptut a quadratic point on a curve X / Q as a tuple.
@@ -29,7 +35,7 @@ equal_quad_points := function(tup1, tup2);
     pt1 := Eltseq(tup1[1][1]);
     pt2 := Eltseq(tup2[1][1]);
     for i in [1..#pt1] do
-        if MinimalPolynomial(pt1[i]) ne MinimalPolynomial(pt2[i]) then 
+        if MinimalPolynomial(pt1[i]) ne MinimalPolynomial(pt2[i]) then
             return false;
         end if;
     end for;
@@ -44,7 +50,7 @@ end function;
 // 1. A curve X = X_0(N) (obtained from the function eqs_quos in the new_models.m file)
 // 2. pairs (a sequence of AL quotients and the quotient maps, obtained from eqs_quos)
 // 3. The level (N)
-// 4. A height bound for the rational point search on the quotient (I use 10000 for most examples)
+// 4. A height bound for the rational point search on the quotient (reasonable to use 10000 for most examples)
 
 // Output: A list of quadratic points
 
@@ -57,30 +63,49 @@ pullback_points := function(X, pairs, N, bound);
         pair := pairs[i];
         Y := pair[1];
         rho := pair[2];
-        if Genus(Y) eq 0 then 
+        if Genus(Y) eq 0 then
             continue;
-        elif IsHyperelliptic(Y) or Genus(Y) eq 1 then 
+        elif IsHyperelliptic(Y) or Genus(Y) eq 1 then
             rat_pts := Points(Y : Bound := bound);
         else rat_pts := PointSearch(Y, bound);
         end if;
-        BS := BaseScheme(rho); 
-        for R in rat_pts do 
+        BS := BaseScheme(rho);
+        for R in rat_pts do
             S := Pullback(rho,R); // The pullback scheme (including base scheme)
             D := Difference(S, BS); // The pullback scheme (not including base scheme)
             pb, K1 := PointsOverSplittingField(D);
             K := NumberField(AbsolutePolynomial(K1));
             if Degree(K) eq 2 then // we look for a nicer defining polynomial for K
                 d := Discriminant(Integers(K));
-                if (d mod 4) eq 0 then 
+                if (d mod 4) eq 0 then
                     d := Integers() ! (d/4);
                 end if;
                 T<z> := PolynomialRing(Rationals());
                 K := NumberField(z^2 - d);  // K has now been redefined in a nicer form.
             end if;
             pbK := Points(Intersection(X,D),K);
-            pbX := < [X(K) ! p : p in pbK | IsRationalPoint(p) eq false], K>; // do not include rational points. 
-            if #pbX[1] ne 0 then 
+            pbX := < [X(K) ! p : p in pbK | IsRationalPoint(p) eq false], K>; // do not include rational points.
+            if #pbX[1] eq 2 then // a pair of quadratic points
                 point_list := point_list cat [* pbX *];
+            elif #pbX[1] gt 2 then // extra points picked up from base scheme, repeat process with radicals
+                radBS := Scheme(AmbientSpace(BS), Radical(Ideal(BS)));
+                radS := Scheme(AmbientSpace(S), Radical(Ideal(S)));
+                D := Difference(radS, radBS);
+                pb, K1 := PointsOverSplittingField(D);
+                K := NumberField(AbsolutePolynomial(K1));
+                if Degree(K) eq 2 then // we look for a nicer defining polynomial for K
+                    d := Discriminant(Integers(K));
+                    if (d mod 4) eq 0 then
+                        d := Integers() ! (d/4);
+                    end if;
+                    T<z> := PolynomialRing(Rationals());
+                    K := NumberField(z^2 - d);  // K has now been redefined in a nicer form.
+                end if;
+                pbK := Points(Intersection(X,D),K);
+                pbX := < [X(K) ! p : p in pbK | IsRationalPoint(p) eq false], K>;
+                if #pbX[1] eq 2 then // a pair of quadratic points
+                    point_list := point_list cat [* pbX *];
+                end if;
             end if;
         end for;
     end for;
@@ -88,52 +113,74 @@ pullback_points := function(X, pairs, N, bound);
     remov_indices := [];
     for i in [1..#point_list] do
         for j in [1..#point_list] do
-            if j gt i then 
-                if equal_quad_points(point_list[i],point_list[j]) then 
+            if j gt i then
+                if equal_quad_points(point_list[i],point_list[j]) then
                     remov_indices := remov_indices cat [j];
                 end if;
             end if;
         end for;
-    end for; 
-    no_rep_point_list := [*point_list[i] : i in [1..#point_list] | i notin remov_indices*];     
+    end for;
+    no_rep_point_list := [*point_list[i] : i in [1..#point_list] | i notin remov_indices*];
     return no_rep_point_list;
 end function;
 
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+// For each curve for which we apply the AL sieve, we can list the pullback points we obtain.
+// We may also list the j-invariant of each point, and its CM discriminant if appropriate
+
+for N in [74, 85, 97, 103, 107, 109, 113, 121, 127] do
+    print "N =", N;
+    al_seq := [ [m] : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1]; // all AL involutions
+    X, _, pairs := eqs_quos(N, al_seq);
+    bound := 10000;
+    pullbacks := pullback_points(X,pairs,N, bound);
+    print "Number of pairs of quadratic points found as pullbacks =", #pullbacks;
+    print "++++++++++++++++++";
+    j := jmap(X,N);
+    for tup in pullbacks do
+        K<T> := tup[2];
+        P := X(K) ! Eltseq(tup[1][1]);
+        T2 := -Coefficient(DefiningPolynomial(Ring(Parent(P))),0); // T^2 = this
+        jP := j(P)[1];
+        tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP));
+        if tf then
+print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and CM by", D;
+        else
+print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and no CM";
+        end if;
+    end for;
+    print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+end for;
+
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 /*
-
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-// EXAMPLES //
+// Further Examples //
 
 // Example 1
-
-// We consider the curve X_0(34). 
+// We consider the curve X_0(34).
 // This curve has 3 AL quotients.
 // Each is an elliptic curve of rank 0.
 // From the table in Ozman--Siksek, there are 6 (pairs of) pullback quadratic points.
 // (These are in fact all the quadratic points).
-
 N := 34;
 al_seq := [ [m] : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1]; // AL indices are 2, 17, and 34
 X, _, pairs := eqs_quos(N, al_seq);
 bound := 10000;
-
 time pullbacks := pullback_points(X,pairs,N, bound); // 0.3 seconds
 assert #pullbacks eq 6;
 // Note that we have removed any repetitions from this list of points.
 // If we had not done this we would have two pairs of repeated quadratic points
-
 // We now check that the field of definition and j invariant of these points match the data in the Ozman--Siksek table.
-
 j := jmap(X,N);
 for quad_pt in pullbacks do
     quad_pt[2]; // The field of definition
     j(quad_pt[1][1]);
 end for;
-
 // Output: (this matches the known data)
-
 // Number Field with defining polynomial z^2 + 15 over the Rational Field
 // (1/34359738368*(-53184785340479*$.1 - 7319387769191) : 1)
 // Number Field with defining polynomial z^2 + 15 over the Rational Field
@@ -146,26 +193,20 @@ end for;
 // (1728 : 1)
 // Number Field with defining polynomial z^2 + 1 over the Rational Field
 // (1728 : 1)
-
-
 // Note that the coordinates of the points are different to those in the Ozman--Siksek table.
 // This is because our model for the curve is different.
 
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-
 // Example 2
-        
-// The curve X_0(74) has both hyperelliptic and non-hyperelliptic quotients.
 
+// The curve X_0(74) has both hyperelliptic and non-hyperelliptic quotients.
 N := 74;
 al_seq := [ [m] : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1];
 X, _, pairs := eqs_quos(N, al_seq);
 bound := 10000;
-
-time pullbacks := pullback_points(X,pairs,N, bound); // 15 seconds 
-assert #pullbacks eq 11;
-
+time pullbacks := pullback_points(X,pairs,N, bound); // 20 seconds
+assert #pullbacks eq 10;
 // Let's see how to access the coordinates of a point:
 P := pullbacks[1][1][1];
 seqP := Eltseq(P);
@@ -183,49 +224,35 @@ MinimalPolynomial(c*(-74/5)); // z^2-37, as expected, since c = (-5/74)*$.1
 
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-
 // Example 3
-
 // We consider an example of larger genus
 
 N := 163;
 al_seq := [[163]];
 X,_,pairs := eqs_quos(N,al_seq);
 bound := 1000;
-
 time pullbacks := pullback_points(X,pairs,N, bound); //15 seconds
 
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-
 // Example 4
-
 N := 60;
 al_seq := [ [m] : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1];
 X, _, pairs := eqs_quos(N, al_seq);
 bound := 10000;
-
 time pullbacks := pullback_points(X,pairs,N, bound); // 23 seconds
-
 // In this case, all the pullbacks are rational points on X_0(60)
 // This is not so suprising since X_0(60) has 12 rational points (the 12 cusps).
 // In fact, by Najman--Vukorepa, there are no quadratic points at all.
-assert pullbacks eq [* *]; 
-
-
+assert pullbacks eq [* *];
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-
 // Example 5
-
 N := 85;
 al_seq := [ [m] : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1];
 X, _, pairs := eqs_quos(N, al_seq);
 bound := 10000;
-
 time pullbacks := pullback_points(X,pairs,N, bound); // 14 seconds
-
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-
 */
