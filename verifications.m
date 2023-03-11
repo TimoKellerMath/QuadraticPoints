@@ -1382,12 +1382,22 @@ assert jP4 eq -3375;
 D :=  CMdisc(jP4);
 assert D eq -7;
 
+P5seq := [0,T,-1,2,1,1];
+P5 := X(K) ! P5seq;
+P5c := X(K) ! conj(P5seq);
+jP5 := j(P5)[1];
+assert jP5 eq 16581375;
+D :=  CMdisc(jP5);
+assert D eq -28;
+
 assert w121(P4) eq P4c;
+assert w121(P5) eq P5c;
 
 print "P1 coordinates:", P1, "where T^2 =", dd(P1), "and j-invariant =", jP1, "and CM by", CMdisc(jP1);
 print "P2 coordinates:", P2, "where T^2 =", dd(P2), "and j-invariant =", jP2, "and CM by", CMdisc(jP2);
 print "P3 coordinates:", P3, "where T^2 =", dd(P3), "and j-invariant =", jP3, "and CM by", CMdisc(jP3);
 print "P4 coordinates:", P4, "where T^2 =", dd(P4), "and j-invariant =", jP4, "and CM by", CMdisc(jP4);
+print "P5 coordinates:", P5, "where T^2 =", dd(P5), "and j-invariant =", jP5, "and CM by", CMdisc(jP5);
 print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
 
 ////////////////////////////////////////////////////////////////////////////////
