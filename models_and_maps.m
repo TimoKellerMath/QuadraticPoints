@@ -17,15 +17,15 @@
 
 // genus_quo : computes the genus of an AL quotient
 
-// atkinlehnersubgrp (auxiliary, Shiva) : find all AL indices in an AL subgroup
+// atkinlehnersubgrp (auxiliary) : find all AL indices in an AL subgroup
 
 // is_hyper_quo : test if an AL quotient is hyperelliptic
 
 // *** eqs_quos (main) *** : compute model for X_0(N), any quotients by AL groups, and the maps
 
-// is_bi_hyperelliptic (Filip) : tests if X_0(N) is bi-hyperelliptic
+// is_bi_hyperelliptic : tests if X_0(N) is bi-hyperelliptic
 
-// genera_quo (Filip) : computes genera of multiple AL quotients
+// genera_quo : computes genera of multiple AL quotients
 
 // change_basis_mat (auxiliary) : change of basis matrix for two bases of cuspforms
 
