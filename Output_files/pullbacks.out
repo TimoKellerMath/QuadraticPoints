@@ -1,0 +1,228 @@
+N = 74
+Number of pairs of quadratic points found as pullbacks = 10
+++++++++++++++++++
+P coordinates: (0 : -5/74*T : 1/37*T : -1/74*T : 0 : 0 : 0 : 1) where T^2 = 37 
+and j-invariant = 3260047059360000*T + 19830091900536000
+and CM by -148
+P coordinates: (-2 : T : 0 : -T : 1 : 0 : 1 : 0) where T^2 = -1 and j-invariant 
+= 287496
+and CM by -16
+P coordinates: (0 : 0 : 0 : 0 : -3/4*T : 1/2*T : -1/4*T : 1) where T^2 = -1 and 
+j-invariant = 1728
+and CM by -4
+P coordinates: (-T : -1/2 : 1/2 : 1/2 : -1/2*T : 1/2*T : -1/2*T : 1) where T^2 =
+-3 and j-invariant = 54000
+and CM by -12
+P coordinates: (T : 1/2 : -1/2 : -1/2 : -1/2*T : 1/2*T : -1/2*T : 1) where T^2 =
+-3 and j-invariant = 0
+and CM by -3
+P coordinates: (-T : 2 : 2 : -1 : 0 : 0 : -T : 1) where T^2 = -7 and j-invariant
+= 16581375
+and CM by -28
+P coordinates: (2 : T : 0 : -T : 1 : 0 : 1 : 0) where T^2 = -1 and j-invariant =
+1728
+and CM by -4
+P coordinates: (T : -2 : -2 : 1 : 0 : 0 : -T : 1) where T^2 = -7 and j-invariant
+= -3375
+and CM by -7
+P coordinates: (1 : 0 : 0 : 1/7*T : -2/7*T : 2/7*T : -1/7*T : 1) where T^2 = -7 
+and j-invariant = -3375
+and CM by -7
+P coordinates: (-1 : 0 : 0 : -1/7*T : -2/7*T : 2/7*T : -1/7*T : 1) where T^2 = 
+-7 and j-invariant = -3375
+and CM by -7
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 85
+Number of pairs of quadratic points found as pullbacks = 6
+++++++++++++++++++
+P coordinates: (-1 : 0 : -1/19*T : -2/19*T : 1/19*T : -2/19*T : 1) where T^2 = 
+-19 and j-invariant = -884736
+and CM by -19
+P coordinates: (-1/2 : -1/2 : 1/4*T : -1/2*T : 1/2*T : -1/4*T : 1) where T^2 = 
+-1 and j-invariant = 1728
+and CM by -4
+P coordinates: (-1/2 : -1/2 : 0 : 1/2*T : -1/2*T : 0 : 1) where T^2 = -1 and 
+j-invariant = 287496
+and CM by -16
+P coordinates: (1 : 0 : 1/19*T : 2/19*T : 1/19*T : -2/19*T : 1) where T^2 = -19 
+and j-invariant = -884736
+and CM by -19
+P coordinates: (1/2 : 1/2 : 0 : -1/2*T : -1/2*T : 0 : 1) where T^2 = -1 and 
+j-invariant = 287496
+and CM by -16
+P coordinates: (1/2 : 1/2 : -1/4*T : 1/2*T : 1/2*T : -1/4*T : 1) where T^2 = -1 
+and j-invariant = 1728
+and CM by -4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 97
+Number of pairs of quadratic points found as pullbacks = 9
+++++++++++++++++++
+P coordinates: (-6*T : -2*T : -2*T : -1 : 2 : -1 : 1) where T^2 = -1 and 
+j-invariant = 287496
+and CM by -16
+P coordinates: (-T : 0 : -T : -1 : 0 : 1 : 0) where T^2 = -3 and j-invariant = 
+    54000
+and CM by -12
+P coordinates: (-4*T : -4*T : -4*T : 1 : 0 : 1 : 1) where T^2 = -1 and 
+j-invariant = 1728
+and CM by -4
+P coordinates: (0 : -T : 0 : -3 : -1 : 3 : 1) where T^2 = -43 and j-invariant = 
+-884736000
+and CM by -43
+P coordinates: (-12/5*T : -T : -2/5*T : 37/5 : 11 : 13/5 : 1) where T^2 = -163 
+and j-invariant = -262537412640768000
+and CM by -163
+P coordinates: (-4*T : -2*T : -T : -1 : 2 : 0 : 1) where T^2 = -3 and 
+j-invariant = -12288000
+and CM by -27
+P coordinates: (-4*T : -2*T : -2*T : 1 : 0 : -1 : 1) where T^2 = -2 and 
+j-invariant = 8000
+and CM by -8
+P coordinates: (-T : -T : 0 : -2 : 1 : 1 : 1) where T^2 = -11 and j-invariant = 
+-32768
+and CM by -11
+P coordinates: (-3/2*T : -3*T : -3/2*T : 1/2 : -1 : 3/2 : 1) where T^2 = -3 and 
+j-invariant = 0
+and CM by -3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 103
+Number of pairs of quadratic points found as pullbacks = 7
+++++++++++++++++++
+P coordinates: (-T : -T : 1 : 0 : 0 : -1 : 0 : 1) where T^2 = -11 and 
+j-invariant = -32768
+and CM by -11
+P coordinates: (-T : -T : -2 : 1 : 2 : 1 : 1 : 1) where T^2 = -3 and j-invariant
+= 54000
+and CM by -12
+P coordinates: (-T : 0 : 3 : -4 : 5 : -1 : 3 : 1) where T^2 = -67 and 
+j-invariant = -147197952000
+and CM by -67
+P coordinates: (0 : -T : -2 : 1 : 0 : 1 : 1 : 0) where T^2 = -3 and j-invariant 
+= -12288000
+and CM by -27
+P coordinates: (0 : -T : -1 : 1 : 0 : 4 : 2 : 1) where T^2 = -43 and j-invariant
+= -884736000
+and CM by -43
+P coordinates: (-3*T : -T : 461 : 196 : 78 : 25 : 8 : 1) where T^2 = 2885 and 
+j-invariant = 669908635472124980731701532753920*T + 
+    35982263935929364331785036841779200
+and no CM
+P coordinates: (-3*T : -T : -4/3 : -1/3 : 2 : -1/3 : 5/3 : 1) where T^2 = -3 and
+j-invariant = 0
+and CM by -3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 107
+Number of pairs of quadratic points found as pullbacks = 5
+++++++++++++++++++
+P coordinates: (-2*T : 0 : -2 : 1 : 1 : 1 : 1 : 1 : 1) where T^2 = -2 and 
+j-invariant = 8000
+and CM by -8
+P coordinates: (0 : -T : 3 : -2 : 1 : -2 : 0 : -1 : 1) where T^2 = -43 and 
+j-invariant = -884736000
+and CM by -43
+P coordinates: (0 : -T : 0 : 0 : 0 : 0 : 0 : 0 : 1) where T^2 = -7 and 
+j-invariant = -3375
+and CM by -7
+P coordinates: (-2*T : -T : -4 : 2 : 4 : 4 : 2 : 2 : 1) where T^2 = -7 and 
+j-invariant = 16581375
+and CM by -28
+P coordinates: (-2*T : -T : -5 : 6 : 9 : 8 : 4 : 3 : 1) where T^2 = -67 and 
+j-invariant = -147197952000
+and CM by -67
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 109
+Number of pairs of quadratic points found as pullbacks = 8
+++++++++++++++++++
+P coordinates: (-T : -T : -T : 1 : -1 : 0 : 1 : 0) where T^2 = -7 and 
+j-invariant = -3375
+and CM by -7
+P coordinates: (-4*T : -4*T : -2*T : -2 : 1 : 0 : 0 : 1) where T^2 = -1 and 
+j-invariant = 287496
+and CM by -16
+P coordinates: (-1/2*T : -3/2*T : -1/2*T : -1/2 : -1/2 : 1 : -1/2 : 1) where T^2
+= -7 and j-invariant = 16581375
+and CM by -28
+P coordinates: (-T : -T : 0 : -1 : 0 : 1 : 0 : 0) where T^2 = -3 and j-invariant
+= 54000
+and CM by -12
+P coordinates: (0 : -T : -T : 0 : -1 : 0 : 1 : 0) where T^2 = -3 and j-invariant
+= -12288000
+and CM by -27
+P coordinates: (-T : -1/2*T : -1/2*T : -1 : 3/2 : -1 : 1/2 : 1) where T^2 = -43 
+and j-invariant = -884736000
+and CM by -43
+P coordinates: (-3/2*T : -5/2*T : -T : -3/2 : 1/3 : 1/2 : -1/3 : 1) where T^2 = 
+-3 and j-invariant = 0
+and CM by -3
+P coordinates: (0 : 0 : -4*T : 2 : -1 : -2 : 2 : 1) where T^2 = -1 and 
+j-invariant = 1728
+and CM by -4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 113
+Number of pairs of quadratic points found as pullbacks = 7
+++++++++++++++++++
+P coordinates: (-2*T : 0 : -2*T : -3 : 1 : 1 : 0 : 0 : 1) where T^2 = -1 and 
+j-invariant = 287496
+and CM by -16
+P coordinates: (-6*T : -3*T : -T : 21/2 : 22 : 35/2 : 23/2 : 5 : 1) where T^2 = 
+-163 and j-invariant = -262537412640768000
+and CM by -163
+P coordinates: (-12*T : -8*T : -4*T : -7 : 1 : 3 : 4 : 2 : 1) where T^2 = -1 and
+j-invariant = 1728
+and CM by -4
+P coordinates: (-2*T : -T : -2*T : -2 : 2 : 0 : -1 : 0 : 1) where T^2 = -7 and 
+j-invariant = 16581375
+and CM by -28
+P coordinates: (-4*T : -2*T : -2*T : -1 : 0 : 1 : 1 : 0 : 0) where T^2 = -2 and 
+j-invariant = 8000
+and CM by -8
+P coordinates: (0 : -T : 0 : -2 : 0 : 0 : 1 : 0 : 1) where T^2 = -7 and 
+j-invariant = -3375
+and CM by -7
+P coordinates: (-T : -T : 0 : -1 : 1 : 1 : 1 : 1 : 0) where T^2 = -11 and 
+j-invariant = -32768
+and CM by -11
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 121
+Number of pairs of quadratic points found as pullbacks = 5
+++++++++++++++++++
+P coordinates: (-T : -T : 2 : 0 : -1 : 1) where T^2 = -19 and j-invariant = 
+    -884736
+and CM by -19
+P coordinates: (-T : -T : 3 : 2 : 0 : 1) where T^2 = -43 and j-invariant = 
+    -884736000
+and CM by -43
+P coordinates: (-2*T : 0 : 1 : -1 : -1 : 1) where T^2 = -2 and j-invariant = 
+    8000
+and CM by -8
+P coordinates: (0 : -T : 1 : 0 : -1 : 1) where T^2 = -7 and j-invariant = -3375
+and CM by -7
+P coordinates: (0 : -T : -1 : 2 : 1 : 1) where T^2 = -7 and j-invariant = 
+    16581375
+and CM by -28
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+N = 127
+Number of pairs of quadratic points found as pullbacks = 7
+++++++++++++++++++
+P coordinates: (-4*T : -2*T : -T : -11 : 4 : 10 : 8 : 8 : 4 : 1) where T^2 = -67
+and j-invariant = -147197952000
+and CM by -67
+P coordinates: (-T : -T : 0 : -2 : 0 : 1 : 1 : 1 : 1 : 0) where T^2 = -3 and 
+j-invariant = 54000
+and CM by -12
+P coordinates: (-T : 0 : -T : -3 : 1 : 1 : 1 : 1 : 1 : 1) where T^2 = -3 and 
+j-invariant = -12288000
+and CM by -27
+P coordinates: (0 : -1/2*T : -1/2*T : -3 : 2 : 1/2 : -1/2 : 3/2 : 0 : 1) where 
+T^2 = -7 and j-invariant = 16581375
+and CM by -28
+P coordinates: (-2*T : -T : -T : -2 : 0 : 1 : 1 : 1 : 0 : 0) where T^2 = -7 and 
+j-invariant = -3375
+and CM by -7
+P coordinates: (-15/2*T : -9/2*T : -3*T : -3 : -2 : -1/2 : -1/2 : 5/2 : 5/2 : 1)
+where T^2 = -3 and j-invariant = 0
+and CM by -3
+P coordinates: (0 : -T : 0 : 3 : 1 : -2 : -1 : 0 : -2 : 1) where T^2 = -43 and 
+j-invariant = -884736000
+and CM by -43
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
