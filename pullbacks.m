@@ -146,6 +146,7 @@ for N in [58, 68, 74, 76, 80, 85, 97, 98, 100, 103, 107, 109, 113, 121, 127] do
         jP := j(P)[1];
         if jP eq 1 and j(P)[2] eq 0 then 
             print "P coordinates:", P, "where T^2 =", T2, "and the point is a cusp";
+            continue;
         end if;
         tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP));
         if tf then
