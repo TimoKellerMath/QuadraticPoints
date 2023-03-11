@@ -937,24 +937,39 @@ assert w103(P5) eq P5c;
 
 ///////////
 
-K<T> := QuadraticField(2885);
+K<T> := QuadraticField(-43);
 
-P6seq := [3*T, T, 461, 196, 78, 25, 8, 1];
+P6seq := [0 , T , -1 , 1 , 0 , 4 , 2 , 1];
 P6 := X(K) ! P6seq;
 P6c := X(K) ! conj(P6seq);
 jP6 := j(P6)[1];
-assert jP6 eq -669908635472124980731701532753920*T + 35982263935929364331785036841779200;
-tf := HasComplexMultiplication(EllipticCurveWithjInvariant(jP6));
-assert tf eq false;
+assert jP6 eq -884736000;
+D :=  CMdisc(jP6);
+assert D eq -43;
 
 assert w103(P6) eq P6c;
+
+///////////
+
+K<T> := QuadraticField(2885);
+
+P7seq := [3*T, T, 461, 196, 78, 25, 8, 1];
+P7 := X(K) ! P6seq;
+P7c := X(K) ! conj(P6seq);
+jP7 := j(P7)[1];
+assert jP7 eq -669908635472124980731701532753920*T + 35982263935929364331785036841779200;
+tf := HasComplexMultiplication(EllipticCurveWithjInvariant(jP7));
+assert tf eq false;
+
+assert w103(P7) eq P7c;
 
 print "P1 coordinates:", P1, "where T^2 =", dd(P1), "and j-invariant =", jP1, "and CM by", CMdisc(jP1);
 print "P2 coordinates:", P2, "where T^2 =", dd(P2), "and j-invariant =", jP2, "and CM by", CMdisc(jP2);
 print "P3 coordinates:", P3, "where T^2 =", dd(P3), "and j-invariant =", jP3, "and CM by", CMdisc(jP3);
 print "P4 coordinates:", P4, "where T^2 =", dd(P4), "and j-invariant =", jP4, "and CM by", CMdisc(jP4);
 print "P5 coordinates:", P5, "where T^2 =", dd(P5), "and j-invariant =", jP5, "and CM by", CMdisc(jP5);
-print "P6 coordinates:", P6, "where T^2 =", dd(P6), "and j-invariant =", jP6, "and no CM";
+print "P6 coordinates:", P6, "where T^2 =", dd(P6), "and j-invariant =", jP6, "and CM by", CMdisc(jP6);
+print "P7 coordinates:", P7, "where T^2 =", dd(P7), "and j-invariant =", jP7, "and no CM";
 print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
 
 ////////////////////////////////////////////////////////////////////////////////
