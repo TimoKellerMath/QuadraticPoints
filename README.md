@@ -11,7 +11,7 @@ The repository consists of the following files and folders:
 - AL_sieve_auxiliary.m.  Contains functions for the 'Atkin-Lehner sieve' method.
 - going_down.m. Main file for the 'going-down' method. Performs the computations.
 - models_and_maps.m.  This file contains code to compute models for X_0(N), quotient curves, quotient maps, j-maps and more.
-- pullbacks.m.   This file contains a function to search for quadratic points on a model of X_0(N) which arise as pullbacks of rational points on AL quotients.
+- pullbacks.m.   This file contains a function to search for quadratic points on a model of X_0(N) which arise as pullbacks of rational points on AL quotients. Also provides code to compute j-invariants and CM discriminants. 
 - rank_0.m. Main file for the 'rank 0' method. Performs the computations.
 - rank_0_auxiliary.m. Contains functions for the 'rank 0' method. This code is taken from the paper: Ozman-Siksek, Quadratic Points on Modular curves.
 - rank_calcs.m.  This file contains functions for computing the ranks over Q of J_0(N) and its quotients.
