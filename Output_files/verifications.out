@@ -31,12 +31,22 @@ w_ 58 is given by [
     x[5],
     x[6]
 ]
-P1 coordinates: (-2*T : 1 : -1 : 0 : 3 : 1) where T^2 = -1 and j-invariant = 1728 and CM by -4
-P2 coordinates: (2*T : -1 : 1 : 0 : 3 : 1) where T^2 = -1 and j-invariant = 287496 and CM by -16
-P3 coordinates: (1/3*T : 0 : 1/3 : 1/3*T : 4/3 : 1) where T^2 = -7 and j-invariant = -3375 and CM by -7
-P4 coordinates: (1/3*T : 0 : -1/3 : -1/3*T : 4/3 : 1) where T^2 = -7 and j-invariant = 16581375 and CM by -28
-P5 coordinates: (0 : 0 : 0 : T : 1 : 1) where T^2 = -1 and j-invariant = 1728 and CM by -4
-P6 coordinates: (0 : -5/29*T : -1/29*T : 1 : 0 : 0) where T^2 = 29 and j-invariant = -56147767009798464000*T + 302364978924945672000 and CM by -232
+P1 coordinates: (-2*T : 1 : -1 : 0 : 3 : 1) where T^2 = -1 and j-invariant = 
+    1728 and CM by -4
+P2 coordinates: (2*T : -1 : 1 : 0 : 3 : 1) where T^2 = -1 and j-invariant = 
+    287496 and CM by -16
+P3 coordinates: (1/3*T : 0 : 1/3 : 1/3*T : 4/3 : 1) where T^2 = -7 and 
+j-invariant = -3375 and CM by -7
+P4 coordinates: (1/3*T : 0 : -1/3 : -1/3*T : 4/3 : 1) where T^2 = -7 and 
+j-invariant = 16581375 and CM by -28
+P5 coordinates: (0 : 0 : 0 : T : 1 : 1) where T^2 = -1 and j-invariant = 1728 
+and CM by -4
+P6 coordinates: (0 : -5/29*T : -1/29*T : 1 : 0 : 0) where T^2 = 29 and 
+j-invariant = -56147767009798464000*T + 302364978924945672000 and CM by -232
+P7 coordinates: (1 : -2/7*T : 1/7*T : -1/7*T : 2 : 1) where T^2 = -7 and 
+j-invariant = -3375 and CM by -7
+P8 coordinates: (-1 : 2/7*T : -1/7*T : -1/7*T : 2 : 1) where T^2 = -7 and 
+j-invariant = -3375 and CM by -7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 N = 68
 Model:
