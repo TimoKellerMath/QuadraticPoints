@@ -144,6 +144,9 @@ for N in [58, 68, 74, 76, 80, 85, 97, 98, 100, 103, 107, 109, 113, 121, 127] do
         P := X(K) ! Eltseq(tup[1][1]);
         T2 := -Coefficient(DefiningPolynomial(Ring(Parent(P))),0); // T^2 = this
         jP := j(P)[1];
+        if jP eq 1 and j(P)[2] eq 0 then 
+            print "P coordinates:", P, "where T^2 =", T2, "and the point is a cusp";
+        end if;
         tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP));
         if tf then
             print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and CM by", D;
