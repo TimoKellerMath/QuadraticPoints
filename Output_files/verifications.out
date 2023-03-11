@@ -576,6 +576,7 @@ P1 coordinates: (T : T : 2 : 0 : -1 : 1) where T^2 = -19 and j-invariant = -8847
 P2 coordinates: (T : T : 3 : 2 : 0 : 1) where T^2 = -43 and j-invariant = -884736000 and CM by -43
 P3 coordinates: (2*T : 0 : 1 : -1 : -1 : 1) where T^2 = -2 and j-invariant = 8000 and CM by -8
 P4 coordinates: (0 : T : 1 : 0 : -1 : 1) where T^2 = -7 and j-invariant = -3375 and CM by -7
+P5 coordinates: (0 : T : -1 : 2 : 1 : 1) where T^2 = -7 and j-invariant = 16581375 and CM by -28
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 N = 127
 Model:
