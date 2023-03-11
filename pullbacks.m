@@ -146,9 +146,9 @@ for N in [74, 85, 97, 103, 107, 109, 113, 121, 127] do
         jP := j(P)[1];
         tf, D := HasComplexMultiplication(EllipticCurveWithjInvariant(jP));
         if tf then
-print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and CM by", D;
+            print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and CM by", D;
         else
-print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and no CM";
+            print "P coordinates:", P, "where T^2 =", T2, "and j-invariant =", jP, "and no CM";
         end if;
     end for;
     print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
