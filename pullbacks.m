@@ -3,7 +3,7 @@
 // but the output of these functions can serve as input for the AL_sieve.m file
 // as well as to simply provide the quadratic point data for our curves
 
-// We compute all pullbacks for the levels N in L3 (levels for which we apply the AL sieve)
+// We compute all pullbacks for the levels N in L (levels we consider)
 // We list all the pullback points together with their j-invariants and CM discriminants (when applicable)
 // The output of this file is available in the file "pullbacks.out" available in the output_files folder
 // The data obtained in this file is then reverified (together with further checks) using the file "verifications.m".
@@ -130,7 +130,7 @@ end function;
 // For each curve for which we apply the AL sieve, we can list the pullback points we obtain.
 // We may also list the j-invariant of each point, and its CM discriminant if appropriate
 
-for N in [74, 85, 97, 103, 107, 109, 113, 121, 127] do
+for N in [58, 68, 74, 76, 80, 85, 97, 98, 100, 103, 107, 109, 113, 121, 127] do
     print "N =", N;
     al_seq := [ [m] : m in Divisors(N) | GCD(m,N div m) eq 1 and m gt 1]; // all AL involutions
     X, _, pairs := eqs_quos(N, al_seq);
