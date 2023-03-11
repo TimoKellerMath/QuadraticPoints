@@ -148,17 +148,7 @@ The coordinates of the point are: [ 2*w, -1, 1, 0, 3, 1 ]
 The j-invariant of the point is: 287496
 The corresponding elliptic curve has CM by an order of discriminant: -16
 
-We have found a potime for i:= 1 to #j68 do
-192
-    d:=SquareFreeFactorization(Integers()!j68[i,2]);
-193
-    K<w>:=QuadraticField(d);
-194
-    K, coords_jK(X,j,K!(j68[i,1]),K);
-195
-end for;
-196
-int over Q(w), where w^2= -1
+We have found a point over Q(w), where w^2= -1
 The coordinates of the point are: [ -2*w, 1, -1, 0, 3, 1 ]
 The j-invariant of the point is: 1728
 The corresponding elliptic curve has CM by an order of discriminant: -4
