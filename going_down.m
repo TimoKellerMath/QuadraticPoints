@@ -5,7 +5,7 @@ load  "models_and_maps.m";
 // We will make use of the following function
 
 /////////////////
-/// coords_jk ///
+/// coords_jK ///
 /////////////////
 
 // Function for computing points with a given j-invariant
@@ -114,7 +114,7 @@ assert #pts2 eq #pts;
 //////////////////////////////////////
 
 
-j:=jmap(X,58);
+time j:=jmap(X,58); //Time: 10.360
 deg2pb:=[Pullback(quotMap,Place(Xw!p)):p in pts];
 g:=Genus(X);
 for i in [1..#deg2pb] do
@@ -127,10 +127,17 @@ for i in [1..#deg2pb] do
 		P:=RepresentativePoint(Decomposition(deg2pb[i])[1,1]);
 		Pw:=[f(P[i]): i in [1..#Coordinates(P)]];
 		tr, CM:=HasComplexMultiplication(EllipticCurveFromjInvariant(j(P)[1]));
+		assert tr;
 		print "We have found a point over Q(w), where w^2=", w^2;
 		print "The coordinates of the point are:", Pw;
 		print "The j-invariant of the point is:", f(j(P)[1]);
 		print "The corresponding elliptic curve has CM by an order of discriminant:", CM;
+		if Degree(MinimalPolynomial(f(j(P)[1]))) eq 1 then 
+			pts := coords_jK(X, j, f(j(P)[1]), K);
+			print "The number of conjugacy classes of points found with this j-invartiant over this field is:", (#pts) div 2;
+		else 
+			print "The j-invariant is not rational.;
+		end if;		
 		print " ";
 		//w^2,Pw,f(j(P)[1]),HasComplexMultiplication(EllipticCurveFromjInvariant(j(P)[1]));
 	end if;
