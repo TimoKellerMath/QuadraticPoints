@@ -1,4 +1,4 @@
-// This file contains functions auxiliary functions for applying the relative symmetric Chabauty criterion
+// This file contains functions auxiliary functions for applying the relative Chabauty criterion
 
 // The file contains the following functions (further description before each function):
 
