@@ -136,7 +136,7 @@ for i in [1..#deg2pb] do
 			pts := coords_jK(X, j, f(j(P)[1]), K);
 			print "The number of conjugacy classes of points found with this j-invartiant over this field is:", (#pts) div 2;
 		else 
-			print "The j-invariant is not rational.;
+			print "The j-invariant is not rational.";
 		end if;		
 		print " ";
 		//w^2,Pw,f(j(P)[1]),HasComplexMultiplication(EllipticCurveFromjInvariant(j(P)[1]));
@@ -149,21 +149,29 @@ We have found a point over Q(w), where w^2= -7
 The coordinates of the point are: [ 1/3*w, 0, 1/3, 1/3*w, 4/3, 1 ]
 The j-invariant of the point is: -3375
 The corresponding elliptic curve has CM by an order of discriminant: -7
+The number of conjugacy classes of points found with this j-invartiant over this
+field is: 3
 
 We have found a point over Q(w), where w^2= -1
-The coordinates of the point are: [ 2*w, -1, 1, 0, 3, 1 ]
+The coordinates of the point are: [ -2*w, -1, 1, 0, 3, 1 ]
 The j-invariant of the point is: 287496
 The corresponding elliptic curve has CM by an order of discriminant: -16
+The number of conjugacy classes of points found with this j-invartiant over this
+field is: 1
 
 We have found a point over Q(w), where w^2= -1
-The coordinates of the point are: [ -2*w, 1, -1, 0, 3, 1 ]
+The coordinates of the point are: [ 2*w, 1, -1, 0, 3, 1 ]
 The j-invariant of the point is: 1728
 The corresponding elliptic curve has CM by an order of discriminant: -4
+The number of conjugacy classes of points found with this j-invartiant over this
+field is: 2
 
 We have found a point over Q(w), where w^2= -7
 The coordinates of the point are: [ 1/3*w, 0, -1/3, -1/3*w, 4/3, 1 ]
 The j-invariant of the point is: 16581375
 The corresponding elliptic curve has CM by an order of discriminant: -28
+The number of conjugacy classes of points found with this j-invartiant over this
+field is: 1
 
 We have found a point over Q(w), where w^2= 29
 The coordinates of the point are: [ 0, -5/29*w, -1/29*w, 1, 0, 0 ]
@@ -174,6 +182,9 @@ We have found a point over Q(w), where w^2= -1
 The coordinates of the point are: [ 0, 0, 0, w, 1, 1 ]
 The j-invariant of the point is: 1728
 The corresponding elliptic curve has CM by an order of discriminant: -4
+The number of conjugacy classes of points found with this j-invartiant over this
+field is: 2
+
 
 */
 
