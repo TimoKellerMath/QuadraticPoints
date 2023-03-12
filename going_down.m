@@ -188,6 +188,26 @@ field is: 2
 
 */
 
+/* It remains to check that the non-rational j-invariantn -56147767009798464000*w + 302364978924945672000 and its conjugate correspond to only one point. We cannot
+check this using the coords_jK function as it requires rational j-invariants.*/
+
+K<w>:=QuadraticField(29);
+j:=-56147767009798464000*w + 302364978924945672000;
+E:=EllipticCurveFromjInvariant(j);
+assert #TwoTorsionSubgroup(E) eq 2; //so this curve has only one 2-isogeny
+_<x>:=PolynomialRing(K);
+p:=Evaluate(ClassicalModularPolynomial(29), [j,x]);
+fac:=Factorization(p);
+assert Degree(fac[1,1]) eq 1; assert Degree(fac[2,1]) ge 2;
+
+/* So E has only one 29-isogeny and only one 2-isogeny. Hence it has only 1 58-isogeny, so there's only one point on X_0(58) corresponding to j. */
+
+js:=56147767009798464000*w + 302364978924945672000;
+assert Evaluate(ClassicalModularPolynomial(29), [j,js]) eq 0;
+assert Evaluate(ClassicalModularPolynomial(2), [j,js]) eq 0;
+
+/* This is not necessary, but we check that elliptic curves with j-invariant j are both 2-isogenoues and 29-isogenoues to their conjugates.*/
+
 // This completes the case N=58 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
