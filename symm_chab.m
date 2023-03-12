@@ -4,7 +4,7 @@
 
 // discQuadPlace: computes the discriminant of the quadratic field a place is defined over.
 // OneMinusWmodp: computes the image of 1-w mod p on a divisor for an AL involution w
-// IsLonely: verifies the relative symmetric Chabauty criterion
+// IsLonely: verifies the symmetric Chabauty criterion
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
@@ -58,14 +58,14 @@ end function;
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
-//This function verifies the conditions of Theorem 2.1 from Box - quadratic points on modular curves
+//This function verifies the conditions of Theorem 2.1 from Box - quadratic points on modular curves for applying the symmetric Chabauty criterion
 // Input: 
 // degree 2 divisor QQ
 // prime p of good reduction for X,
 // AtkinLehner matrix on X
 // genus of X/<AtkinLehner>
 
-// Output: true or false according to whether the Chabauty criterion succeeds or fails
+// Output: true or false according to whether the symmetric Chabauty criterion succeeds or fails
 
 IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 	// Condition in Theorem is p > 2
