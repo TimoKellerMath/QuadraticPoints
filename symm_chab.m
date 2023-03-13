@@ -77,7 +77,8 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 	d := 2; // Just there to emphasize that we work on X^{(d)} for d = 2.
 
 	// We now distinguish between a pair of rational points and a quadratic point
-	if #Decomposition(QQ) eq 1 then //Quadratic point or double rational point case
+	// In any case ptlist will represent an effective divisor
+ 	if #Decomposition(QQ) eq 1 then //Quadratic point or double rational point case
 		Q := Decomposition(QQ)[1][1];
 		if not IsIsomorphic(ResidueClassField(Q),Rationals()) then //Quadratic point case
 			dd := [1, 1]; //This encodes that QQ = Q_1 + Q_2 with Q_1 and Q_2 distinct
