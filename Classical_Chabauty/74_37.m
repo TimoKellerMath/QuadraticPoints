@@ -41,11 +41,39 @@ end if;
 
 pts := PointSearch(X74_w37, 10);
 assert #pts eq 9;
+// [ (-1 : 0 : 1 : 0), (-1 : -1 : 1 : 1), (0 : 1 : 1 : 0), (0 : 1 : 0 : 0), (0 : 0 : 0 : 1), (1 : -1 : -1 : 1), (0 : 1 : 0 : 1), (1 : 0 : 1 : 0), (-1 : 0 : 0 : 1) ]
+pseq1 := [0,0,0,1];
+pseq2 := [0,1,0,0];
+pseq3 := [0,1,1,0];
+
+// We aim to show that the divisors formed by d1 = pseq1-pseq2 and d2 = pseq1-pseq3 generate a rank 2 subgroup of the Jacobian over Q
+// We do this in two steps (which we combine in the code for efficiency).
+// Step 1a) We show that the divisor d1 has infinite order in the Jacobian by checking that its order mod 3 and its order mod 5 are different
+// Step 1b) We repeat step 1a) with the divisor d2
+// Step 2) We verify that d1 and d2 are linearly independent in the Jacobian by checking they are linearly independent mod 3
+
 p := 3;
 Xp := ChangeRing(X74_w37, GF(p));
 assert IsNonsingular(Xp);
-ptsp := [Xp!ChangeUniverse(Eltseq(pt), GF(p)) : pt in pts]; // reductions of Q-points
 PicXp, phi, psi := ClassGroup(Xp);
 JFp := TorsionSubgroup(PicXp);
-divsp := [psi(Place(ptsp[i]) - Place(ptsp[1])) : i in [2..#ptsp]];
-A := sub<JFp | divsp>; // Abelian Group isomorphic to Z/7 + Z/133, so rank is 2
+d1p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq2));
+d2p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq3));
+
+assert Order(d1p) eq 7;
+assert Order(d2p) eq 133;
+
+A := sub<JFp | [d1p,d2p]>; // Abelian Group isomorphic to Z/7 + Z/133
+// So the points are linearly independent mod 3
+
+p := 5;
+Xp := ChangeRing(X74_w37, GF(p));
+assert IsNonsingular(Xp);
+PicXp, phi, psi := ClassGroup(Xp);
+JFp := TorsionSubgroup(PicXp);
+d1p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq2));
+d2p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq3));
+
+assert Order(d1p) eq 8; // 8 is different from 7, so d1 is not a torsion point
+assert Order(d2p) eq 152; // 152 is different from 133, so d2 is not a torsion point
+
