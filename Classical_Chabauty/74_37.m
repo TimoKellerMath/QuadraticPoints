@@ -93,7 +93,7 @@ assert Order(d2_mod3) ne Order(d2_mod5); // So d2 has infinite order
 // G is a subgroup of J(Q)_tors, which in turn is a subgroup of Z/19Z
 
 // It follows that the image of <d_1, d_2> in J(F_3) must be of the form:
-// Z/aZ or Z/aZ x Z/19Z for some integer a > 1.
+// Z/aZ or Z/aZ x Z/19Z for some integer a.
 
 // We compute the image of <d_1, d_2> in J(F_3):
 
