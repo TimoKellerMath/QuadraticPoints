@@ -100,9 +100,6 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
                         end for; 
 			conjQx := [Conjugate(x) : x in Qx]; Append(~ptlist, Qx);
                         Append(~ptlist, conjQx);
-			//conjQ := [Conjugate(x) : x in Q];
-			//Append(~ptlist, Q);
-			//Append(~ptlist, conjQ);
 		else
 			dd := [2]; //Double rational point case
 			K := RationalsAsNumberField();
@@ -137,12 +134,19 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 
 	//We find the space of vanishing differentials (T)
 	V, phi := SpaceOfDifferentialsFirstKind(Xp);
+	
+	//The following line was originally in Box's work. However, in some cases this doesn't terminate, so we slightly change the code to compute the pullbacks.
+	//tp := hom<V -> V | [ (Pullback(wp, phi(V.i)))@@phi - V.i : i in [1..Genus(X)] ]>;
+	
 	aut_wp := AutomorphismGroup(Xp,[wp]).1;
 	tp := hom<V -> V | [(phi(V.i) @@ aut_wp)@@phi - V.i : i in [1..Genus(X)] ]>; // This will be Vtilde from Box's paper: see Proposition 3.5
-	//tp := hom<V -> V | [ (Pullback(wp, phi(V.i)))@@phi - V.i : i in [1..Genus(X)] ]>;
+	
 	T := Image(tp);
 
-	//check that dimesion of space of annihilating differentials is as expected
+	//We now check that dimension of space of annihilating differentials is as expected.
+	//This confirms the analogue of Box's Proposition 3.5, i.e.
+	// that the reduction of space of annihilating differentials, Vtilde,
+	//is the image of 1-wp, where wp is mod p A-L involution
 	assert Dimension(T) eq Genus(X) - genusC;
 
 	omegas := [phi(T.i) : i in [1..Dimension(T)]]; //A basis of vanishing differentials, i.e. Vtilde
@@ -164,12 +168,8 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 		place := FunctionFieldPlace(Place(Qtilde));
 		values := [Evaluate(fun, place) : fun in funs];
 		Append(~matrixseq, values);
-		if dd eq [1, 1] then
-			//Append(~matrixseq, [(omega/Differential(tQtilde))(Qtilde) : omega in omegas]);
-		else 
-			//Append(~matrixseq, [(omega/Differential(tQtilde))(Qtilde) : omega in omegas]);
+		if dd eq [2] then
 			Append(~matrixseq, [Evaluate((funs[i] - KA!values[i])/func_tQtilde, place) : i in [1..#funs]]); 
-			//Append(~matrixseq, [((omega/Differential(tQtilde) - (omega/Differential(tQtilde))(Qtilde))/tQtilde)(Qtilde) : omega in omegas]); 
 		end if;
 	end for;
 	
