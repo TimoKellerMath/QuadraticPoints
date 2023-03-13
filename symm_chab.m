@@ -138,20 +138,20 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 	//We find the space of vanishing differentials (T)
 	V, phi := SpaceOfDifferentialsFirstKind(Xp);
 	aut_wp := AutomorphismGroup(Xp,[wp]).1;
-	tp := hom<V -> V | [(phi(V.i) @@ aut_wp)@@phi - V.i : i in [1..Genus(X)] ]>; //Filip: why did we change this? Also, why are we acting with 1-wp on differentials? 
+	tp := hom<V -> V | [(phi(V.i) @@ aut_wp)@@phi - V.i : i in [1..Genus(X)] ]>; // This will be Vtilde from Box's paper: see Proposition 3.5
 	//tp := hom<V -> V | [ (Pullback(wp, phi(V.i)))@@phi - V.i : i in [1..Genus(X)] ]>;
 	T := Image(tp);
 
 	//check that dimesion of space of annihilating differentials is as expected
 	assert Dimension(T) eq Genus(X) - genusC;
 
-	omegas := [phi(T.i) : i in [1..Dimension(T)]]; //A basis of vanishing differentials
+	omegas := [phi(T.i) : i in [1..Dimension(T)]]; //A basis of vanishing differentials, i.e. Vtilde
 	unif := UniformizingElement(pp);
 	matrixseq := [];
 
 	KA, K_to_KA := AlgorithmicFunctionField(FunctionField(Xp));
 
-	//We now construct the matrix Atilde from Theorem
+	//We now construct the matrix Atilde from Box: Theorem 2.1
 	for pt in ptlist do 
 		printf ".";
 		m := Minimum([Valuation(a, pp) : a in pt | not a eq 0]);
@@ -172,7 +172,7 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 			//Append(~matrixseq, [((omega/Differential(tQtilde) - (omega/Differential(tQtilde))(Qtilde))/tQtilde)(Qtilde) : omega in omegas]); 
 		end if;
 	end for;
-
+	
 	Atilde:=Matrix(matrixseq);
 
 	if Rank(Atilde) eq d then
