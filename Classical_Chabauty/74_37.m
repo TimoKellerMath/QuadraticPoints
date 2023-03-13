@@ -47,33 +47,62 @@ pseq2 := [0,1,0,0];
 pseq3 := [0,1,1,0];
 
 // We aim to show that the divisors formed by d1 = pseq1-pseq2 and d2 = pseq1-pseq3 generate a rank 2 subgroup of the Jacobian over Q
-// We do this in two steps (which we combine in the code for efficiency).
-// Step 1a) We show that the divisor d1 has infinite order in the Jacobian by checking that its order mod 3 and its order mod 5 are different
-// Step 1b) We repeat step 1a) with the divisor d2
-// Step 2) We verify that d1 and d2 are linearly independent in the Jacobian by checking they are independent mod 3
+// We do this in three steps 
 
-p := 3;
-Xp := ChangeRing(X74_w37, GF(p));
-assert IsNonsingular(Xp);
-PicXp, phi, psi := ClassGroup(Xp);
-JFp := TorsionSubgroup(PicXp);
-d1p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq2));
-d2p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq3));
+// Write J for the Jacobian of the curve X_0(74)/w_37
 
-assert Order(d1p) eq 7;
-assert Order(d2p) eq 133;
+// Step 1: We prove that J(Q)_tors is a subgroup of Z/19Z
+// Step 2: We verify that d_1 and d_2 both have infinite order by considering their reductions modulo 3 and 5 
+// Step 3: We verify that d_1 and d_2 are linearly independent points of the Jacobian
 
-A := sub<JFp | [d1p,d2p]>; // Abelian Group isomorphic to Z/7 + Z/133
-// So the points are independent mod 3
+// Step 1: 
 
-p := 5;
-Xp := ChangeRing(X74_w37, GF(p));
-assert IsNonsingular(Xp);
-PicXp, phi, psi := ClassGroup(Xp);
-JFp := TorsionSubgroup(PicXp);
-d1p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq2));
-d2p := psi(Place(Xp ! pseq1) - Place(Xp ! pseq3));
+X3 := ChangeRing(X74_w37, GF(3));
+assert IsNonsingular(X3);
+PicX3, phi3, psi3 := ClassGroup(X3);
+JF3 := TorsionSubgroup(PicX3);
 
-assert Order(d1p) eq 8; // 8 is different from 7, so d1 is not a torsion point
-assert Order(d2p) eq 152; // 152 is different from 133, so d2 is not a torsion point
+X5 := ChangeRing(X74_w37, GF(5));
+assert IsNonsingular(X5);
+PicX5, phi5, psi5 := ClassGroup(X5);
+JF5 := TorsionSubgroup(PicX5);
+
+assert GCD(#JF3, #JF5) eq 19;
+// So J(Q)_tors is a subgroup of Z / 19 Z.
+
+// Step 2:
+
+// We construct the points in the Jacobian mod 3 and mod 5:
+
+d1_mod3 := psi3(Place(X3 ! pseq1) - Place(X3 ! pseq2));
+d2_mod3 := psi3(Place(X3 ! pseq1) - Place(X3 ! pseq3));
+
+d1_mod5 := psi5(Place(X5 ! pseq1) - Place(X5 ! pseq2));
+d2_mod5 := psi5(Place(X5 ! pseq1) - Place(X5 ! pseq3));
+
+// If d1 were a torsion point then it would have the same order mod 3 and mod 5.
+assert Order(d1_mod3) ne Order(d1_mod5); // So d1 has infinite order
+// Similarly for d2:
+assert Order(d2_mod3) ne Order(d2_mod5); // So d2 has infinite order
+
+// Step 3:
+
+// If d1 and d2 were linearly dependent, 
+// then they would generate a group isomorphic to Z x G. 
+// Here, Z means the integers and
+// G is a subgroup of J(Q)_tors, which in turn is a subgroup of Z/19Z
+
+// It follows that the image of <d_1, d_2> in J(F_3) must be of the form:
+// Z/aZ or Z/aZ x Z/19Z for some integer a > 1.
+
+// We compute the image of <d_1, d_2> in J(F_3):
+
+A := sub<JF3 | [d1_mod3, d2_mod3] >; 
+assert IsIsomorphic(A,AbelianGroup([7,7,19]));
+// This group is not of the form Z/aZ or Z/aZ x Z/19Z
+// So the points d_1 and d_2 are linearly independent.
+
+
+
+
 
