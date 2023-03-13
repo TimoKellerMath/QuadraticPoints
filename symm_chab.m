@@ -86,7 +86,7 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 			F := ResidueClassField(Q);
 			tf, ii := IsIsomorphic(F, K);
 			assert tf; //Sanity check
-Qx := [K | ];
+			Qx := [K | ];
                         for x in Eltseq(RepresentativePoint(Q)) do
                                 F := Parent(x);
                                 if IsIsomorphic(F, Rationals()) then
