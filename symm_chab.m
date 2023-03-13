@@ -138,7 +138,7 @@ IsLonely := function(QQ, p, X, AtkinLehner, genusC)
 	//We find the space of vanishing differentials (T)
 	V, phi := SpaceOfDifferentialsFirstKind(Xp);
 	aut_wp := AutomorphismGroup(Xp,[wp]).1;
-	tp := hom<V -> V | [(phi(V.i) @@ aut_wp)@@phi - V.i : i in [1..Genus(X)] ]>;
+	tp := hom<V -> V | [(phi(V.i) @@ aut_wp)@@phi - V.i : i in [1..Genus(X)] ]>; //Filip: why did we change this?
 	//tp := hom<V -> V | [ (Pullback(wp, phi(V.i)))@@phi - V.i : i in [1..Genus(X)] ]>;
 	T := Image(tp);
 
