@@ -13,7 +13,7 @@
 // AL_sieve: Main function, carries out all checks and performs the sieve
 
 load "rank_0_auxiliary.m";
-load "rel_symm_chab.m";
+load "symm_chab.m";
 load "rank_calcs.m";
 load "models_and_maps.m";
 
