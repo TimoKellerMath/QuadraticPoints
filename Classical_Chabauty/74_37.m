@@ -50,7 +50,7 @@ pseq3 := [0,1,1,0];
 // We do this in two steps (which we combine in the code for efficiency).
 // Step 1a) We show that the divisor d1 has infinite order in the Jacobian by checking that its order mod 3 and its order mod 5 are different
 // Step 1b) We repeat step 1a) with the divisor d2
-// Step 2) We verify that d1 and d2 are linearly independent in the Jacobian by checking they are linearly independent mod 3
+// Step 2) We verify that d1 and d2 are linearly independent in the Jacobian by checking they are independent mod 3
 
 p := 3;
 Xp := ChangeRing(X74_w37, GF(p));
@@ -64,7 +64,7 @@ assert Order(d1p) eq 7;
 assert Order(d2p) eq 133;
 
 A := sub<JFp | [d1p,d2p]>; // Abelian Group isomorphic to Z/7 + Z/133
-// So the points are linearly independent mod 3
+// So the points are independent mod 3
 
 p := 5;
 Xp := ChangeRing(X74_w37, GF(p));
