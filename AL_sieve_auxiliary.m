@@ -299,7 +299,8 @@ end function;
 //	first it checks if the ranks of the curve and its quotient are equal (and outputs confirmation),
 //	then it outputs a nice model of the curve (with Atkin-Lehner's diagonalized),
 //	the action of w_d on the curve,
-//	then on its Jacobian (cusps, and if printTorsion is set to true, the full torsion structure over Q),
+//	then on its Jacobian (cusps, and usually the full torsion structure over Q:
+//       as we need the full torsion, the program stops if it doesn't manage to provably compute it),
 //	and finally on the sieving process.
 
 // In all cases where all the quadratic points are pullbacks from X_0+(N),
