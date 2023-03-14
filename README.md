@@ -5,6 +5,7 @@ The code is associated to the following paper: (fill in with arXiv link) "Comput
 
 The repository consists of the following files and folders:
 
+- **Additional_examples** (folder). This folder contains additional example computations that do not form part of the paper.
 - **Classical_Chabauty** (folder). This folder contains code for perfoming classical Chabauty computations.
 - **Output_files** (folder). Contains all output files for tha 'rank 0' and 'Atkin-Lehner sieve' levels as well as the output of the verifications file.
 - `AL_sieve.m` Main file for the 'Atkin-Lehner sieve' method. Performs the computations.
