@@ -1,7 +1,7 @@
 # QuadraticPoints
 Magma code to compute quadratic points on X_0(N). 
 
-The code is associated to the following paper: (fill in with arXiv link) "Computing quadratic points on modular curves X_0(N)" by Nikola Adzaga, Timo Keller, Philippe Michaud-Jacobs, Filip Najman, Ekin Ozman, and Borna Vukorepa.
+The code is associated to the following paper: http://arxiv.org/abs/2303.12566 "Computing quadratic points on modular curves X_0(N)" by Nikola Adzaga, Timo Keller, Philippe Michaud-Jacobs, Filip Najman, Ekin Ozman, and Borna Vukorepa.
 
 The repository consists of the following files and folders:
 
