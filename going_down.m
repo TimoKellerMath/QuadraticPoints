@@ -126,7 +126,8 @@ assert #pts2 eq #pts;
 // Using the data from https://github.com/fsaia/least-cm-degree/tree/master/Least%20Degrees/X0, in the file "dcm_list_all_min_orders_X0_10k.m",
 // if we have a quadratic CM point on X_0(58)
 // then we see that it's quadratic field and j-invariant is one we have already found
-// so in the code below, for each pair of j-invariant and quadratic field, we check for any additional points.
+// so in the code below, for each pair of j-invariant and quadratic field, we check for any additional points, and
+// for K = Q(sqrt(-1)) we do in fact have additional points with j-invariant 1728, and so there is repetition in the output below.
 
 time j:=jmap(X,58); //Time: 10.360
 deg2pb:=[Pullback(quotMap,Place(Xw!p)):p in pts];
@@ -148,7 +149,7 @@ for i in [1..#deg2pb] do
 		print "The corresponding elliptic curve has CM by an order of discriminant:", CM;
 		if Degree(MinimalPolynomial(f(j(P)[1]))) eq 1 then 
 			pts := coords_jK(X, j, f(j(P)[1]), K);
-			print "The number of Galois conjugate pairs of quadratic points found with this j-invartiant over this field is:", (#pts) div 2;
+			print "The number of Galois conjugate pairs of quadratic points found with this j-invariant over this field is:", (#pts) div 2;
                         if #pts gt 2 then 
 			    print "++++++++++++++++";
 			    print "The complete list of points with this j-invariant over this field is:", pts;
@@ -168,7 +169,7 @@ The coordinates of the point are: [ 1/3*T, 0, 1/3, 1/3*T, 4/3, 1 ]
 The j-invariant of the point is: -3375
 The corresponding elliptic curve has CM by an order of discriminant: -7
 The number of Galois conjugate pairs of quadratic points found with this 
-j-invartiant over this field is: 3
+j-invariant over this field is: 3
 ++++++++++++++++
 The complete list of points with this j-invariant over this field is: {@ (-1 : 
 -2/7*T : 1/7*T : 1/7*T : 2 : 1), (-1 : 2/7*T : -1/7*T : -1/7*T : 2 : 1), (1 : 
@@ -181,14 +182,14 @@ The coordinates of the point are: [ 2*T, -1, 1, 0, 3, 1 ]
 The j-invariant of the point is: 287496
 The corresponding elliptic curve has CM by an order of discriminant: -16
 The number of Galois conjugate pairs of quadratic points found with this 
-j-invartiant over this field is: 1
+j-invariant over this field is: 1
 
 We have found a point over Q(T), where T^2= -1
 The coordinates of the point are: [ 2*T, 1, -1, 0, 3, 1 ]
 The j-invariant of the point is: 1728
 The corresponding elliptic curve has CM by an order of discriminant: -4
 The number of Galois conjugate pairs of quadratic points found with this 
-j-invartiant over this field is: 2
+j-invariant over this field is: 2
 ++++++++++++++++
 The complete list of points with this j-invariant over this field is: {@ (0 : 0 
 : 0 : -T : 1 : 1), (0 : 0 : 0 : T : 1 : 1), (-2*T : 1 : -1 : 0 : 3 : 1), (2*T : 
@@ -200,7 +201,7 @@ The coordinates of the point are: [ 1/3*T, 0, -1/3, -1/3*T, 4/3, 1 ]
 The j-invariant of the point is: 16581375
 The corresponding elliptic curve has CM by an order of discriminant: -28
 The number of Galois conjugate pairs of quadratic points found with this 
-j-invartiant over this field is: 1
+j-invariant over this field is: 1
 
 We have found a point over Q(T), where T^2= 29
 The coordinates of the point are: [ 0, 5/29*T, 1/29*T, 1, 0, 0 ]
@@ -213,7 +214,7 @@ The coordinates of the point are: [ 0, 0, 0, T, 1, 1 ]
 The j-invariant of the point is: 1728
 The corresponding elliptic curve has CM by an order of discriminant: -4
 The number of Galois conjugate pairs of quadratic points found with this 
-j-invartiant over this field is: 2
+j-invariant over this field is: 2
 ++++++++++++++++
 The complete list of points with this j-invariant over this field is: {@ (0 : 0 
 : 0 : -T : 1 : 1), (0 : 0 : 0 : T : 1 : 1), (-2*T : 1 : -1 : 0 : 3 : 1), (2*T : 
@@ -222,7 +223,7 @@ The complete list of points with this j-invariant over this field is: {@ (0 : 0
 
 */
 
-// It remains to check that the non-rational j-invariann -56147767009798464000*T + 302364978924945672000 (and its conjugate) correspond to only one point.
+// It remains to check that the non-rational j-invariant -56147767009798464000*T + 302364978924945672000 (and its conjugate) correspond to only one point.
 // We cannot check this directly using the coords_jK function as it requires a rational j-invariant as input.
 
 // We consider two methods for checking there are no additional points with this j-invariant
